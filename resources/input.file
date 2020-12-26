@@ -1,0 +1,48 @@
+//info generali sul libro
+{BOOK 
+	
+		title : "Ciao, come va",
+		author : "Gianluca",
+		author : "Flaccodori",
+		publisher : "Mondadori",
+		image : \\path\to\image.png,
+		year : 2020
+	
+}
+
+//storia senza scelte
+{STORY Storia1 -> Storia2}
+$C'era una volta...$
+{ENDSTORY}
+
+//storia con scelte multiple
+{STORY Storia2 -> BRANCHES}
+{TITLE "la storia del drago" }
+$un drago che volava e sputava fuoco e ...$
+{CHOOSE 
+	"fight" : Storia3, 
+	"RunAway" : Storia4,
+	"CorriForrestCorri" : Storia4
+	}
+{ENDSTORY}
+
+//
+{STORY Storia3 -> BRANCHES}
+{TITLE "la storia del drago" }
+$Perchè non cè un drago che sia grande come te...$
+{CHOOSE 
+	"A" : Storia5, 
+	"B" : Storia5,
+	"C" : Storia6
+}
+{ENDSTORY}
+	
+{STORY Storia5 -> BRANCHES}
+{TITLE "la storia del drago" }
+$viene giu una valanga ...$
+{CHOOSE
+	"D" : Storia7, 
+	"E" : Storia8,
+	"F" : Storia9
+	}
+{ENDSTORY}
