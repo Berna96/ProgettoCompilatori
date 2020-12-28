@@ -20,7 +20,7 @@ public class EpubTester {
 		    EpubBook book = new EpubBook("english", "1", "Il pianeta delle scimmie", "Dr zaius");
 		    //Content c1 = new Content();
 		    //book.addCoverImage(null, null, null);
-		    book.addContent(null)
+		    //book.addContent(null)
 		    
 		    //book.addContent(new Content());
 		    EpubWriter writer = new EpubWriter();
