@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g 2020-12-25 23:12:12
+// $ANTLR 3.5.1 C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g 2020-12-29 14:56:06
 
   package myCompiler;
   import myPackage.Environment;
@@ -84,18 +84,18 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "start"
-	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:104:1: start : metadata ( story )+ ;
+	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:41:1: start : metadata ( story )+ ;
 	public final void start() throws RecognitionException {
 			init();
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:106:2: ( metadata ( story )+ )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:107:2: metadata ( story )+
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:43:2: ( metadata ( story )+ )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:44:2: metadata ( story )+
 			{
-			pushFollow(FOLLOW_metadata_in_start70);
+			pushFollow(FOLLOW_metadata_in_start67);
 			metadata();
 			state._fsp--;
 
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:107:11: ( story )+
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:44:11: ( story )+
 			int cnt1=0;
 			loop1:
 			while (true) {
@@ -107,9 +107,9 @@ public class MyGrammarParser extends Parser {
 
 				switch (alt1) {
 				case 1 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:107:11: story
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:44:11: story
 					{
-					pushFollow(FOLLOW_story_in_start72);
+					pushFollow(FOLLOW_story_in_start69);
 					story();
 					state._fsp--;
 
@@ -140,15 +140,15 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "metadata"
-	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:112:1: metadata : LB BOOK ( book_key_value )* RB ;
+	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:49:1: metadata : LB BOOK ( book_key_value )* RB ;
 	public final void metadata() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:113:2: ( LB BOOK ( book_key_value )* RB )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:113:4: LB BOOK ( book_key_value )* RB
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:50:2: ( LB BOOK ( book_key_value )* RB )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:50:4: LB BOOK ( book_key_value )* RB
 			{
-			match(input,LB,FOLLOW_LB_in_metadata86); 
-			match(input,BOOK,FOLLOW_BOOK_in_metadata88); 
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:114:4: ( book_key_value )*
+			match(input,LB,FOLLOW_LB_in_metadata83); 
+			match(input,BOOK,FOLLOW_BOOK_in_metadata85); 
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:51:4: ( book_key_value )*
 			loop2:
 			while (true) {
 				int alt2=2;
@@ -159,9 +159,9 @@ public class MyGrammarParser extends Parser {
 
 				switch (alt2) {
 				case 1 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:114:4: book_key_value
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:51:4: book_key_value
 					{
-					pushFollow(FOLLOW_book_key_value_in_metadata93);
+					pushFollow(FOLLOW_book_key_value_in_metadata90);
 					book_key_value();
 					state._fsp--;
 
@@ -173,7 +173,7 @@ public class MyGrammarParser extends Parser {
 				}
 			}
 
-			match(input,RB,FOLLOW_RB_in_metadata100); 
+			match(input,RB,FOLLOW_RB_in_metadata97); 
 			}
 
 		}
@@ -190,17 +190,17 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "book_key_value"
-	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:118:1: book_key_value : title_kv ( COMMA author_kv )+ ( COMMA pvy_kv )* ;
+	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:55:1: book_key_value : title_kv ( COMMA author_kv )+ ( COMMA pvy_kv )* ;
 	public final void book_key_value() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:119:2: ( title_kv ( COMMA author_kv )+ ( COMMA pvy_kv )* )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:120:4: title_kv ( COMMA author_kv )+ ( COMMA pvy_kv )*
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:56:2: ( title_kv ( COMMA author_kv )+ ( COMMA pvy_kv )* )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:57:4: title_kv ( COMMA author_kv )+ ( COMMA pvy_kv )*
 			{
-			pushFollow(FOLLOW_title_kv_in_book_key_value120);
+			pushFollow(FOLLOW_title_kv_in_book_key_value117);
 			title_kv();
 			state._fsp--;
 
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:121:4: ( COMMA author_kv )+
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:58:4: ( COMMA author_kv )+
 			int cnt3=0;
 			loop3:
 			while (true) {
@@ -216,10 +216,10 @@ public class MyGrammarParser extends Parser {
 
 				switch (alt3) {
 				case 1 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:121:5: COMMA author_kv
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:58:5: COMMA author_kv
 					{
-					match(input,COMMA,FOLLOW_COMMA_in_book_key_value127); 
-					pushFollow(FOLLOW_author_kv_in_book_key_value129);
+					match(input,COMMA,FOLLOW_COMMA_in_book_key_value124); 
+					pushFollow(FOLLOW_author_kv_in_book_key_value126);
 					author_kv();
 					state._fsp--;
 
@@ -234,7 +234,7 @@ public class MyGrammarParser extends Parser {
 				cnt3++;
 			}
 
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:122:4: ( COMMA pvy_kv )*
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:59:4: ( COMMA pvy_kv )*
 			loop4:
 			while (true) {
 				int alt4=2;
@@ -245,10 +245,10 @@ public class MyGrammarParser extends Parser {
 
 				switch (alt4) {
 				case 1 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:122:5: COMMA pvy_kv
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:59:5: COMMA pvy_kv
 					{
-					match(input,COMMA,FOLLOW_COMMA_in_book_key_value137); 
-					pushFollow(FOLLOW_pvy_kv_in_book_key_value139);
+					match(input,COMMA,FOLLOW_COMMA_in_book_key_value134); 
+					pushFollow(FOLLOW_pvy_kv_in_book_key_value136);
 					pvy_kv();
 					state._fsp--;
 
@@ -276,15 +276,15 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "title_kv"
-	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:124:1: title_kv : TITLE_S COL STRING_VALUE ;
+	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:61:1: title_kv : TITLE_S COL STRING_VALUE ;
 	public final void title_kv() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:125:2: ( TITLE_S COL STRING_VALUE )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:125:4: TITLE_S COL STRING_VALUE
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:62:2: ( TITLE_S COL STRING_VALUE )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:62:4: TITLE_S COL STRING_VALUE
 			{
-			match(input,TITLE_S,FOLLOW_TITLE_S_in_title_kv154); 
-			match(input,COL,FOLLOW_COL_in_title_kv156); 
-			match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_title_kv158); 
+			match(input,TITLE_S,FOLLOW_TITLE_S_in_title_kv151); 
+			match(input,COL,FOLLOW_COL_in_title_kv153); 
+			match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_title_kv155); 
 			}
 
 		}
@@ -301,15 +301,15 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "author_kv"
-	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:127:1: author_kv : AUTHOR COL STRING_VALUE ;
+	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:64:1: author_kv : AUTHOR COL STRING_VALUE ;
 	public final void author_kv() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:128:2: ( AUTHOR COL STRING_VALUE )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:128:4: AUTHOR COL STRING_VALUE
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:65:2: ( AUTHOR COL STRING_VALUE )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:65:4: AUTHOR COL STRING_VALUE
 			{
-			match(input,AUTHOR,FOLLOW_AUTHOR_in_author_kv168); 
-			match(input,COL,FOLLOW_COL_in_author_kv170); 
-			match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_author_kv172); 
+			match(input,AUTHOR,FOLLOW_AUTHOR_in_author_kv165); 
+			match(input,COL,FOLLOW_COL_in_author_kv167); 
+			match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_author_kv169); 
 			}
 
 		}
@@ -326,13 +326,13 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "pvy_kv"
-	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:131:1: pvy_kv : ( publisher_kv | image_kv | year_kv ) ;
+	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:68:1: pvy_kv : ( publisher_kv | image_kv | year_kv ) ;
 	public final void pvy_kv() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:131:8: ( ( publisher_kv | image_kv | year_kv ) )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:132:3: ( publisher_kv | image_kv | year_kv )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:68:8: ( ( publisher_kv | image_kv | year_kv ) )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:69:3: ( publisher_kv | image_kv | year_kv )
 			{
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:132:3: ( publisher_kv | image_kv | year_kv )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:69:3: ( publisher_kv | image_kv | year_kv )
 			int alt5=3;
 			switch ( input.LA(1) ) {
 			case PUBLISHER:
@@ -357,27 +357,27 @@ public class MyGrammarParser extends Parser {
 			}
 			switch (alt5) {
 				case 1 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:132:5: publisher_kv
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:69:5: publisher_kv
 					{
-					pushFollow(FOLLOW_publisher_kv_in_pvy_kv187);
+					pushFollow(FOLLOW_publisher_kv_in_pvy_kv184);
 					publisher_kv();
 					state._fsp--;
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:133:9: image_kv
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:70:9: image_kv
 					{
-					pushFollow(FOLLOW_image_kv_in_pvy_kv199);
+					pushFollow(FOLLOW_image_kv_in_pvy_kv196);
 					image_kv();
 					state._fsp--;
 
 					}
 					break;
 				case 3 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:134:9: year_kv
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:71:9: year_kv
 					{
-					pushFollow(FOLLOW_year_kv_in_pvy_kv211);
+					pushFollow(FOLLOW_year_kv_in_pvy_kv208);
 					year_kv();
 					state._fsp--;
 
@@ -402,15 +402,15 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "publisher_kv"
-	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:136:1: publisher_kv : PUBLISHER COL STRING_VALUE ;
+	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:73:1: publisher_kv : PUBLISHER COL STRING_VALUE ;
 	public final void publisher_kv() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:137:2: ( PUBLISHER COL STRING_VALUE )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:137:4: PUBLISHER COL STRING_VALUE
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:74:2: ( PUBLISHER COL STRING_VALUE )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:74:4: PUBLISHER COL STRING_VALUE
 			{
-			match(input,PUBLISHER,FOLLOW_PUBLISHER_in_publisher_kv222); 
-			match(input,COL,FOLLOW_COL_in_publisher_kv224); 
-			match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_publisher_kv226); 
+			match(input,PUBLISHER,FOLLOW_PUBLISHER_in_publisher_kv219); 
+			match(input,COL,FOLLOW_COL_in_publisher_kv221); 
+			match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_publisher_kv223); 
 			}
 
 		}
@@ -427,15 +427,15 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "image_kv"
-	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:140:1: image_kv : IMAGE COL IMAGE_PATH ;
+	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:77:1: image_kv : IMAGE COL IMAGE_PATH ;
 	public final void image_kv() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:140:9: ( IMAGE COL IMAGE_PATH )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:140:11: IMAGE COL IMAGE_PATH
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:77:9: ( IMAGE COL IMAGE_PATH )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:77:11: IMAGE COL IMAGE_PATH
 			{
-			match(input,IMAGE,FOLLOW_IMAGE_in_image_kv237); 
-			match(input,COL,FOLLOW_COL_in_image_kv239); 
-			match(input,IMAGE_PATH,FOLLOW_IMAGE_PATH_in_image_kv241); 
+			match(input,IMAGE,FOLLOW_IMAGE_in_image_kv234); 
+			match(input,COL,FOLLOW_COL_in_image_kv236); 
+			match(input,IMAGE_PATH,FOLLOW_IMAGE_PATH_in_image_kv238); 
 			}
 
 		}
@@ -452,15 +452,15 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "year_kv"
-	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:142:1: year_kv : YEAR COL NUMBER_VALUE ;
+	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:79:1: year_kv : YEAR COL NUMBER_VALUE ;
 	public final void year_kv() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:142:9: ( YEAR COL NUMBER_VALUE )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:142:11: YEAR COL NUMBER_VALUE
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:79:9: ( YEAR COL NUMBER_VALUE )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:79:11: YEAR COL NUMBER_VALUE
 			{
-			match(input,YEAR,FOLLOW_YEAR_in_year_kv250); 
-			match(input,COL,FOLLOW_COL_in_year_kv252); 
-			match(input,NUMBER_VALUE,FOLLOW_NUMBER_VALUE_in_year_kv254); 
+			match(input,YEAR,FOLLOW_YEAR_in_year_kv247); 
+			match(input,COL,FOLLOW_COL_in_year_kv249); 
+			match(input,NUMBER_VALUE,FOLLOW_NUMBER_VALUE_in_year_kv251); 
 			}
 
 		}
@@ -477,16 +477,16 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "story"
-	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:146:1: story : LB STORY STORY_NAME ( ARROW ( STORY_NAME | BRANCHES ) )? RB ( title )? TEXT ( choose )? LB ENDSTORY RB ;
+	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:83:1: story : LB STORY STORY_NAME ( ARROW ( STORY_NAME | BRANCHES ) )? RB ( title )? TEXT ( choose )? LB ENDSTORY RB ;
 	public final void story() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:146:7: ( LB STORY STORY_NAME ( ARROW ( STORY_NAME | BRANCHES ) )? RB ( title )? TEXT ( choose )? LB ENDSTORY RB )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:147:2: LB STORY STORY_NAME ( ARROW ( STORY_NAME | BRANCHES ) )? RB ( title )? TEXT ( choose )? LB ENDSTORY RB
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:83:7: ( LB STORY STORY_NAME ( ARROW ( STORY_NAME | BRANCHES ) )? RB ( title )? TEXT ( choose )? LB ENDSTORY RB )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:84:2: LB STORY STORY_NAME ( ARROW ( STORY_NAME | BRANCHES ) )? RB ( title )? TEXT ( choose )? LB ENDSTORY RB
 			{
-			match(input,LB,FOLLOW_LB_in_story266); 
-			match(input,STORY,FOLLOW_STORY_in_story268); 
-			match(input,STORY_NAME,FOLLOW_STORY_NAME_in_story270); 
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:147:22: ( ARROW ( STORY_NAME | BRANCHES ) )?
+			match(input,LB,FOLLOW_LB_in_story263); 
+			match(input,STORY,FOLLOW_STORY_in_story265); 
+			match(input,STORY_NAME,FOLLOW_STORY_NAME_in_story267); 
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:84:22: ( ARROW ( STORY_NAME | BRANCHES ) )?
 			int alt6=2;
 			int LA6_0 = input.LA(1);
 			if ( (LA6_0==ARROW) ) {
@@ -494,9 +494,9 @@ public class MyGrammarParser extends Parser {
 			}
 			switch (alt6) {
 				case 1 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:147:23: ARROW ( STORY_NAME | BRANCHES )
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:84:23: ARROW ( STORY_NAME | BRANCHES )
 					{
-					match(input,ARROW,FOLLOW_ARROW_in_story273); 
+					match(input,ARROW,FOLLOW_ARROW_in_story270); 
 					if ( input.LA(1)==BRANCHES||input.LA(1)==STORY_NAME ) {
 						input.consume();
 						state.errorRecovery=false;
@@ -510,8 +510,8 @@ public class MyGrammarParser extends Parser {
 
 			}
 
-			match(input,RB,FOLLOW_RB_in_story285); 
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:148:2: ( title )?
+			match(input,RB,FOLLOW_RB_in_story282); 
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:85:2: ( title )?
 			int alt7=2;
 			int LA7_0 = input.LA(1);
 			if ( (LA7_0==LB) ) {
@@ -519,9 +519,9 @@ public class MyGrammarParser extends Parser {
 			}
 			switch (alt7) {
 				case 1 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:148:2: title
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:85:2: title
 					{
-					pushFollow(FOLLOW_title_in_story288);
+					pushFollow(FOLLOW_title_in_story285);
 					title();
 					state._fsp--;
 
@@ -530,8 +530,8 @@ public class MyGrammarParser extends Parser {
 
 			}
 
-			match(input,TEXT,FOLLOW_TEXT_in_story292); 
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:150:2: ( choose )?
+			match(input,TEXT,FOLLOW_TEXT_in_story289); 
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:87:2: ( choose )?
 			int alt8=2;
 			int LA8_0 = input.LA(1);
 			if ( (LA8_0==LB) ) {
@@ -542,9 +542,9 @@ public class MyGrammarParser extends Parser {
 			}
 			switch (alt8) {
 				case 1 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:150:2: choose
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:87:2: choose
 					{
-					pushFollow(FOLLOW_choose_in_story295);
+					pushFollow(FOLLOW_choose_in_story292);
 					choose();
 					state._fsp--;
 
@@ -553,9 +553,9 @@ public class MyGrammarParser extends Parser {
 
 			}
 
-			match(input,LB,FOLLOW_LB_in_story299); 
-			match(input,ENDSTORY,FOLLOW_ENDSTORY_in_story301); 
-			match(input,RB,FOLLOW_RB_in_story303); 
+			match(input,LB,FOLLOW_LB_in_story296); 
+			match(input,ENDSTORY,FOLLOW_ENDSTORY_in_story298); 
+			match(input,RB,FOLLOW_RB_in_story300); 
 			}
 
 		}
@@ -572,11 +572,11 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "title"
-	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:154:1: title : LB TITLE STRING_VALUE RB ;
+	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:96:1: title : LB TITLE STRING_VALUE RB ;
 	public final void title() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:154:7: ( LB TITLE STRING_VALUE RB )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:155:2: LB TITLE STRING_VALUE RB
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:96:7: ( LB TITLE STRING_VALUE RB )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:97:2: LB TITLE STRING_VALUE RB
 			{
 			match(input,LB,FOLLOW_LB_in_title316); 
 			match(input,TITLE,FOLLOW_TITLE_in_title318); 
@@ -598,11 +598,11 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "choose"
-	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:158:1: choose : LB CHOOSE choose_key_value RB ;
+	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:100:1: choose : LB CHOOSE choose_key_value RB ;
 	public final void choose() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:158:8: ( LB CHOOSE choose_key_value RB )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:159:2: LB CHOOSE choose_key_value RB
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:100:8: ( LB CHOOSE choose_key_value RB )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:101:2: LB CHOOSE choose_key_value RB
 			{
 			match(input,LB,FOLLOW_LB_in_choose333); 
 			match(input,CHOOSE,FOLLOW_CHOOSE_in_choose335); 
@@ -627,16 +627,16 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "choose_key_value"
-	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:164:1: choose_key_value : STRING_VALUE COL STORY_NAME ( COMMA STRING_VALUE COL STORY_NAME )* ;
+	// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:106:1: choose_key_value : STRING_VALUE COL STORY_NAME ( COMMA STRING_VALUE COL STORY_NAME )* ;
 	public final void choose_key_value() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:165:2: ( STRING_VALUE COL STORY_NAME ( COMMA STRING_VALUE COL STORY_NAME )* )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:166:3: STRING_VALUE COL STORY_NAME ( COMMA STRING_VALUE COL STORY_NAME )*
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:107:2: ( STRING_VALUE COL STORY_NAME ( COMMA STRING_VALUE COL STORY_NAME )* )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:108:3: STRING_VALUE COL STORY_NAME ( COMMA STRING_VALUE COL STORY_NAME )*
 			{
 			match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_choose_key_value357); 
 			match(input,COL,FOLLOW_COL_in_choose_key_value359); 
 			match(input,STORY_NAME,FOLLOW_STORY_NAME_in_choose_key_value361); 
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:167:3: ( COMMA STRING_VALUE COL STORY_NAME )*
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:109:3: ( COMMA STRING_VALUE COL STORY_NAME )*
 			loop9:
 			while (true) {
 				int alt9=2;
@@ -647,7 +647,7 @@ public class MyGrammarParser extends Parser {
 
 				switch (alt9) {
 				case 1 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:167:4: COMMA STRING_VALUE COL STORY_NAME
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:109:4: COMMA STRING_VALUE COL STORY_NAME
 					{
 					match(input,COMMA,FOLLOW_COMMA_in_choose_key_value368); 
 					match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_choose_key_value370); 
@@ -679,47 +679,47 @@ public class MyGrammarParser extends Parser {
 
 
 
-	public static final BitSet FOLLOW_metadata_in_start70 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_story_in_start72 = new BitSet(new long[]{0x0000000000040002L});
-	public static final BitSet FOLLOW_LB_in_metadata86 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_BOOK_in_metadata88 = new BitSet(new long[]{0x0000000100800000L});
-	public static final BitSet FOLLOW_book_key_value_in_metadata93 = new BitSet(new long[]{0x0000000100800000L});
-	public static final BitSet FOLLOW_RB_in_metadata100 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_title_kv_in_book_key_value120 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_COMMA_in_book_key_value127 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_author_kv_in_book_key_value129 = new BitSet(new long[]{0x0000000000000802L});
-	public static final BitSet FOLLOW_COMMA_in_book_key_value137 = new BitSet(new long[]{0x0000000400410000L});
-	public static final BitSet FOLLOW_pvy_kv_in_book_key_value139 = new BitSet(new long[]{0x0000000000000802L});
-	public static final BitSet FOLLOW_TITLE_S_in_title_kv154 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_COL_in_title_kv156 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_STRING_VALUE_in_title_kv158 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_AUTHOR_in_author_kv168 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_COL_in_author_kv170 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_STRING_VALUE_in_author_kv172 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_publisher_kv_in_pvy_kv187 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_image_kv_in_pvy_kv199 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_year_kv_in_pvy_kv211 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PUBLISHER_in_publisher_kv222 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_COL_in_publisher_kv224 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_STRING_VALUE_in_publisher_kv226 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_IMAGE_in_image_kv237 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_COL_in_image_kv239 = new BitSet(new long[]{0x0000000000020000L});
-	public static final BitSet FOLLOW_IMAGE_PATH_in_image_kv241 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_YEAR_in_year_kv250 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_COL_in_year_kv252 = new BitSet(new long[]{0x0000000000200000L});
-	public static final BitSet FOLLOW_NUMBER_VALUE_in_year_kv254 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LB_in_story266 = new BitSet(new long[]{0x0000000004000000L});
-	public static final BitSet FOLLOW_STORY_in_story268 = new BitSet(new long[]{0x0000000008000000L});
-	public static final BitSet FOLLOW_STORY_NAME_in_story270 = new BitSet(new long[]{0x0000000000800010L});
-	public static final BitSet FOLLOW_ARROW_in_story273 = new BitSet(new long[]{0x0000000008000080L});
-	public static final BitSet FOLLOW_set_in_story275 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_RB_in_story285 = new BitSet(new long[]{0x0000000040040000L});
-	public static final BitSet FOLLOW_title_in_story288 = new BitSet(new long[]{0x0000000040000000L});
-	public static final BitSet FOLLOW_TEXT_in_story292 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_choose_in_story295 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_LB_in_story299 = new BitSet(new long[]{0x0000000000008000L});
-	public static final BitSet FOLLOW_ENDSTORY_in_story301 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_RB_in_story303 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_metadata_in_start67 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_story_in_start69 = new BitSet(new long[]{0x0000000000040002L});
+	public static final BitSet FOLLOW_LB_in_metadata83 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_BOOK_in_metadata85 = new BitSet(new long[]{0x0000000100800000L});
+	public static final BitSet FOLLOW_book_key_value_in_metadata90 = new BitSet(new long[]{0x0000000100800000L});
+	public static final BitSet FOLLOW_RB_in_metadata97 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_title_kv_in_book_key_value117 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_COMMA_in_book_key_value124 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_author_kv_in_book_key_value126 = new BitSet(new long[]{0x0000000000000802L});
+	public static final BitSet FOLLOW_COMMA_in_book_key_value134 = new BitSet(new long[]{0x0000000400410000L});
+	public static final BitSet FOLLOW_pvy_kv_in_book_key_value136 = new BitSet(new long[]{0x0000000000000802L});
+	public static final BitSet FOLLOW_TITLE_S_in_title_kv151 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_COL_in_title_kv153 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_STRING_VALUE_in_title_kv155 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_AUTHOR_in_author_kv165 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_COL_in_author_kv167 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_STRING_VALUE_in_author_kv169 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_publisher_kv_in_pvy_kv184 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_image_kv_in_pvy_kv196 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_year_kv_in_pvy_kv208 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PUBLISHER_in_publisher_kv219 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_COL_in_publisher_kv221 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_STRING_VALUE_in_publisher_kv223 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_IMAGE_in_image_kv234 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_COL_in_image_kv236 = new BitSet(new long[]{0x0000000000020000L});
+	public static final BitSet FOLLOW_IMAGE_PATH_in_image_kv238 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_YEAR_in_year_kv247 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_COL_in_year_kv249 = new BitSet(new long[]{0x0000000000200000L});
+	public static final BitSet FOLLOW_NUMBER_VALUE_in_year_kv251 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LB_in_story263 = new BitSet(new long[]{0x0000000004000000L});
+	public static final BitSet FOLLOW_STORY_in_story265 = new BitSet(new long[]{0x0000000008000000L});
+	public static final BitSet FOLLOW_STORY_NAME_in_story267 = new BitSet(new long[]{0x0000000000800010L});
+	public static final BitSet FOLLOW_ARROW_in_story270 = new BitSet(new long[]{0x0000000008000080L});
+	public static final BitSet FOLLOW_set_in_story272 = new BitSet(new long[]{0x0000000000800000L});
+	public static final BitSet FOLLOW_RB_in_story282 = new BitSet(new long[]{0x0000000040040000L});
+	public static final BitSet FOLLOW_title_in_story285 = new BitSet(new long[]{0x0000000040000000L});
+	public static final BitSet FOLLOW_TEXT_in_story289 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_choose_in_story292 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_LB_in_story296 = new BitSet(new long[]{0x0000000000008000L});
+	public static final BitSet FOLLOW_ENDSTORY_in_story298 = new BitSet(new long[]{0x0000000000800000L});
+	public static final BitSet FOLLOW_RB_in_story300 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_LB_in_title316 = new BitSet(new long[]{0x0000000080000000L});
 	public static final BitSet FOLLOW_TITLE_in_title318 = new BitSet(new long[]{0x0000000020000000L});
 	public static final BitSet FOLLOW_STRING_VALUE_in_title320 = new BitSet(new long[]{0x0000000000800000L});

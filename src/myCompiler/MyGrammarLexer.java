@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g 2020-12-25 23:12:12
+// $ANTLR 3.5.1 C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g 2020-12-29 14:56:06
 
   package myCompiler;
 
@@ -69,7 +69,7 @@ public class MyGrammarLexer extends Lexer {
 	// $ANTLR start "LETTER"
 	public final void mLETTER() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:173:2: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:115:2: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
 			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
@@ -92,7 +92,7 @@ public class MyGrammarLexer extends Lexer {
 	// $ANTLR start "DIGIT"
 	public final void mDIGIT() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:176:2: ( ( '0' .. '9' ) )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:118:2: ( ( '0' .. '9' ) )
 			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
@@ -115,8 +115,8 @@ public class MyGrammarLexer extends Lexer {
 	// $ANTLR start "DOLL"
 	public final void mDOLL() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:179:2: ( '$' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:179:4: '$'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:121:2: ( '$' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:121:4: '$'
 			{
 			match('$'); 
 			}
@@ -131,12 +131,12 @@ public class MyGrammarLexer extends Lexer {
 	// $ANTLR start "NAME"
 	public final void mNAME() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:182:2: ( LETTER ( LETTER | DIGIT )* )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:182:4: LETTER ( LETTER | DIGIT )*
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:124:2: ( LETTER ( LETTER | DIGIT )* )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:124:4: LETTER ( LETTER | DIGIT )*
 			{
 			mLETTER(); 
 
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:182:11: ( LETTER | DIGIT )*
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:124:11: ( LETTER | DIGIT )*
 			loop1:
 			while (true) {
 				int alt1=2;
@@ -177,7 +177,7 @@ public class MyGrammarLexer extends Lexer {
 	// $ANTLR start "CHAR_NOT_ALLOWED"
 	public final void mCHAR_NOT_ALLOWED() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:197:2: ( '<' | '>' | ':' | '\"' | '/' | '\\\\' | '|' | '?' | '*' | '.' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:129:2: ( '<' | '>' | ':' | '\"' | '/' | '\\\\' | '|' | '?' | '*' | '.' )
 			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:
 			{
 			if ( input.LA(1)=='\"'||input.LA(1)=='*'||(input.LA(1) >= '.' && input.LA(1) <= '/')||input.LA(1)==':'||input.LA(1)=='<'||(input.LA(1) >= '>' && input.LA(1) <= '?')||input.LA(1)=='\\'||input.LA(1)=='|' ) {
@@ -202,8 +202,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = BOOK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:210:7: ( 'BOOK' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:210:9: 'BOOK'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:142:7: ( 'BOOK' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:142:9: 'BOOK'
 			{
 			match("BOOK"); 
 
@@ -223,8 +223,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = STORY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:213:8: ( 'STORY' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:213:10: 'STORY'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:145:8: ( 'STORY' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:145:10: 'STORY'
 			{
 			match("STORY"); 
 
@@ -244,8 +244,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = CHOOSE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:215:8: ( 'CHOOSE' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:215:10: 'CHOOSE'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:147:8: ( 'CHOOSE' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:147:10: 'CHOOSE'
 			{
 			match("CHOOSE"); 
 
@@ -265,8 +265,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = TITLE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:217:8: ( 'TITLE' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:217:10: 'TITLE'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:149:8: ( 'TITLE' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:149:10: 'TITLE'
 			{
 			match("TITLE"); 
 
@@ -286,8 +286,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = ENDSTORY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:219:10: ( 'ENDSTORY' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:219:12: 'ENDSTORY'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:151:10: ( 'ENDSTORY' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:151:12: 'ENDSTORY'
 			{
 			match("ENDSTORY"); 
 
@@ -307,8 +307,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = TITLE_S;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:221:10: ( 'title' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:221:12: 'title'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:153:10: ( 'title' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:153:12: 'title'
 			{
 			match("title"); 
 
@@ -328,8 +328,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = AUTHOR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:225:2: ( 'author' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:225:4: 'author'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:157:2: ( 'author' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:157:4: 'author'
 			{
 			match("author"); 
 
@@ -349,8 +349,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = PUBLISHER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:227:2: ( 'publisher' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:227:4: 'publisher'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:159:2: ( 'publisher' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:159:4: 'publisher'
 			{
 			match("publisher"); 
 
@@ -370,8 +370,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = YEAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:230:2: ( 'year' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:230:4: 'year'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:162:2: ( 'year' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:162:4: 'year'
 			{
 			match("year"); 
 
@@ -389,11 +389,11 @@ public class MyGrammarLexer extends Lexer {
 	// $ANTLR start "STRING"
 	public final void mSTRING() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:232:2: ( '\"' (~ '\"' )* '\"' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:232:4: '\"' (~ '\"' )* '\"'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:164:2: ( '\"' (~ '\"' )* '\"' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:164:4: '\"' (~ '\"' )* '\"'
 			{
 			match('\"'); 
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:232:8: (~ '\"' )*
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:164:8: (~ '\"' )*
 			loop2:
 			while (true) {
 				int alt2=2;
@@ -437,8 +437,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = IMAGE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:234:2: ( 'image' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:234:4: 'image'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:166:2: ( 'image' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:166:4: 'image'
 			{
 			match("image"); 
 
@@ -458,8 +458,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = LB;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:248:2: ( '{' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:248:4: '{'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:171:2: ( '{' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:171:4: '{'
 			{
 			match('{'); 
 			}
@@ -478,8 +478,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = RB;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:252:2: ( '}' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:252:4: '}'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:175:2: ( '}' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:175:4: '}'
 			{
 			match('}'); 
 			}
@@ -498,8 +498,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = SC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:256:5: ( ';' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:256:7: ';'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:179:5: ( ';' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:179:7: ';'
 			{
 			match(';'); 
 			}
@@ -518,8 +518,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = COL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:259:7: ( ':' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:259:9: ':'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:182:7: ( ':' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:182:9: ':'
 			{
 			match(':'); 
 			}
@@ -538,8 +538,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = ARROW;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:262:7: ( '->' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:262:9: '->'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:185:7: ( '->' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:185:9: '->'
 			{
 			match("->"); 
 
@@ -559,8 +559,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = COMMA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:265:7: ( ',' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:265:10: ','
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:188:7: ( ',' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:188:10: ','
 			{
 			match(','); 
 			}
@@ -579,8 +579,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = BRANCHES;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:268:10: ( 'BRANCHES' )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:268:12: 'BRANCHES'
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:191:10: ( 'BRANCHES' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:191:12: 'BRANCHES'
 			{
 			match("BRANCHES"); 
 
@@ -600,8 +600,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = STRING_VALUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:273:14: ( STRING )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:273:16: STRING
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:196:14: ( STRING )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:196:16: STRING
 			{
 			mSTRING(); 
 
@@ -621,8 +621,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = STORY_NAME;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:277:2: ( NAME )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:277:4: NAME
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:200:2: ( NAME )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:200:4: NAME
 			{
 			mNAME(); 
 
@@ -642,12 +642,12 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = NUMBER_VALUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:280:14: ( DIGIT ( DIGIT )* )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:280:16: DIGIT ( DIGIT )*
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:203:14: ( DIGIT ( DIGIT )* )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:203:16: DIGIT ( DIGIT )*
 			{
 			mDIGIT(); 
 
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:280:22: ( DIGIT )*
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:203:22: ( DIGIT )*
 			loop3:
 			while (true) {
 				int alt3=2;
@@ -692,10 +692,10 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = IMAGE_PATH;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:284:2: ( ( ( '\\\\' )* NAME )+ ( '.jpg' | '.png' ) )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:284:4: ( ( '\\\\' )* NAME )+ ( '.jpg' | '.png' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:207:2: ( ( ( '\\\\' )* NAME )+ ( '.jpg' | '.png' ) )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:207:4: ( ( '\\\\' )* NAME )+ ( '.jpg' | '.png' )
 			{
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:284:4: ( ( '\\\\' )* NAME )+
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:207:4: ( ( '\\\\' )* NAME )+
 			int cnt5=0;
 			loop5:
 			while (true) {
@@ -707,9 +707,9 @@ public class MyGrammarLexer extends Lexer {
 
 				switch (alt5) {
 				case 1 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:284:6: ( '\\\\' )* NAME
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:207:6: ( '\\\\' )* NAME
 					{
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:284:6: ( '\\\\' )*
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:207:6: ( '\\\\' )*
 					loop4:
 					while (true) {
 						int alt4=2;
@@ -720,7 +720,7 @@ public class MyGrammarLexer extends Lexer {
 
 						switch (alt4) {
 						case 1 :
-							// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:284:7: '\\\\'
+							// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:207:7: '\\\\'
 							{
 							match('\\'); 
 							}
@@ -744,7 +744,7 @@ public class MyGrammarLexer extends Lexer {
 				cnt5++;
 			}
 
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:284:22: ( '.jpg' | '.png' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:207:22: ( '.jpg' | '.png' )
 			int alt6=2;
 			int LA6_0 = input.LA(1);
 			if ( (LA6_0=='.') ) {
@@ -778,14 +778,14 @@ public class MyGrammarLexer extends Lexer {
 
 			switch (alt6) {
 				case 1 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:284:23: '.jpg'
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:207:23: '.jpg'
 					{
 					match(".jpg"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:284:32: '.png'
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:207:32: '.png'
 					{
 					match(".png"); 
 
@@ -810,10 +810,10 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = COMMENT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:287:9: ( ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' ) )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:287:11: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:210:9: ( ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' ) )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:210:11: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
 			{
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:287:11: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:210:11: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
 			int alt10=2;
 			int LA10_0 = input.LA(1);
 			if ( (LA10_0=='/') ) {
@@ -847,11 +847,11 @@ public class MyGrammarLexer extends Lexer {
 
 			switch (alt10) {
 				case 1 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:287:12: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:210:12: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
 					{
 					match("//"); 
 
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:287:17: (~ ( '\\n' | '\\r' ) )*
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:210:17: (~ ( '\\n' | '\\r' ) )*
 					loop7:
 					while (true) {
 						int alt7=2;
@@ -880,7 +880,7 @@ public class MyGrammarLexer extends Lexer {
 						}
 					}
 
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:287:34: ( '\\r' )?
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:210:34: ( '\\r' )?
 					int alt8=2;
 					int LA8_0 = input.LA(1);
 					if ( (LA8_0=='\r') ) {
@@ -888,7 +888,7 @@ public class MyGrammarLexer extends Lexer {
 					}
 					switch (alt8) {
 						case 1 :
-							// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:287:34: '\\r'
+							// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:210:34: '\\r'
 							{
 							match('\r'); 
 							}
@@ -900,11 +900,11 @@ public class MyGrammarLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:288:3: '/*' ( options {greedy=false; } : . )* '*/'
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:211:3: '/*' ( options {greedy=false; } : . )* '*/'
 					{
 					match("/*"); 
 
-					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:288:8: ( options {greedy=false; } : . )*
+					// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:211:8: ( options {greedy=false; } : . )*
 					loop9:
 					while (true) {
 						int alt9=2;
@@ -925,7 +925,7 @@ public class MyGrammarLexer extends Lexer {
 
 						switch (alt9) {
 						case 1 :
-							// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:288:36: .
+							// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:211:36: .
 							{
 							matchAny(); 
 							}
@@ -960,12 +960,12 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = TEXT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:292:7: ( DOLL (~ DOLL )* DOLL )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:294:3: DOLL (~ DOLL )* DOLL
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:215:7: ( DOLL (~ DOLL )* DOLL )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:217:3: DOLL (~ DOLL )* DOLL
 			{
 			mDOLL(); 
 
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:294:8: (~ DOLL )*
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:217:8: (~ DOLL )*
 			loop11:
 			while (true) {
 				int alt11=2;
@@ -1012,8 +1012,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:299:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:299:9: ( ' ' | '\\t' | '\\r' | '\\n' )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:227:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:227:9: ( ' ' | '\\t' | '\\r' | '\\n' )
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 				input.consume();
@@ -1040,8 +1040,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = SCAN_ERROR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:306:5: ( . )
-			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:306:7: .
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:234:5: ( . )
+			// C:\\Users\\berna\\eclipse-workspace\\ANTLR Scanner\\src\\MyGrammar.g:234:7: .
 			{
 			matchAny(); 
 			 printMsg();
