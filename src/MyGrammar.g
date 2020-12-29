@@ -23,6 +23,7 @@ options {
 @header{
   package myCompiler;
   import myPackage.Environment;
+  import myPackage.Metadata;
 }
 
 @members{
@@ -36,6 +37,11 @@ options {
   public String getTranslation(){
   	return env.translation;
   }
+  
+  public Metadata getMetadata(){
+  	return env.metadata;
+  }
+  
 }
 
 start
@@ -49,7 +55,7 @@ start
 metadata 
 	: LB BOOK
 	  book_key_value *
-	  RB	
+	  RB
 	;
 
 book_key_value 
@@ -59,7 +65,7 @@ book_key_value
 	 	(COMMA pvy_kv)*		
 	;
 title_kv 
-	:	TITLE_S COL STRING_VALUE
+	:	TITLE_S COL title_book=STRING_VALUE { env.setTitleBook($title_book); }
 	;
 author_kv
 	:	AUTHOR COL STRING_VALUE
@@ -71,12 +77,12 @@ pvy_kv	:
 	   	  	year_kv)
 	;
 publisher_kv
-	:	PUBLISHER COL STRING_VALUE	
+	:	PUBLISHER COL publisher=STRING_VALUE { env.setPublisher($publisher); }	
 	;
 	
-image_kv:	IMAGE COL IMAGE_PATH
+image_kv:	IMAGE COL image_path=IMAGE_PATH { env.setCover($image_path); }	
 	;
-year_kv	:	YEAR COL NUMBER_VALUE
+year_kv	:	YEAR COL year=NUMBER_VALUE { env.setYear($year); }
 	;
 
 

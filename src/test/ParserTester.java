@@ -8,6 +8,9 @@ import org.antlr.runtime.CommonTokenStream;
 import myCompiler.MyGrammarLexer;
 import myCompiler.MyGrammarParser;
 
+import myPackage.Metadata;
+import myPackage.Environment;
+
 public class ParserTester {
 
 	static MyGrammarParser parser;
@@ -29,6 +32,10 @@ public class ParserTester {
 	    System.out.println("------------------------");
 	    System.out.println("----- FINE PARSING -----");
 	    System.out.println("------------------------\n\n");
+	    
+	    Metadata meta = parser.getMetadata();
+	    String meta_string = meta.toString();
+	    System.out.println(meta_string);
 	    
 	    //libreria epub
 	    
