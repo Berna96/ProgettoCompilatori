@@ -83,13 +83,15 @@ year_kv	:	YEAR COL NUMBER_VALUE
 story	:
 	LB STORY STORY_NAME (ARROW (STORY_NAME | BRANCHES))? RB
 	title?
-	text
+	TEXT
 	choose?
 	LB ENDSTORY RB		
 	;
 //ADD TEXT PRODUCION
+/*
 text	:	(STORY_NAME | NUMBER_VALUE | NOT_BRACKETS)*
 	;
+*/
 
 title	:
 	LB TITLE STRING_VALUE RB
@@ -121,18 +123,8 @@ fragment DOLL
 fragment NAME
 	:	LETTER (LETTER | DIGIT)*
 	;
-/*
-< (less than)
-> (greater than)
-: (colon)
-" (double quote)
-/ (forward slash)
-\ (backslash)
-| (vertical bar or pipe)
-? (question mark)
-* (asterisk)
-*/
 
+//INUTILE
 fragment CHAR_NOT_ALLOWED
 	: '<'	|
 	  '>' 	|
@@ -175,15 +167,6 @@ IMAGE
 	;
 
 	
-/*
-BBLOCK 	:	
- 	BOOK | STORY | CHOOSE | TITLE
- 	;
-
-EBLOCK 	:	
-	ENDSTORY
-	;
-*/
 LB    //left bracket
 	: '{'
 	;
@@ -228,17 +211,18 @@ COMMENT :	('//' ~ ('\n' | '\r')* '\r'? '\n' |
 		'/*' ( options {greedy=false;} : . )* '*/' )
 		{ skip(); /*$channel=HIDDEN;*/ }
 	;
-/*
-TEXT 	:     //LETTER ( options {greedù3 = false;} : ~( LB | RB ))*
+
+TEXT 	:     //LETTER ( options {greedÃ¹3 = false;} : ~( LB | RB ))*
 		//~( DOLL | DIGIT) ~(LB | RB)*
 		DOLL ~DOLL* DOLL
 		//'\'' ~( '\'' )* '\''
 	;
-*/
+
+/*
 NOT_BRACKETS
 	:	(options {greedy=false;} : ~(LB | RB))
 	;
-
+*/
 
 WS  :   ( ' '           
         | '\t'
@@ -249,5 +233,3 @@ WS  :   ( ' '
 SCAN_ERROR   
     : . { printMsg();}
     ;
-    
-    
