@@ -7,7 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="jar/antlr-3.4-complete.jar"/>
-	<classpathentry kind="lib" path="C:/Users/berna/eclipse-workspace/ANTLR Scanner/jar/commons-collections-3.2.2.jar"/>
 	<classpathentry kind="lib" path="jar/commons-io-2.8.0.jar"/>
 	<classpathentry kind="lib" path="jar/epub-creator-1.1.0.jar"/>
 	<classpathentry kind="lib" path="jar/htmlcleaner-2.24.jar"/>
@@ -15,13 +14,14 @@
 	<classpathentry kind="lib" path="jar/epublib-core-latest.jar"/>
 	<classpathentry kind="lib" path="jar/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="jar/slf4j-simple-1.6.1.jar"/>
-	<classpathentry kind="lib" path="jar/jgrapht-1.5.0/lib/jgrapht-core-1.5.0.jar"/>
-	<classpathentry kind="lib" path="jar/jgrapht-1.5.0/lib/jgrapht-demo-1.5.0.jar"/>
-	<classpathentry kind="lib" path="jar/jgrapht-1.5.0/lib/jgrapht-ext-1.5.0.jar"/>
-	<classpathentry kind="lib" path="jar/jgrapht-1.5.0/lib/jgrapht-guava-1.5.0.jar"/>
-	<classpathentry kind="lib" path="jar/jgrapht-1.5.0/lib/jgrapht-io-1.5.0.jar"/>
-	<classpathentry kind="lib" path="jar/jgrapht-1.5.0/lib/jgrapht-opt-1.5.0.jar"/>
-	<classpathentry kind="lib" path="jar/jgrapht-1.5.0/lib/jgraphx-4.0.5.jar"/>
-	<classpathentry kind="lib" path="jar/jgrapht-1.5.0/lib/jheaps-0.13.jar"/>
+	<classpathentry kind="lib" path="jar/jgrapht-core-1.5.0.jar"/>
+	<classpathentry kind="lib" path="jar/jgrapht-demo-1.5.0.jar"/>
+	<classpathentry kind="lib" path="jar/jgrapht-ext-1.5.0.jar"/>
+	<classpathentry kind="lib" path="jar/jgrapht-guava-1.5.0.jar"/>
+	<classpathentry kind="lib" path="jar/jgrapht-io-1.5.0.jar"/>
+	<classpathentry kind="lib" path="jar/jgrapht-opt-1.5.0.jar"/>
+	<classpathentry kind="lib" path="jar/jgraphx-4.0.5.jar"/>
+	<classpathentry kind="lib" path="jar/commons-collections-3.2.2.jar"/>
+	<classpathentry kind="lib" path="jar/jheaps-0.13.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

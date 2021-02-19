@@ -22,23 +22,27 @@ options {
 
 @header{
   package myCompiler;
-  import myPackage.Environment;
-  import myPackage.Metadata;
+  
+  import myCompiler.util.*;
+  
+  import java.util.LinkedList;
 }
 
 @members{
   
-  Environment env;
+  ParserEnvironment env;
+  ParserSemantic sem;
   
   void init(){
-  	env = new Environment();
+  	env = new ParserEnvironment();
+  	sem = new ParserSemantic(env);
   }
   
   public String getTranslation(){
   	return env.translation;
   }
   
-  public Metadata getMetadata(){
+  public ParserMetadata getMetadata(){
   	return env.metadata;
   }
   
@@ -65,10 +69,10 @@ book_key_value
 	 	(COMMA pvy_kv)*		
 	;
 title_kv 
-	:	TITLE_S COL title_book=STRING_VALUE { env.setTitleBook($title_book); }
+	:	TITLE_S COL title_book=STRING_VALUE { sem.setTitleBook($title_book); }
 	;
 author_kv
-	:	AUTHOR COL author=STRING_VALUE { env.addAuthor($author); }
+	:	AUTHOR COL author=STRING_VALUE { sem.addAuthor($author); }
 	;
 	
 pvy_kv	:
@@ -77,12 +81,12 @@ pvy_kv	:
 	   	  	year_kv)
 	;
 publisher_kv
-	:	PUBLISHER COL publisher=STRING_VALUE { env.setPublisher($publisher); }	
+	:	PUBLISHER COL publisher=STRING_VALUE { sem.setPublisher($publisher); }	
 	;
 	
-image_kv:	IMAGE COL image_path=IMAGE_PATH { env.setCover($image_path); }	
+image_kv:	IMAGE COL image_path=IMAGE_PATH { sem.setCover($image_path); }	
 	;
-year_kv	:	YEAR COL year=NUMBER_VALUE { env.setYear($year); }
+year_kv	:	YEAR COL year=NUMBER_VALUE { sem.setYear($year); }
 	;
 
 
@@ -97,7 +101,7 @@ story	:
 	text = TEXT		
 	chosen_stories = choose?
 	LB ENDSTORY RB
-	{env.createStory($story_name1, $title_story, $text, $chosen_stories)}
+	{sem.createStory($story_name1, $text);}
 	;
 //ADD TEXT PRODUCION
 /*
@@ -106,7 +110,7 @@ text	:	(STORY_NAME | NUMBER_VALUE | NOT_BRACKETS)*
 */
 
 title	returns [String title]:
-	LB TITLE title_story=STRING_VALUE RB  {title = env.setTitleStory($title_story);}
+	LB TITLE title_story=STRING_VALUE RB  {title = sem.setTitleStory($title_story);}
 	;
 
 choose	returns [LinkedList<String> stories] :
@@ -118,11 +122,11 @@ choose	returns [LinkedList<String> stories] :
 	
 choose_key_value returns [LinkedList<String> stories]
 	:
-		STRING_VALUE COL story1 = STORY_NAME 		{env.insertChosenStories($story1);}
+		STRING_VALUE COL story1 = STORY_NAME 		{sem.insertChosenStories($story1);}
 		(
-		COMMA STRING_VALUE COL storyn=STORY_NAME	{env.insertChosenStories($storyn);}
+		COMMA STRING_VALUE COL storyn=STORY_NAME	{sem.insertChosenStories($storyn);}
 		)*
-		{ stories = env.getChosenStories()}  			
+		{ stories = env.getChosenStories(); }  			
 	;
 
 // LEXER TOKENS

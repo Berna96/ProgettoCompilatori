@@ -22,20 +22,30 @@ options {
 
 @header{
   package myCompiler;
-  import myPackage.Environment;
+  
+  import myCompiler.util.*;
+  
+  import java.util.LinkedList;
 }
 
 @members{
   
-  Environment env;
+  ParserEnvironment env;
+  ParserSemantic sem;
   
   void init(){
-  	env = new Environment();
+  	env = new ParserEnvironment();
+  	sem = new ParserSemantic(env);
   }
   
   public String getTranslation(){
   	return env.translation;
   }
+  
+  public ParserMetadata getMetadata(){
+  	return env.metadata;
+  }
+  
 }
 
 start
@@ -49,7 +59,7 @@ start
 metadata 
 	: LB BOOK
 	  book_key_value *
-	  RB	
+	  RB
 	;
 
 book_key_value 
@@ -59,10 +69,10 @@ book_key_value
 	 	(COMMA pvy_kv)*		
 	;
 title_kv 
-	:	TITLE_S COL STRING_VALUE
+	:	TITLE_S COL title_book=STRING_VALUE { sem.setTitleBook($title_book); }
 	;
 author_kv
-	:	AUTHOR COL STRING_VALUE
+	:	AUTHOR COL author=STRING_VALUE { sem.addAuthor($author); }
 	;
 	
 pvy_kv	:
@@ -71,43 +81,57 @@ pvy_kv	:
 	   	  	year_kv)
 	;
 publisher_kv
-	:	PUBLISHER COL STRING_VALUE	
+	:	PUBLISHER COL publisher=STRING_VALUE { sem.setPublisher($publisher); }	
 	;
 	
-image_kv:	IMAGE COL IMAGE_PATH
+image_kv:	IMAGE COL image_path=IMAGE_PATH { sem.setCover($image_path); }	
 	;
-year_kv	:	YEAR COL NUMBER_VALUE
+year_kv	:	YEAR COL year=NUMBER_VALUE { sem.setYear($year); }
 	;
 
 
 story	:
-	LB STORY STORY_NAME (ARROW (STORY_NAME | BRANCHES))? RB
-	title?
-	text
-	choose?
-	LB ENDSTORY RB		
+	LB STORY story_name1=STORY_NAME 		
+	(ARROW 
+	(story_name2=STORY_NAME 		
+	| 
+	BRANCHES))? 
+	RB
+	title_story = title?
+	text = TEXT		
+	chosen_stories = choose?
+	LB ENDSTORY RB
+	{sem.createStory($story_name1, $text);}
 	;
 //ADD TEXT PRODUCION
+/*
 text	:	(STORY_NAME | NUMBER_VALUE | NOT_BRACKETS)*
 	;
+*/
 
-title	:
-	LB TITLE STRING_VALUE RB
+title	returns [String title]:
+	LB TITLE title_story=STRING_VALUE RB  {title = sem.setTitleStory($title_story);}
 	;
 
-choose	:
+choose	returns [LinkedList<String> stories] :
 	LB CHOOSE 
-		choose_key_value
+		list_stories = choose_key_value
 	RB
+	{ stories = list_stories;}
 	;
 	
-choose_key_value
+choose_key_value returns [LinkedList<String> stories]
 	:
-		STRING_VALUE COL STORY_NAME {}
-		(COMMA STRING_VALUE COL STORY_NAME)*  {}		
+		STRING_VALUE COL story1 = STORY_NAME 		{sem.insertChosenStories($story1);}
+		(
+		COMMA STRING_VALUE COL storyn=STORY_NAME	{sem.insertChosenStories($storyn);}
+		)*
+		{ stories = env.getChosenStories(); }  			
 	;
 
 // LEXER TOKENS
+
+	
 
 fragment LETTER 
 	:	('a'..'z' | 'A'..'Z') ;
@@ -121,18 +145,8 @@ fragment DOLL
 fragment NAME
 	:	LETTER (LETTER | DIGIT)*
 	;
-/*
-< (less than)
-> (greater than)
-: (colon)
-" (double quote)
-/ (forward slash)
-\ (backslash)
-| (vertical bar or pipe)
-? (question mark)
-* (asterisk)
-*/
 
+//INUTILE
 fragment CHAR_NOT_ALLOWED
 	: '<'	|
 	  '>' 	|
@@ -175,15 +189,6 @@ IMAGE
 	;
 
 	
-/*
-BBLOCK 	:	
- 	BOOK | STORY | CHOOSE | TITLE
- 	;
-
-EBLOCK 	:	
-	ENDSTORY
-	;
-*/
 LB    //left bracket
 	: '{'
 	;
@@ -228,17 +233,18 @@ COMMENT :	('//' ~ ('\n' | '\r')* '\r'? '\n' |
 		'/*' ( options {greedy=false;} : . )* '*/' )
 		{ skip(); /*$channel=HIDDEN;*/ }
 	;
-/*
-TEXT 	:     //LETTER ( options {greedù3 = false;} : ~( LB | RB ))*
+
+TEXT 	:     //LETTER ( options {greedÃ¹3 = false;} : ~( LB | RB ))*
 		//~( DOLL | DIGIT) ~(LB | RB)*
 		DOLL ~DOLL* DOLL
 		//'\'' ~( '\'' )* '\''
 	;
-*/
+
+/*
 NOT_BRACKETS
 	:	(options {greedy=false;} : ~(LB | RB))
 	;
-
+*/
 
 WS  :   ( ' '           
         | '\t'
@@ -249,5 +255,3 @@ WS  :   ( ' '
 SCAN_ERROR   
     : . { printMsg();}
     ;
-    
-    
