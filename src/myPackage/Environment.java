@@ -2,7 +2,7 @@ package myPackage;
 
 import java.util.LinkedList;
 
-import antlr.Token;
+import org.antlr.runtime.Token;
 
 public class Environment {
 	public String translation;
@@ -11,12 +11,14 @@ public class Environment {
 	//qualcos'altro
 	
 	public Metadata metadata;
+	public LinkedList<String> chosenStories;
 	
 	public Environment() {
 		translation = "";
 		errorList = new LinkedList<>();
 		warningList = new LinkedList<>();
 		metadata = new Metadata();
+		chosenStories = new LinkedList<>();
 	}
 	
 	/*----------METADATA----------*/
@@ -41,7 +43,16 @@ public class Environment {
 	}
 	/*----------FINE METADATA----------*/
 	
+	/*--------------BIOH----------------*/
+	void insertChosenStories(Token story){
+		chosenStories.add(story.getText());
+	}
 	
+	public LinkedList<String> getChosenStories(){
+		LinkedList<String> clone = (LinkedList<String>) chosenStories.clone();
+		chosenStories.clear();
+		return clone;
+	}
 	
 	
 }
