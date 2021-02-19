@@ -1,4 +1,4 @@
-package test;
+package myPackage;
 
 import java.io.FileReader;
 
@@ -7,14 +7,13 @@ import org.antlr.runtime.CommonTokenStream;
 
 import myCompiler.MyGrammarLexer;
 import myCompiler.MyGrammarParser;
+import myCompiler.util.*;
 
-import myPackage.Metadata;
-import myPackage.Environment;
 
-public class ParserTester {
+public class ParserUser {
 
 	static MyGrammarParser parser;
-  
+	  
 	public static void main(String[] args) {
 	
 		CommonTokenStream tokens;
@@ -33,7 +32,7 @@ public class ParserTester {
 	    System.out.println("----- FINE PARSING -----");
 	    System.out.println("------------------------\n\n");
 	    
-	    Metadata meta = parser.getMetadata();
+	    ParserMetadata meta = parser.getMetadata();
 	    String meta_string = meta.toString();
 	    System.out.println(meta_string);
 	    
@@ -55,5 +54,5 @@ public class ParserTester {
 			e.printStackTrace();
 		}
   }
-
+	
 }

@@ -1,15 +1,15 @@
-package myPackage;
+package myCompiler.util;
 
 import java.util.LinkedList;
 
-public class Metadata {
+public class ParserMetadata {
 	public String publisher;
 	public String title;
 	public Integer year;
 	public LinkedList<String> authors;
 	public String cover_path;
 	
-	public Metadata() {
+	public ParserMetadata() {
 		authors = new LinkedList<String>();
 	}
 
