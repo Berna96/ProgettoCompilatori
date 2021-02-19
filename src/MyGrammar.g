@@ -68,7 +68,7 @@ title_kv
 	:	TITLE_S COL title_book=STRING_VALUE { env.setTitleBook($title_book); }
 	;
 author_kv
-	:	AUTHOR COL STRING_VALUE
+	:	AUTHOR COL author=STRING_VALUE { env.addAuthor($author); }
 	;
 	
 pvy_kv	:
@@ -87,11 +87,17 @@ year_kv	:	YEAR COL year=NUMBER_VALUE { env.setYear($year); }
 
 
 story	:
-	LB STORY STORY_NAME (ARROW (STORY_NAME | BRANCHES))? RB
-	title?
-	TEXT
-	choose?
-	LB ENDSTORY RB		
+	LB STORY story_name1=STORY_NAME 		
+	(ARROW 
+	(story_name2=STORY_NAME 		
+	| 
+	BRANCHES))? 
+	RB
+	title_story = title?
+	text = TEXT		
+	chosen_stories = choose?
+	LB ENDSTORY RB
+	{env.createStory($story_name1, $title_story, $text, $chosen_stories)}
 	;
 //ADD TEXT PRODUCION
 /*
@@ -99,23 +105,29 @@ text	:	(STORY_NAME | NUMBER_VALUE | NOT_BRACKETS)*
 	;
 */
 
-title	:
-	LB TITLE STRING_VALUE RB
+title	returns [String title]:
+	LB TITLE title_story=STRING_VALUE RB  {title = env.setTitleStory($title_story);}
 	;
 
-choose	:
+choose	returns [LinkedList<String> stories] :
 	LB CHOOSE 
-		choose_key_value
+		list_stories = choose_key_value
 	RB
+	{ stories = list_stories;}
 	;
 	
-choose_key_value
+choose_key_value returns [LinkedList<String> stories]
 	:
-		STRING_VALUE COL STORY_NAME {}
-		(COMMA STRING_VALUE COL STORY_NAME)*  {}		
+		STRING_VALUE COL story1 = STORY_NAME 		{env.insertChosenStories($story1);}
+		(
+		COMMA STRING_VALUE COL storyn=STORY_NAME	{env.insertChosenStories($storyn);}
+		)*
+		{ stories = env.getChosenStories()}  			
 	;
 
 // LEXER TOKENS
+
+	
 
 fragment LETTER 
 	:	('a'..'z' | 'A'..'Z') ;

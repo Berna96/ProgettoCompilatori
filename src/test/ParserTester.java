@@ -37,6 +37,8 @@ public class ParserTester {
 	    String meta_string = meta.toString();
 	    System.out.println(meta_string);
 	    
+	    
+	    
 	    //libreria epub
 	    
 /*
