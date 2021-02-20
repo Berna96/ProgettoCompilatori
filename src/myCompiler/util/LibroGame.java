@@ -44,7 +44,13 @@ public class LibroGame {
 			if (storia.next_story != null) {
 				output += " -> " + storia.next_story.name + "\n";
 			} else if (storia.choose_story != null) {
-				output += " -> BRANCHES\n";
+				output += " -> BRANCHES {";
+				for (int i=0; i < storia.choose_story.size(); i++) {
+					output += storia.choose_story.get(i).name;
+					if (i < storia.choose_story.size() - 1)
+						output += "; ";
+				}
+				output += "}\n";
 			} else {
 				output += "\n";
 			}
