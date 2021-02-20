@@ -32,9 +32,8 @@ public class ParserUser {
 	    System.out.println("----- FINE PARSING -----");
 	    System.out.println("------------------------\n\n");
 	    
-	    Metadata meta = parser.getMetadata();
-	    String meta_string = meta.toString();
-	    System.out.println(meta_string);
+	    System.out.println(parser.getMetadata());
+	    System.out.println(parser.getBook());
 	    
 	    
 	    

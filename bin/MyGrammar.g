@@ -46,6 +46,10 @@ options {
   	return env.metadata;
   }
   
+  public LibroGame getBook(){
+  	return env.librogame;
+  }
+  
 }
 
 start
@@ -132,23 +136,24 @@ text	:	(STORY_NAME | NUMBER_VALUE | NOT_BRACKETS)*
 */
 
 title	returns [String title]:
-	LB TITLE title_story=STRING_VALUE RB  {title = sem.setTitleStory($title_story);}
+// eredita nome_storia, allora { $title = sem.setTitleStory($name_story, $title_story); }
+	LB TITLE title_story=STRING_VALUE RB  {$title = $title_story.getText();}
 	;
 
 choose	returns [LinkedList<String> stories] :
 	LB CHOOSE 
 		list_stories = choose_key_value
 	RB
-	{ stories = list_stories;}
+	{ $stories = $list_stories.stories;}
 	;
 	
 choose_key_value returns [LinkedList<String> stories]
 	:
-		STRING_VALUE COL story1 = STORY_NAME 		{sem.insertChosenStories($story1);}
+		STRING_VALUE COL story_name_1 = STORY_NAME 		{sem.insertChosenStory($story_name_1);}
 		(
-		COMMA STRING_VALUE COL storyn=STORY_NAME	{sem.insertChosenStories($storyn);}
+		COMMA STRING_VALUE COL story_name_n=STORY_NAME	{sem.insertChosenStory($story_name_n);}
 		)*
-		{ stories = env.getChosenStories(); }  			
+		{ $stories = sem.getChosenStories(); }  			
 	;
 
 // LEXER TOKENS
