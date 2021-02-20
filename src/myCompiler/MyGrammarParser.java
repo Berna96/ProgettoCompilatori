@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g 2021-02-19 15:55:49
+// $ANTLR 3.5.1 C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g 2021-02-20 16:26:49
 
   package myCompiler;
   
@@ -86,7 +86,7 @@ public class MyGrammarParser extends Parser {
 	  	return env.translation;
 	  }
 	  
-	  public ParserMetadata getMetadata(){
+	  public Metadata getMetadata(){
 	  	return env.metadata;
 	  }
 	  
@@ -500,30 +500,30 @@ public class MyGrammarParser extends Parser {
 	// $ANTLR end "year_kv"
 
 
-	public static class story_return extends ParserRuleReturnScope {
+	public static class start_story_return extends ParserRuleReturnScope {
+		public String this_story;
+		public String next_story;
 	};
 
 
-	// $ANTLR start "story"
-	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:93:1: story : LB STORY story_name1= STORY_NAME ( ARROW (story_name2= STORY_NAME | BRANCHES ) )? RB (title_story= title )? text= TEXT (chosen_stories= choose )? LB ENDSTORY RB ;
-	public final MyGrammarParser.story_return story() throws RecognitionException {
-		MyGrammarParser.story_return retval = new MyGrammarParser.story_return();
+	// $ANTLR start "start_story"
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:92:1: start_story returns [String this_story, String next_story] : LB STORY this_st= STORY_NAME ( ARROW (next_st= STORY_NAME | BRANCHES ) )? RB ;
+	public final MyGrammarParser.start_story_return start_story() throws RecognitionException {
+		MyGrammarParser.start_story_return retval = new MyGrammarParser.start_story_return();
 		retval.start = input.LT(1);
 
-		Token story_name1=null;
-		Token story_name2=null;
-		Token text=null;
-		String title_story =null;
-		LinkedList<String> chosen_stories =null;
+		Token this_st=null;
+		Token next_st=null;
 
 		try {
-			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:93:7: ( LB STORY story_name1= STORY_NAME ( ARROW (story_name2= STORY_NAME | BRANCHES ) )? RB (title_story= title )? text= TEXT (chosen_stories= choose )? LB ENDSTORY RB )
-			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:94:2: LB STORY story_name1= STORY_NAME ( ARROW (story_name2= STORY_NAME | BRANCHES ) )? RB (title_story= title )? text= TEXT (chosen_stories= choose )? LB ENDSTORY RB
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:93:2: ( LB STORY this_st= STORY_NAME ( ARROW (next_st= STORY_NAME | BRANCHES ) )? RB )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:93:4: LB STORY this_st= STORY_NAME ( ARROW (next_st= STORY_NAME | BRANCHES ) )? RB
 			{
-			match(input,LB,FOLLOW_LB_in_story283); 
-			match(input,STORY,FOLLOW_STORY_in_story285); 
-			story_name1=(Token)match(input,STORY_NAME,FOLLOW_STORY_NAME_in_story289); 
-			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:95:2: ( ARROW (story_name2= STORY_NAME | BRANCHES ) )?
+			match(input,LB,FOLLOW_LB_in_start_story286); 
+			match(input,STORY,FOLLOW_STORY_in_start_story288); 
+			this_st=(Token)match(input,STORY_NAME,FOLLOW_STORY_NAME_in_start_story292); 
+			retval.this_story = this_st.getText();
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:94:3: ( ARROW (next_st= STORY_NAME | BRANCHES ) )?
 			int alt7=2;
 			int LA7_0 = input.LA(1);
 			if ( (LA7_0==ARROW) ) {
@@ -531,10 +531,10 @@ public class MyGrammarParser extends Parser {
 			}
 			switch (alt7) {
 				case 1 :
-					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:95:3: ARROW (story_name2= STORY_NAME | BRANCHES )
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:94:4: ARROW (next_st= STORY_NAME | BRANCHES )
 					{
-					match(input,ARROW,FOLLOW_ARROW_in_story296); 
-					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:96:2: (story_name2= STORY_NAME | BRANCHES )
+					match(input,ARROW,FOLLOW_ARROW_in_start_story301); 
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:95:3: (next_st= STORY_NAME | BRANCHES )
 					int alt6=2;
 					int LA6_0 = input.LA(1);
 					if ( (LA6_0==STORY_NAME) ) {
@@ -552,15 +552,16 @@ public class MyGrammarParser extends Parser {
 
 					switch (alt6) {
 						case 1 :
-							// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:96:3: story_name2= STORY_NAME
+							// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:95:4: next_st= STORY_NAME
 							{
-							story_name2=(Token)match(input,STORY_NAME,FOLLOW_STORY_NAME_in_story303); 
+							next_st=(Token)match(input,STORY_NAME,FOLLOW_STORY_NAME_in_start_story309); 
+							retval.next_story = next_st.getText();
 							}
 							break;
 						case 2 :
-							// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:98:2: BRANCHES
+							// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:97:3: BRANCHES
 							{
-							match(input,BRANCHES,FOLLOW_BRANCHES_in_story313); 
+							match(input,BRANCHES,FOLLOW_BRANCHES_in_start_story321); 
 							}
 							break;
 
@@ -571,8 +572,73 @@ public class MyGrammarParser extends Parser {
 
 			}
 
-			match(input,RB,FOLLOW_RB_in_story320); 
-			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:100:14: (title_story= title )?
+			match(input,RB,FOLLOW_RB_in_start_story329); 
+			}
+
+			retval.stop = input.LT(-1);
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return retval;
+	}
+	// $ANTLR end "start_story"
+
+
+
+	// $ANTLR start "end_story"
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:102:1: fragment end_story : LB ENDSTORY RB ;
+	public final void end_story() throws RecognitionException {
+		try {
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:103:2: ( LB ENDSTORY RB )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:103:4: LB ENDSTORY RB
+			{
+			match(input,LB,FOLLOW_LB_in_end_story342); 
+			match(input,ENDSTORY,FOLLOW_ENDSTORY_in_end_story344); 
+			match(input,RB,FOLLOW_RB_in_end_story346); 
+			}
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "end_story"
+
+
+	public static class story_return extends ParserRuleReturnScope {
+	};
+
+
+	// $ANTLR start "story"
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:106:1: story : story_name= start_story (title_story= title )? text= TEXT (chosen_stories= choose )? end_story ;
+	public final MyGrammarParser.story_return story() throws RecognitionException {
+		MyGrammarParser.story_return retval = new MyGrammarParser.story_return();
+		retval.start = input.LT(1);
+
+		Token text=null;
+		ParserRuleReturnScope story_name =null;
+		String title_story =null;
+		LinkedList<String> chosen_stories =null;
+
+		try {
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:107:2: (story_name= start_story (title_story= title )? text= TEXT (chosen_stories= choose )? end_story )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:108:2: story_name= start_story (title_story= title )? text= TEXT (chosen_stories= choose )? end_story
+			{
+			pushFollow(FOLLOW_start_story_in_story361);
+			story_name=start_story();
+			state._fsp--;
+
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:109:14: (title_story= title )?
 			int alt8=2;
 			int LA8_0 = input.LA(1);
 			if ( (LA8_0==LB) ) {
@@ -580,9 +646,9 @@ public class MyGrammarParser extends Parser {
 			}
 			switch (alt8) {
 				case 1 :
-					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:100:14: title_story= title
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:109:14: title_story= title
 					{
-					pushFollow(FOLLOW_title_in_story327);
+					pushFollow(FOLLOW_title_in_story368);
 					title_story=title();
 					state._fsp--;
 
@@ -591,8 +657,8 @@ public class MyGrammarParser extends Parser {
 
 			}
 
-			text=(Token)match(input,TEXT,FOLLOW_TEXT_in_story335); 
-			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:102:17: (chosen_stories= choose )?
+			text=(Token)match(input,TEXT,FOLLOW_TEXT_in_story377); 
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:112:17: (chosen_stories= choose )?
 			int alt9=2;
 			int LA9_0 = input.LA(1);
 			if ( (LA9_0==LB) ) {
@@ -603,9 +669,9 @@ public class MyGrammarParser extends Parser {
 			}
 			switch (alt9) {
 				case 1 :
-					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:102:17: chosen_stories= choose
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:112:17: chosen_stories= choose
 					{
-					pushFollow(FOLLOW_choose_in_story344);
+					pushFollow(FOLLOW_choose_in_story386);
 					chosen_stories=choose();
 					state._fsp--;
 
@@ -614,10 +680,15 @@ public class MyGrammarParser extends Parser {
 
 			}
 
-			match(input,LB,FOLLOW_LB_in_story348); 
-			match(input,ENDSTORY,FOLLOW_ENDSTORY_in_story350); 
-			match(input,RB,FOLLOW_RB_in_story352); 
-			sem.createStory(story_name1, text);
+			pushFollow(FOLLOW_end_story_in_story390);
+			end_story();
+			state._fsp--;
+
+			sem.createStory((story_name!=null?((MyGrammarParser.start_story_return)story_name).this_story:null),
+						 (story_name!=null?((MyGrammarParser.start_story_return)story_name).next_story:null),
+						 title_story, 
+						 text,
+						 chosen_stories);
 			}
 
 			retval.stop = input.LT(-1);
@@ -637,7 +708,7 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "title"
-	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:112:1: title returns [String title] : LB TITLE title_story= STRING_VALUE RB ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:134:1: title returns [String title] : LB TITLE title_story= STRING_VALUE RB ;
 	public final String title() throws RecognitionException {
 		String title = null;
 
@@ -645,13 +716,13 @@ public class MyGrammarParser extends Parser {
 		Token title_story=null;
 
 		try {
-			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:112:29: ( LB TITLE title_story= STRING_VALUE RB )
-			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:113:2: LB TITLE title_story= STRING_VALUE RB
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:134:29: ( LB TITLE title_story= STRING_VALUE RB )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:135:2: LB TITLE title_story= STRING_VALUE RB
 			{
-			match(input,LB,FOLLOW_LB_in_title372); 
-			match(input,TITLE,FOLLOW_TITLE_in_title374); 
-			title_story=(Token)match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_title378); 
-			match(input,RB,FOLLOW_RB_in_title380); 
+			match(input,LB,FOLLOW_LB_in_title415); 
+			match(input,TITLE,FOLLOW_TITLE_in_title417); 
+			title_story=(Token)match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_title421); 
+			match(input,RB,FOLLOW_RB_in_title423); 
 			title = sem.setTitleStory(title_story);
 			}
 
@@ -670,7 +741,7 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "choose"
-	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:116:1: choose returns [LinkedList<String> stories] : LB CHOOSE list_stories= choose_key_value RB ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:138:1: choose returns [LinkedList<String> stories] : LB CHOOSE list_stories= choose_key_value RB ;
 	public final LinkedList<String> choose() throws RecognitionException {
 		LinkedList<String> stories = null;
 
@@ -678,16 +749,16 @@ public class MyGrammarParser extends Parser {
 		LinkedList<String> list_stories =null;
 
 		try {
-			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:116:45: ( LB CHOOSE list_stories= choose_key_value RB )
-			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:117:2: LB CHOOSE list_stories= choose_key_value RB
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:138:45: ( LB CHOOSE list_stories= choose_key_value RB )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:139:2: LB CHOOSE list_stories= choose_key_value RB
 			{
-			match(input,LB,FOLLOW_LB_in_choose398); 
-			match(input,CHOOSE,FOLLOW_CHOOSE_in_choose400); 
-			pushFollow(FOLLOW_choose_key_value_in_choose409);
+			match(input,LB,FOLLOW_LB_in_choose441); 
+			match(input,CHOOSE,FOLLOW_CHOOSE_in_choose443); 
+			pushFollow(FOLLOW_choose_key_value_in_choose452);
 			list_stories=choose_key_value();
 			state._fsp--;
 
-			match(input,RB,FOLLOW_RB_in_choose412); 
+			match(input,RB,FOLLOW_RB_in_choose455); 
 			 stories = list_stories;
 			}
 
@@ -706,7 +777,7 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "choose_key_value"
-	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:123:1: choose_key_value returns [LinkedList<String> stories] : STRING_VALUE COL story1= STORY_NAME ( COMMA STRING_VALUE COL storyn= STORY_NAME )* ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:145:1: choose_key_value returns [LinkedList<String> stories] : STRING_VALUE COL story1= STORY_NAME ( COMMA STRING_VALUE COL storyn= STORY_NAME )* ;
 	public final LinkedList<String> choose_key_value() throws RecognitionException {
 		LinkedList<String> stories = null;
 
@@ -715,14 +786,14 @@ public class MyGrammarParser extends Parser {
 		Token storyn=null;
 
 		try {
-			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:124:2: ( STRING_VALUE COL story1= STORY_NAME ( COMMA STRING_VALUE COL storyn= STORY_NAME )* )
-			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:125:3: STRING_VALUE COL story1= STORY_NAME ( COMMA STRING_VALUE COL storyn= STORY_NAME )*
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:146:2: ( STRING_VALUE COL story1= STORY_NAME ( COMMA STRING_VALUE COL storyn= STORY_NAME )* )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:147:3: STRING_VALUE COL story1= STORY_NAME ( COMMA STRING_VALUE COL storyn= STORY_NAME )*
 			{
-			match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_choose_key_value433); 
-			match(input,COL,FOLLOW_COL_in_choose_key_value435); 
-			story1=(Token)match(input,STORY_NAME,FOLLOW_STORY_NAME_in_choose_key_value441); 
+			match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_choose_key_value476); 
+			match(input,COL,FOLLOW_COL_in_choose_key_value478); 
+			story1=(Token)match(input,STORY_NAME,FOLLOW_STORY_NAME_in_choose_key_value484); 
 			sem.insertChosenStories(story1);
-			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:126:3: ( COMMA STRING_VALUE COL storyn= STORY_NAME )*
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:148:3: ( COMMA STRING_VALUE COL storyn= STORY_NAME )*
 			loop10:
 			while (true) {
 				int alt10=2;
@@ -733,12 +804,12 @@ public class MyGrammarParser extends Parser {
 
 				switch (alt10) {
 				case 1 :
-					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:127:3: COMMA STRING_VALUE COL storyn= STORY_NAME
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:149:3: COMMA STRING_VALUE COL storyn= STORY_NAME
 					{
-					match(input,COMMA,FOLLOW_COMMA_in_choose_key_value453); 
-					match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_choose_key_value455); 
-					match(input,COL,FOLLOW_COL_in_choose_key_value457); 
-					storyn=(Token)match(input,STORY_NAME,FOLLOW_STORY_NAME_in_choose_key_value461); 
+					match(input,COMMA,FOLLOW_COMMA_in_choose_key_value496); 
+					match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_choose_key_value498); 
+					match(input,COL,FOLLOW_COL_in_choose_key_value500); 
+					storyn=(Token)match(input,STORY_NAME,FOLLOW_STORY_NAME_in_choose_key_value504); 
 					sem.insertChosenStories(storyn);
 					}
 					break;
@@ -796,32 +867,34 @@ public class MyGrammarParser extends Parser {
 	public static final BitSet FOLLOW_YEAR_in_year_kv263 = new BitSet(new long[]{0x0000000000000400L});
 	public static final BitSet FOLLOW_COL_in_year_kv265 = new BitSet(new long[]{0x0000000000200000L});
 	public static final BitSet FOLLOW_NUMBER_VALUE_in_year_kv269 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LB_in_story283 = new BitSet(new long[]{0x0000000004000000L});
-	public static final BitSet FOLLOW_STORY_in_story285 = new BitSet(new long[]{0x0000000008000000L});
-	public static final BitSet FOLLOW_STORY_NAME_in_story289 = new BitSet(new long[]{0x0000000000800010L});
-	public static final BitSet FOLLOW_ARROW_in_story296 = new BitSet(new long[]{0x0000000008000080L});
-	public static final BitSet FOLLOW_STORY_NAME_in_story303 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_BRANCHES_in_story313 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_RB_in_story320 = new BitSet(new long[]{0x0000000040040000L});
-	public static final BitSet FOLLOW_title_in_story327 = new BitSet(new long[]{0x0000000040000000L});
-	public static final BitSet FOLLOW_TEXT_in_story335 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_choose_in_story344 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_LB_in_story348 = new BitSet(new long[]{0x0000000000008000L});
-	public static final BitSet FOLLOW_ENDSTORY_in_story350 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_RB_in_story352 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LB_in_title372 = new BitSet(new long[]{0x0000000080000000L});
-	public static final BitSet FOLLOW_TITLE_in_title374 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_STRING_VALUE_in_title378 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_RB_in_title380 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LB_in_choose398 = new BitSet(new long[]{0x0000000000000200L});
-	public static final BitSet FOLLOW_CHOOSE_in_choose400 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_choose_key_value_in_choose409 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_RB_in_choose412 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_STRING_VALUE_in_choose_key_value433 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_COL_in_choose_key_value435 = new BitSet(new long[]{0x0000000008000000L});
-	public static final BitSet FOLLOW_STORY_NAME_in_choose_key_value441 = new BitSet(new long[]{0x0000000000000802L});
-	public static final BitSet FOLLOW_COMMA_in_choose_key_value453 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_STRING_VALUE_in_choose_key_value455 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_COL_in_choose_key_value457 = new BitSet(new long[]{0x0000000008000000L});
-	public static final BitSet FOLLOW_STORY_NAME_in_choose_key_value461 = new BitSet(new long[]{0x0000000000000802L});
+	public static final BitSet FOLLOW_LB_in_start_story286 = new BitSet(new long[]{0x0000000004000000L});
+	public static final BitSet FOLLOW_STORY_in_start_story288 = new BitSet(new long[]{0x0000000008000000L});
+	public static final BitSet FOLLOW_STORY_NAME_in_start_story292 = new BitSet(new long[]{0x0000000000800010L});
+	public static final BitSet FOLLOW_ARROW_in_start_story301 = new BitSet(new long[]{0x0000000008000080L});
+	public static final BitSet FOLLOW_STORY_NAME_in_start_story309 = new BitSet(new long[]{0x0000000000800000L});
+	public static final BitSet FOLLOW_BRANCHES_in_start_story321 = new BitSet(new long[]{0x0000000000800000L});
+	public static final BitSet FOLLOW_RB_in_start_story329 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LB_in_end_story342 = new BitSet(new long[]{0x0000000000008000L});
+	public static final BitSet FOLLOW_ENDSTORY_in_end_story344 = new BitSet(new long[]{0x0000000000800000L});
+	public static final BitSet FOLLOW_RB_in_end_story346 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_start_story_in_story361 = new BitSet(new long[]{0x0000000040040000L});
+	public static final BitSet FOLLOW_title_in_story368 = new BitSet(new long[]{0x0000000040000000L});
+	public static final BitSet FOLLOW_TEXT_in_story377 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_choose_in_story386 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_end_story_in_story390 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LB_in_title415 = new BitSet(new long[]{0x0000000080000000L});
+	public static final BitSet FOLLOW_TITLE_in_title417 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_STRING_VALUE_in_title421 = new BitSet(new long[]{0x0000000000800000L});
+	public static final BitSet FOLLOW_RB_in_title423 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LB_in_choose441 = new BitSet(new long[]{0x0000000000000200L});
+	public static final BitSet FOLLOW_CHOOSE_in_choose443 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_choose_key_value_in_choose452 = new BitSet(new long[]{0x0000000000800000L});
+	public static final BitSet FOLLOW_RB_in_choose455 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_STRING_VALUE_in_choose_key_value476 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_COL_in_choose_key_value478 = new BitSet(new long[]{0x0000000008000000L});
+	public static final BitSet FOLLOW_STORY_NAME_in_choose_key_value484 = new BitSet(new long[]{0x0000000000000802L});
+	public static final BitSet FOLLOW_COMMA_in_choose_key_value496 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_STRING_VALUE_in_choose_key_value498 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_COL_in_choose_key_value500 = new BitSet(new long[]{0x0000000008000000L});
+	public static final BitSet FOLLOW_STORY_NAME_in_choose_key_value504 = new BitSet(new long[]{0x0000000000000802L});
 }

@@ -11,14 +11,14 @@ public class ParserEnvironment {
 	public LinkedList<String> warningList;
 	//qualcos'altro
 	
-	public ParserMetadata metadata;
+	public Metadata metadata;
 	public LinkedList<String> chosenStories;
 	
 	public ParserEnvironment() {
 		translation = "";
 		errorList = new LinkedList<>();
 		warningList = new LinkedList<>();
-		metadata = new ParserMetadata();
+		metadata = new Metadata();
 		chosenStories = new LinkedList<>();
 	}
 }

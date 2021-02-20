@@ -1,13 +1,11 @@
 //info generali sul libro
 {BOOK 
-	
 		title : "Ciao, come va",
 		author : "Gianluca",
 		author : "Flaccodori",
 		publisher : "Mondadori",
 		image : \\path\to\image.png,
 		year : 2020
-	
 }
 
 //storia senza scelte

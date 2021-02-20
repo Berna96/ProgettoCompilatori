@@ -42,7 +42,7 @@ options {
   	return env.translation;
   }
   
-  public ParserMetadata getMetadata(){
+  public Metadata getMetadata(){
   	return env.metadata;
   }
   
@@ -89,20 +89,42 @@ image_kv:	IMAGE COL image_path=IMAGE_PATH { sem.setCover($image_path); }
 year_kv	:	YEAR COL year=NUMBER_VALUE { sem.setYear($year); }
 	;
 
-
-story	:
-	LB STORY story_name1=STORY_NAME 		
-	(ARROW 
-	(story_name2=STORY_NAME 		
-	| 
-	BRANCHES))? 
-	RB
-	title_story = title?
-	text = TEXT		
-	chosen_stories = choose?
-	LB ENDSTORY RB
-	{sem.createStory($story_name1, $text);}
+start_story	returns [String this_story, String next_story]
+	:	LB STORY this_st=STORY_NAME {$this_story = $this_st.getText();}		
+		(ARROW 
+		(next_st=STORY_NAME {$next_story = $next_st.getText();}	
+		| 
+		BRANCHES))? 
+		RB
 	;
+
+fragment
+end_story
+	:	LB ENDSTORY RB
+	;
+
+story	//returns [String text_story]
+	:
+	story_name=start_story
+	title_story = title?
+	/*{$text_story = "";}*/
+	text=TEXT /*( ~(LB) )* {$text_story += $text.getText();}*/
+	chosen_stories = choose?
+	end_story
+	{sem.createStory($story_name.this_story,
+			 $story_name.next_story,
+			 $title_story.title, 
+			 $text,
+			 $chosen_stories.stories);}
+	;
+
+/*
+fragment text_story
+	:	( ~(LB) )*
+	;
+*/
+
+
 //ADD TEXT PRODUCION
 /*
 text	:	(STORY_NAME | NUMBER_VALUE | NOT_BRACKETS)*
@@ -159,7 +181,7 @@ fragment CHAR_NOT_ALLOWED
 	  '*'	|
 	  '.'
 	;
-	
+
 
 BOOK 	: 'BOOK'
 	;
@@ -234,11 +256,13 @@ COMMENT :	('//' ~ ('\n' | '\r')* '\r'? '\n' |
 		{ skip(); /*$channel=HIDDEN;*/ }
 	;
 
+
 TEXT 	:     //LETTER ( options {greedù3 = false;} : ~( LB | RB ))*
 		//~( DOLL | DIGIT) ~(LB | RB)*
 		DOLL ~DOLL* DOLL
 		//'\'' ~( '\'' )* '\''
 	;
+
 
 /*
 NOT_BRACKETS

@@ -32,7 +32,7 @@ public class ParserUser {
 	    System.out.println("----- FINE PARSING -----");
 	    System.out.println("------------------------\n\n");
 	    
-	    ParserMetadata meta = parser.getMetadata();
+	    Metadata meta = parser.getMetadata();
 	    String meta_string = meta.toString();
 	    System.out.println(meta_string);
 	    
