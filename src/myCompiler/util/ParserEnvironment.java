@@ -2,8 +2,8 @@ package myCompiler.util;
 
 import java.util.LinkedList;
 import org.jgrapht.Graph;
-import org.jgrapht.alg.connectivity.ConnectivityInspector;
-import org.jgrapht.alg.cycle.CycleDetector;
+//import org.jgrapht.alg.connectivity.ConnectivityInspector;
+//import org.jgrapht.alg.cycle.CycleDetector;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleDirectedGraph;
 

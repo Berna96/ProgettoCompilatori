@@ -7,7 +7,7 @@ import org.jgrapht.alg.connectivity.ConnectivityInspector;
 import org.jgrapht.alg.cycle.CycleDetector;
 import org.jgrapht.graph.DefaultEdge;
 
-import myCompiler.MyGrammarParser.story_return;
+//import myCompiler.MyGrammarParser.story_return;
 
 public class ParserSemantic {
 	ParserEnvironment env;
