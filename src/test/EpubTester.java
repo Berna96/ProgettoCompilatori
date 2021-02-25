@@ -23,11 +23,8 @@ import coza.opencollab.epub.creator.util.MediaTypeUtil;
 
 public class EpubTester {
 	
-	  
 	public static void main(String[] args) {
-		
-		try {
-			
+			try {
 		    // Create new Book
 		    EpubBook book = new EpubBook("english", "1", "Il pianeta delle scimmie", "Dr zaius");
 		    
@@ -92,11 +89,13 @@ public class EpubTester {
 		    String filename = "./output/prova_output.epub";
 		    writer.writeEpubToFile(book, filename);
 		    System.out.println("Output : " + filename);
+		    System.out.println("Output : " + EpubConstants.HTML_WRAPPER);
+		    
 		    
 		    } catch (Exception e) {
 		      e.printStackTrace();
 		    }
-
+			
 	}
 
 }

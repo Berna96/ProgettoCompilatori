@@ -11,9 +11,6 @@
 	<classpathentry kind="lib" path="jar/epub-creator-1.1.0.jar"/>
 	<classpathentry kind="lib" path="jar/htmlcleaner-2.24.jar"/>
 	<classpathentry kind="lib" path="jar/jdom2-2.0.5.jar"/>
-	<classpathentry kind="lib" path="jar/epublib-core-latest.jar"/>
-	<classpathentry kind="lib" path="jar/slf4j-api-1.6.1.jar"/>
-	<classpathentry kind="lib" path="jar/slf4j-simple-1.6.1.jar"/>
 	<classpathentry kind="lib" path="jar/jgrapht-core-1.5.0.jar"/>
 	<classpathentry kind="lib" path="jar/jgrapht-demo-1.5.0.jar"/>
 	<classpathentry kind="lib" path="jar/jgrapht-ext-1.5.0.jar"/>
