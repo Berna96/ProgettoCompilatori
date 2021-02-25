@@ -35,6 +35,8 @@ public class ParserUser {
 	    System.out.println(parser.getMetadata());
 	    System.out.println(parser.getBook());
 	    
+	    System.out.println("Ciclico: " + parser.isCyclic());
+	    System.out.println("Connesso: " + parser.isConnected());
 	    
 	    
 	    //libreria epub

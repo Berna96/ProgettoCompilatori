@@ -44,3 +44,19 @@ $viene giu una valanga ...$
 	"F" : Storia9
 	}
 {ENDSTORY}
+
+/*
+{STORY Storia9 -> Storia1}
+$$
+{ENDSTORY}
+*/
+
+{STORY blablabla -> BRANCHES}
+$$
+{CHOOSE
+"ok" : ohno,
+"no" : ohsi
+}
+{ENDSTORY}
+
+

@@ -50,10 +50,17 @@ options {
   	return env.librogame;
   }
   
+  public boolean isCyclic() {
+  	return env.cyclic;
+  }
+  public boolean isConnected() {
+  	return env.connected;
+  }
+  
 }
 
 start
-@init{	init();}
+@init{	init(); }
 :
 	metadata story+
 ;
@@ -115,11 +122,14 @@ story	//returns [String text_story]
 	text=TEXT /*( ~(LB) )* {$text_story += $text.getText();}*/
 	chosen_stories = choose?
 	end_story
-	{sem.createStory($story_name.this_story,
+	{
+	sem.createStory($story_name.this_story,
 			 $story_name.next_story,
 			 $title_story.title, 
 			 $text,
-			 $chosen_stories.stories);}
+			 $chosen_stories.stories);
+	sem.updateGraphInfo();
+	}
 	;
 
 /*
