@@ -38,18 +38,12 @@ public class ParserUser {
 	    System.out.println("Ciclico: " + parser.isCyclic());
 	    System.out.println("Connesso: " + parser.isConnected());
 	    
+	    //Check for errors or warnings
+	    //System.out.println(warningList);
+	    //if (!errorList.isEmpty()) {System.out.prinln(errorList)}
+	    //else{EpubHandler h = new  ; h.createEpub(); }
 	    
-	    //libreria epub
 	    
-/*
-	    System.out.println("\n"+ parser.getTraslation()+"\n\n\n");
-	    
-	    System.out.println("ERRORI:" + parser.getEnv().errorList.size());
-	    
-	    for (int i=0;i<parser.getEnv().errorList.size();i++) {
-	    	System.out.println((i+1) + ".\t" + parser.getEnv().errorList.get(i));
-	    }
-*/
 		} catch (Exception e) {
 			System.out.println ("Parsing con ANTLR abortito\n\n");
 			e.printStackTrace();
