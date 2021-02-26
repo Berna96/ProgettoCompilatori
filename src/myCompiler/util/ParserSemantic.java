@@ -7,6 +7,10 @@ import org.jgrapht.alg.connectivity.ConnectivityInspector;
 import org.jgrapht.alg.cycle.CycleDetector;
 import org.jgrapht.graph.DefaultEdge;
 
+import myCompiler.util.error.ErrCauses;
+import myCompiler.util.error.ErrSolution;
+import myCompiler.util.error.ErrType;
+
 //import myCompiler.MyGrammarParser.story_return;
 
 public class ParserSemantic {
@@ -39,6 +43,7 @@ public class ParserSemantic {
 	
 	
 	/*----------STORIE----------*/
+	/*mi sa che dobbiamo passargli il token*/
 	public void createStory(String this_story_name, String next_story_name, String title, Token text, LinkedList<String> choose_story_name) {
 		Story story = env.librogame.getStory(this_story_name); // DEVE RESTITUIRE NULL
 		
@@ -48,7 +53,9 @@ public class ParserSemantic {
 			env.librogame.addStory(story); // aggiungo la story nella storyTable
 			env.graph.addVertex(story); // aggiungo la story nel grafo
 		} else {
-			// BLOCCO COMPILAZIONE: RIDONDANZA !!!
+			//ERRORE : due volte lo stesso nome
+			env.errorList.add(ErrType.ERROR + ": " + ErrType.IDENTIF_ERROR + 
+					": " + ErrCauses.DOUBLE_STORY + ": " + ErrSolution.DOUBLE_STORY + ": " + "");
 		}
 		
 		if (title != null)
