@@ -41,7 +41,7 @@ public class ParserUser {
 	    //Check for errors or warnings
 	    //System.out.println(warningList);
 	    //if (!errorList.isEmpty()) {System.out.prinln(errorList)}
-	    //else{parser.getEpubHandler().generate();}
+	    //else{EpubHandler h = new  ; h.createEpub(); }
 	    
 	    
 		} catch (Exception e) {
