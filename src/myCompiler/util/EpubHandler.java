@@ -26,6 +26,8 @@ public class EpubHandler {
 	private static final String FILENAME_DEFAULT = "./output/output.epub";
 	private static final String HTML_WRAPPER = "<html xmlns=\"http://www.w3.org/1999/xhtml\"><head>{0}</head><body>{1}</body></html>";
 	private static final String BUTTON_WRAPPER = "<a href=\"{0}\" class=\"button\">{1}</a>\r\n";
+	private static final String SINGLE_CHOICE = "\r\n<h3 class=\"choice\">La storia continua! Premi il bottone per continuare</h3>\r\n";
+	private static final String MULT_CHOICE = "\r\n<h3 class=\"choice\">La storia si complica! Scegli tu come continuare la Storia!</h3>\r\n";
 	
 	public EpubHandler(Metadata meta) {
 		this.meta = meta;
@@ -55,11 +57,14 @@ public class EpubHandler {
 		//size != 0 sempre
 		if (story.choose_story.size() > 1) {
 			int num_buttons = story.choose_story.size();
+			buttons += MULT_CHOICE;
 			for (int i=0; i<num_buttons; i++) {
 				buttons += MessageFormat.format(BUTTON_WRAPPER, story.choose_story.get(i).title + ".html", story.choose_story.get(i).title);
-			}	
+			}
+			
 		}else {
-			buttons = MessageFormat.format(BUTTON_WRAPPER, story.next_story.title + ".html", story.next_story.title);
+			buttons += SINGLE_CHOICE;
+			buttons += MessageFormat.format(BUTTON_WRAPPER, story.next_story.title + ".html", story.next_story.title);
 		}
 		
 		String head = "<title>" + story.title + "</title>" +
@@ -130,38 +135,8 @@ public class EpubHandler {
     	Content cs = new Content(myme_type_css, "mystyle.css", css_byte);
         book.addContent(cs);
         
-       //Landmarks
-        /*
-        List<Landmark> ll = new ArrayList<>();
-	    //cover
-	    Landmark l1 = new Landmark();
-	    l1.setType("cover");
-	    l1.setHref(image_file.getName());
-	    l1.setTitle("Cover Image");
-	    ll.add(l1);
-	    //toc
-	    
-	    Landmark l2 = new Landmark();
-	    l2.setType("toc");
-	    l2.setHref(EpubConstants.TOC_FILE_NAME + "#TOC");
-	    l2.setTitle("Table of Contents");
-	    ll.add(l2);
-	    //bodymatter
-	    Landmark l3 = new Landmark();
-	    l3.setType("bodymatter");
-	    l3.setHref("cover.html");
-	    l3.setTitle("Start of Content");
-	    ll.add(l3);
-	    
-	    //title-page
-	    Landmark l4 = new Landmark();
-	    l4.setType("titlepage");
-	    l4.setHref("cover.html#title");
-	    l4.setTitle("Title Page");
-	    ll.add(l4);
-	    
-	    book.setLandmarks(ll);
-        */
+        
+        
 		EpubWriter writer = new EpubWriter();
 	    writer.writeEpubToFile(book, filename);
 	}
