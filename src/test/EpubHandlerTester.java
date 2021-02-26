@@ -28,17 +28,31 @@ public class EpubHandlerTester {
 			e1.printStackTrace();
 		}
 		//ParserSemantic
-		for (int i=1; i<3; i++) {
+		Story[] stories = new Story[3];
+		for (int i=0; i<3; i++) {
 			Story story = new Story("story" + i);
 			story.text = "text" + i;
 			story.title = "title" + i;
+			story.choose_story = new LinkedList<Story>();
+			stories[i] = story;
+		}
+		stories[0].choose_story.add(stories[1]); //0 -> 1,2
+		stories[0].choose_story.add(stories[2]);
+		stories[1].choose_story.add(stories[2]);// 1 -> 2
+		stories[1].next_story = stories[2];
+		stories[2].choose_story.add(stories[0]);// 2 -> 0
+		stories[2].next_story = stories[0];
+		
+		
+		for (int i= 0; i<3; i++) {
 			try {
-				EpubHandler.createFileFromStory(story);
+				EpubHandler.createFileFromStory(stories[i]);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		
 		try {
 			//ParserUser
 			hand.createEpub();
