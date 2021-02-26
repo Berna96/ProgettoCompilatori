@@ -7,6 +7,10 @@ import org.jgrapht.alg.connectivity.ConnectivityInspector;
 import org.jgrapht.alg.cycle.CycleDetector;
 import org.jgrapht.graph.DefaultEdge;
 
+import myCompiler.util.error.ErrCauses;
+import myCompiler.util.error.ErrSolution;
+import myCompiler.util.error.ErrType;
+
 //import myCompiler.MyGrammarParser.story_return;
 
 public class ParserSemantic {
@@ -49,6 +53,7 @@ public class ParserSemantic {
 			env.graph.addVertex(story); // aggiungo la story nel grafo
 		} else {
 			// BLOCCO COMPILAZIONE: RIDONDANZA !!!
+			//ErrType.ERROR + ":" + ErrType.IDENTIF_ERROR : ErrCauses.DOUBLE_STORY : ErrSolution.DOUBLE_STORY : 
 		}
 		
 		if (title != null)

@@ -30,13 +30,16 @@ public class EpubHandler {
 	
 	//crea cover per il libro
 	public static void createCover(Metadata meta) throws IOException {
+		String htmlWrapper = "<html xmlns=\"http://www.w3.org/1999/xhtml\"><head>{0}</head><body>{1}</body></html>";
 		String body = "<img src=\"" + meta.cover_path.replace("./output/", "") +"\" alt=\"cover\">\r\n"
-					+ "<h1>" + meta.title + "</h1>\r\n"
-					+ "<h2>" + genStringFromAuthors(meta.authors) + "</h2>\r\n<br /><br />"
-					+ "<h3>" + meta.publisher + "</h3>\r\n"
-					+ "<h4>" + meta.year.toString() + "</h4>";
-		Object[] args = {meta.title, body};
-		MessageFormat fmt = new MessageFormat(EpubConstants.HTML_WRAPPER);
+					+ "<h1 class=\"title\">" + meta.title + "</h1>\r\n"
+					+ "<h2 class=\"author\">" + genStringFromAuthors(meta.authors) + "</h2>\r\n<br />\r\n"
+					+ "<h3 class=\"publisher\">" + meta.publisher + "</h3>\r\n"
+					+ "<h4 class=\"year\">" + meta.year.toString() + "</h4>";
+		String head = "<title>" + meta.title + "</title>" +
+					  "<link rel=\"stylesheet\" href=\"mystyle.css\">";
+		Object[] args = {head, body};
+		MessageFormat fmt = new MessageFormat(htmlWrapper);
 		String fileContent = fmt.format(args);
 		BufferedWriter writer = new BufferedWriter(new FileWriter("./output/cover.html"));
 	    writer.write(fileContent);
@@ -98,6 +101,7 @@ public class EpubHandler {
     	String myme_type = MediaTypeUtil.getMediaTypeFromExt("jpg");
     	Content c = new Content(myme_type, image_file.getName(), img_byte);
         book.addContent(c);
+        book.addCoverImage(img_byte, myme_type, image_file.getName());
 		
 		EpubWriter writer = new EpubWriter();
 	    writer.writeEpubToFile(book, filename);

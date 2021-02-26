@@ -14,4 +14,5 @@ public enum WarnType {
 	public String getString() {
 		return text;
 	}
+	
 }
