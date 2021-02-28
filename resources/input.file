@@ -59,4 +59,23 @@ $$
 }
 {ENDSTORY}
 
+// choose senza branches
+{STORY Storia10 -> Storia11}
+$$
+{CHOOSE
+"Scelta1" : Storia12,
+"Scelta2" : Storia13
+}
+{ENDSTORY}
 
+
+// branches senza choose
+/* errore ancora non gestito ma comunque in compilazione
+{STORY Storia12 -> BRANCHES}
+$$
+{ENDSTORY}
+*/
+
+{STORY Storia1}
+$$
+{ENDSTORY}

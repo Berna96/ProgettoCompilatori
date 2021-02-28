@@ -11,7 +11,7 @@ public enum WarnType {
 		this.text = text;
 	}
 	
-	public String getString() {
+	public String toString() {
 		return text;
 	}
 }

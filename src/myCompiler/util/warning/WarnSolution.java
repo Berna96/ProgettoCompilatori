@@ -1,7 +1,6 @@
 package myCompiler.util.warning;
 
 public enum WarnSolution {
-	
 	SPEC_FIELD("specificare il campo {0}"),
 	SPEC_TAG("specificare il tag {0}"),
 	DEF_MORE_STORIES("definire più di una storia oppure cambiare la sintassi e sostiruire -> BRANCHES con -> {0}"),
@@ -13,7 +12,7 @@ public enum WarnSolution {
 		this.text = text;
 	}
 	
-	public String getString() {
+	public String toString() {
 		return text;
 	}
 }

@@ -1,11 +1,11 @@
 package myCompiler.util.error;
 
 public enum ErrSolution {
-	CHOOSE_NO_BRANCH(" metti -> BRANCHES o togli CHOOSE"),
-	BRANCH_NO_CHOOSE ("o togli BRANCHES o definisci il tag CHOOSE"),
-	START_NO_EXIST ("Definisci una storia iniziale (??)"),
-	DOUBLE_STORY ("Rinimina {0} con un altro nome"),
-	NEXT_STORY_CHOOSE("Sostituisci -> {stor} con BRANCHES oppure elimina il tag CHOOSE");
+	CHOOSE_NO_BRANCH("\"-> BRANCHES\" necessario, altrimenti togliere CHOOSE"),
+	BRANCH_NO_CHOOSE ("CHOOSE necessario, altrimenti togliere \"-> BRANCHES\""),
+	START_NO_EXIST ("Identificare la prima storia e sostituire STORY con STARTSTORY"),
+	DOUBLE_STORY ("Rinomina una delle due storie"),
+	NEXT_STORY_CHOOSE("Sostituisci \"-> {next_story} con \"-> BRANCHES\", altrimenti togliere CHOOSE");
 	
 	
 	String text;
@@ -13,7 +13,7 @@ public enum ErrSolution {
 		this.text = text;
 	}
 	
-	public String getString() {
+	public String toString() {
 		return text;
 	}
 }

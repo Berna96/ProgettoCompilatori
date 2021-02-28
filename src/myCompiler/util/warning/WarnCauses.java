@@ -12,7 +12,7 @@ public enum WarnCauses {
 		this.text = text;
 	}
 	
-	public String getString() {
+	public String toString() {
 		return text;
 	}
 }
