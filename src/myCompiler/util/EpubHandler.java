@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.text.MessageFormat;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,6 +17,7 @@ import coza.opencollab.epub.creator.EpubConstants;
 import coza.opencollab.epub.creator.model.Content;
 import coza.opencollab.epub.creator.model.EpubBook;
 import coza.opencollab.epub.creator.model.Landmark;
+
 import coza.opencollab.epub.creator.util.EpubWriter;
 import coza.opencollab.epub.creator.util.MediaTypeUtil;
 
@@ -46,6 +48,13 @@ public class EpubHandler {
 					  "<link rel=\"stylesheet\" href=\"mystyle.css\">";
 		Object[] args = {head, body};
 		MessageFormat fmt = new MessageFormat(HTML_WRAPPER);
+		String body = "<img src=\"" + meta.cover_path.replace("./output/", "") +"\" alt=\"cover\">\r\n"
+					+ "<h1>" + meta.title + "</h1>\r\n"
+					+ "<h2>" + genStringFromAuthors(meta.authors) + "</h2>\r\n<br /><br />"
+					+ "<h3>" + meta.publisher + "</h3>\r\n"
+					+ "<h4>" + meta.year.toString() + "</h4>";
+		Object[] args = {meta.title, body};
+		MessageFormat fmt = new MessageFormat(EpubConstants.HTML_WRAPPER);
 		String fileContent = fmt.format(args);
 		BufferedWriter writer = new BufferedWriter(new FileWriter("./output/cover.html"));
 	    writer.write(fileContent);
@@ -74,6 +83,8 @@ public class EpubHandler {
 		
 		//FORMATTAZIONE STRINGHE HEAD + BODY
 		MessageFormat fmt = new MessageFormat(HTML_WRAPPER);
+		Object[] args = {story.title, story.text};
+		MessageFormat fmt = new MessageFormat(EpubConstants.HTML_WRAPPER);
 		String fileContent = fmt.format(args);
 		BufferedWriter writer = new BufferedWriter(new FileWriter("./output/" + story.title + ".html"));
 	    writer.write(fileContent);
@@ -135,8 +146,8 @@ public class EpubHandler {
     	Content cs = new Content(myme_type_css, "mystyle.css", css_byte);
         book.addContent(cs);
         
-        
-        
+    
+
 		EpubWriter writer = new EpubWriter();
 	    writer.writeEpubToFile(book, filename);
 	}

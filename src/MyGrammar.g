@@ -24,6 +24,8 @@ options {
   package myCompiler;
   
   import myCompiler.util.*;
+  import myCompiler.util.error.*;
+  import myCompiler.util.warning.*;
   
   import java.util.LinkedList;
 }
@@ -48,6 +50,13 @@ options {
   
   public LibroGame getBook(){
   	return env.librogame;
+  }
+  
+  public LinkedList<CompilationWarning> getWarnings() {
+  	return env.warningList;
+  }
+  public LinkedList<CompilationError> getErrors() {
+  	return env.errorList;
   }
   
   public boolean isCyclic() {
@@ -100,12 +109,13 @@ image_kv:	IMAGE COL image_path=IMAGE_PATH { sem.setCover($image_path); }
 year_kv	:	YEAR COL year=NUMBER_VALUE { sem.setYear($year); }
 	;
 
-start_story	returns [String this_story, String next_story]
-	:	LB STORY this_st=STORY_NAME {$this_story = $this_st.getText();}		
+start_story	returns [Token this_story, Token next_story, boolean hasBranches] //[String this_story, String next_story]
+	:	{$hasBranches = false;}
+		LB STORY this_st=STORY_NAME {$this_story=$this_st;} //{$this_story=$this_st.getText();}		
 		(ARROW 
-		(next_st=STORY_NAME {$next_story = $next_st.getText();}	
+		(next_st=STORY_NAME {$next_story=$next_st;} //{$next_story=$next_st.getText();}	
 		| 
-		BRANCHES))? 
+		BRANCHES {$hasBranches = true;}))? 
 		RB
 	;
 
@@ -114,57 +124,61 @@ end_story
 	:	LB ENDSTORY RB
 	;
 
-story	//returns [String text_story]
-	:
+story	:
 	story_name=start_story
 	title_story = title?
-	/*{$text_story = "";}*/
-	text=TEXT /*( ~(LB) )* {$text_story += $text.getText();}*/
+	text=TEXT
 	chosen_stories = choose?
-	end_story
-	{
-	sem.createStory($story_name.this_story,
-			 $story_name.next_story,
-			 $title_story.title, 
-			 $text,
-			 $chosen_stories.stories);
-	sem.updateGraphInfo();
-	}
+	end_story {sem.manageStoryBlock($story_name.this_story,
+			 	   $story_name.next_story,
+			 	   $story_name.hasBranches,
+			 	   $title_story.title_story,
+			 	   $text,
+			 	   $chosen_stories.stories);
+		   sem.updateGraphInfo();}
 	;
 
-/*
-fragment text_story
-	:	( ~(LB) )*
-	;
-*/
+	/*
+	{sem.createStory($story_names,
+			 	   $title_story, 
+			 	   $text,
+				   $chosen_stories);
+		   sem.updateGraphInfo();}
+	*/
 
-
-//ADD TEXT PRODUCION
-/*
-text	:	(STORY_NAME | NUMBER_VALUE | NOT_BRACKETS)*
-	;
-*/
-
-title	returns [String title]:
+title	returns [Token title_story] //[String title_story]
+	:
 // eredita nome_storia, allora { $title = sem.setTitleStory($name_story, $title_story); }
-	LB TITLE title_story=STRING_VALUE RB  {$title = $title_story.getText();}
+	LB TITLE title_st=STRING_VALUE RB {$title_story = $title_st;} //{$title_story = $title_st.getText();}
 	;
 
-choose	returns [LinkedList<String> stories] :
+choose	returns [LinkedList<Token> stories] //[LinkedList<String> stories]
+	:
 	LB CHOOSE 
 		list_stories = choose_key_value
 	RB
 	{ $stories = $list_stories.stories;}
 	;
-	
-choose_key_value returns [LinkedList<String> stories]
+
+choose_key_value returns [LinkedList<Token> stories]
 	:
-		STRING_VALUE COL story_name_1 = STORY_NAME 		{sem.insertChosenStory($story_name_1);}
+		STRING_VALUE COL story_name_1 = STORY_NAME {sem.insertChosenStory($story_name_1);}
 		(
 		COMMA STRING_VALUE COL story_name_n=STORY_NAME	{sem.insertChosenStory($story_name_n);}
 		)*
 		{ $stories = sem.getChosenStories(); }  			
 	;
+
+/*
+choose_key_value returns [LinkedList<String> stories]
+	:
+		STRING_VALUE COL story_name_1 = STORY_NAME {sem.insertChosenStory($story_name_1);}
+		(
+		COMMA STRING_VALUE COL story_name_n=STORY_NAME	{sem.insertChosenStory($story_name_n);}
+		)*
+		{ $stories = sem.getChosenStories(); }  			
+	;
+*/
 
 // LEXER TOKENS
 

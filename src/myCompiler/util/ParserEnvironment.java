@@ -1,23 +1,28 @@
 package myCompiler.util;
 
 import java.util.LinkedList;
+
+import org.antlr.runtime.Token;
 import org.jgrapht.Graph;
 //import org.jgrapht.alg.connectivity.ConnectivityInspector;
 //import org.jgrapht.alg.cycle.CycleDetector;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleDirectedGraph;
 
+import myCompiler.util.error.CompilationError;
+import myCompiler.util.warning.CompilationWarning;
+
 
 public class ParserEnvironment {
 	public String translation;
-	public LinkedList<String> errorList;
-	public LinkedList<String> warningList;
-	//qualcos'altro
+	public LinkedList<CompilationError> errorList;
+	public LinkedList<CompilationWarning> warningList;
 	
 	public LibroGame librogame;
 	
 	public Metadata metadata;
-	public LinkedList<String> chosenStories;
+	//public LinkedList<String> chosenStories;
+	public LinkedList<Token> chosenStories;
 	
 	public Graph<Story, DefaultEdge> graph;
 	public boolean cyclic;

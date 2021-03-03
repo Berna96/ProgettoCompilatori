@@ -52,7 +52,6 @@ public class EpubHandlerTester {
 				e.printStackTrace();
 			}
 		}
-		
 		try {
 			//ParserUser
 			hand.createEpub();

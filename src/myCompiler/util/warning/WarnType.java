@@ -2,8 +2,8 @@ package myCompiler.util.warning;
 
 public enum WarnType {
 	INCOMPLETE_INFO ("Informazione Incompleta"),
-	UNATTAINABLE ("Irraggiungibilit‡ delle storie"),
-	CYCLIC ("Ciclicit‡ delle storie"),
+	UNATTAINABLE ("Irraggiungibilit√† delle storie"),
+	CYCLIC ("Ciclicit√† delle storie"),
 	ERROR_INFO("Informazione errata");
 	
 	String text;
@@ -11,8 +11,7 @@ public enum WarnType {
 		this.text = text;
 	}
 	
-	public String getString() {
+	public String toString() {
 		return text;
 	}
-	
 }

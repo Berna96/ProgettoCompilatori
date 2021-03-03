@@ -7,8 +7,10 @@ import org.antlr.runtime.CommonTokenStream;
 
 import myCompiler.MyGrammarLexer;
 import myCompiler.MyGrammarParser;
-//import myCompiler.util.*;
 
+//import myCompiler.util.*;
+//import myCompiler.util.error.*;
+//import myCompiler.util.warning.*;
 
 public class ParserUser {
 
@@ -34,6 +36,14 @@ public class ParserUser {
 	    
 	    System.out.println(parser.getMetadata());
 	    System.out.println(parser.getBook());
+	    
+	    for (int i=0; i < parser.getErrors().size(); i++) {
+	    	System.out.println(parser.getErrors().get(i));
+	    }
+	    
+	    for (int i=0; i < parser.getWarnings().size(); i++) {
+	    	System.out.println(parser.getWarnings().get(i));
+	    }
 	    
 	    System.out.println("Ciclico: " + parser.isCyclic());
 	    System.out.println("Connesso: " + parser.isConnected());

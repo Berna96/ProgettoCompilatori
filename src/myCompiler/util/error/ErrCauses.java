@@ -1,10 +1,10 @@
 package myCompiler.util.error;
 
 public enum ErrCauses {
-	CHOOSE_NO_BRANCH ("Hai definito il tag CHOOSE ma non BRANCHES"),
-	BRANCH_NO_CHOOSE ("Hai definito il BRANCHES ma non il tag CHOOSE"),
-	START_NO_EXIST ("Non esiste una storia iniziale che permette di iniziare il percoso di scelta delle storie"),
-	DOUBLE_STORY ("Hai definito {0} più di una volta, ignorato"),
+	CHOOSE_NO_BRANCH ("Definito CHOOSE ma non specificato BRANCHES"),
+	BRANCH_NO_CHOOSE ("Specificato BRANCHES ma non definito CHOOSE"),
+	START_NO_EXIST ("Non definita la storia iniziale"),
+	DOUBLE_STORY ("Hai definito {0} piÃ¹ di una volta"),
 	NEXT_STORY_CHOOSE("Hai definito -> {story} e il tag CHOOSE");
 	
 	
@@ -13,7 +13,7 @@ public enum ErrCauses {
 		this.text = text;
 	}
 	
-	public String getString() {
+	public String toString() {
 		return text;
 	}
 }
