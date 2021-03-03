@@ -11,6 +11,7 @@ public enum ErrType {
 		this.text = text;
 	}
 	
+
 	public String toString() {
 		return text;
 	}
