@@ -81,7 +81,7 @@ public class ParserSemantic {
 			String title_text = title.getText();
 			if (title_text.isEmpty()) {
 				// WARNING COMPILAZIONE: TITOLO VUOTO !!!
-				//addWarning(,,,title);
+				//addWarning(WarnType.INCOMPLETE_INFO, WarnCauses.MISSING_STORY_FIELD, null, title);
 			}
 			story.setTitle(title.getText()); // salvo il titolo
 		}
