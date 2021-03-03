@@ -23,6 +23,7 @@ public class ParserEnvironment {
 	public Metadata metadata;
 	//public LinkedList<String> chosenStories;
 	public LinkedList<Token> chosenStories;
+	public LinkedList<String> answers;
 	
 	public Graph<Story, DefaultEdge> graph;
 	public boolean cyclic;
@@ -34,6 +35,7 @@ public class ParserEnvironment {
 		warningList = new LinkedList<>();
 		metadata = new Metadata();
 		chosenStories = new LinkedList<>();
+		answers = new LinkedList<>();
 		
 		librogame = new LibroGame();
 		

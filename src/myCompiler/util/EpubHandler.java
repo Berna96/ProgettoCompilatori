@@ -28,6 +28,7 @@ public class EpubHandler {
 	private static final String BUTTON_WRAPPER = "<a href=\"{0}\" class=\"button\">{1}</a>\r\n";
 	private static final String SINGLE_CHOICE = "\r\n<h3 class=\"choice\">La storia continua! Premi il bottone per continuare</h3>\r\n";
 	private static final String MULT_CHOICE = "\r\n<h3 class=\"choice\">La storia si complica! Scegli tu come continuare la Storia!</h3>\r\n";
+	private static final String SINGLE_CHOICE_BUTTON_ANSWER = "Continua la storia!";
 	
 	public EpubHandler(Metadata meta) {
 		this.meta = meta;
@@ -37,13 +38,16 @@ public class EpubHandler {
 	
 	//crea cover per il libro
 	public static void createCover(Metadata meta) throws IOException {
+		//body in html
 		String body = "<img src=\"" + meta.cover_path.replace("./output/", "") +"\" alt=\"cover image\" class=\"cover\">\r\n"
 					+ "<h1 id=\"title\" class=\"title\">" + meta.title + "</h1>\r\n"
 					+ "<h2 class=\"author\">" + genStringFromAuthors(meta.authors) + "</h2>\r\n<br />\r\n"
 					+ "<h3 class=\"publisher\">" + meta.publisher + "</h3>\r\n"
 					+ "<h4 class=\"year\">" + meta.year.toString() + "</h4>";
+		//head in html
 		String head = "<title>" + meta.title + "</title>" +
 					  "<link rel=\"stylesheet\" href=\"mystyle.css\">";
+		//formatta head e body
 		Object[] args = {head, body};
 		MessageFormat fmt = new MessageFormat(HTML_WRAPPER);
 		String fileContent = fmt.format(args);
@@ -52,21 +56,22 @@ public class EpubHandler {
 	    writer.close();
 	}
 	//Crea un file per storia
-	public static void createFileFromStory(Story story) throws IOException{
+	public static void createFileFromStory(Story story, LinkedList<String> answers) throws IOException{
+		//crea i buttoni
 		String buttons = "";
 		//size != 0 sempre
 		if (story.choose_story.size() > 1) {
 			int num_buttons = story.choose_story.size();
 			buttons += MULT_CHOICE;
 			for (int i=0; i<num_buttons; i++) {
-				buttons += MessageFormat.format(BUTTON_WRAPPER, story.choose_story.get(i).title + ".html", story.choose_story.get(i).title);
+				buttons += MessageFormat.format(BUTTON_WRAPPER, story.choose_story.get(i).title + ".html", answers.get(i));
 			}
 			
 		}else {
 			buttons += SINGLE_CHOICE;
-			buttons += MessageFormat.format(BUTTON_WRAPPER, story.next_story.title + ".html", story.next_story.title);
+			buttons += MessageFormat.format(BUTTON_WRAPPER, story.next_story.title + ".html", SINGLE_CHOICE_BUTTON_ANSWER);
 		}
-		
+		//head e body
 		String head = "<title>" + story.title + "</title>" +
 				  	  "<link rel=\"stylesheet\" href=\"mystyle.css\">";
 		String text = story.text + buttons;
@@ -80,6 +85,7 @@ public class EpubHandler {
 	    writer.close();
 	}
 	
+	//cancella tutti i file che sono stati creati durante il parsing
 	public static void abort() throws Exception {
 		File folder = new File("./output");
 		File[] listOfFiles = folder.listFiles(new FilenameFilter() {
