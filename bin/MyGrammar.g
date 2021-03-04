@@ -158,7 +158,7 @@ choose	returns [LinkedList<Token> stories, LinkedList<String> answers] //[Linked
 	LB CHOOSE 
 		list_stories = choose_key_value
 	RB
-	{ $stories = $list_stories.stories; LinkedList<String> answers = $list_stories.answers; }
+	{ $stories = $list_stories.stories; $answers = $list_stories.answers; }
 	;
 
 choose_key_value returns [LinkedList<Token> stories, LinkedList<String> answers]
@@ -167,7 +167,7 @@ choose_key_value returns [LinkedList<Token> stories, LinkedList<String> answers]
 		(
 		COMMA ans_2 = STRING_VALUE COL story_name_n=STORY_NAME	{sem.insertChosenStory($story_name_n); sem.insertAnswers($ans_2);}
 		)*
-		{ $stories = sem.getChosenStories(); LinkedList<String> answers = sem.getAnswers(); }  			
+		{ $stories = sem.getChosenStories(); $answers = sem.getAnswers(); }  			
 	;
 
 /*

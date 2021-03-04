@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g 2021-03-04 16:49:02
+// $ANTLR 3.5.1 C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g 2021-03-04 17:30:00
 
   package myCompiler;
   
@@ -792,7 +792,7 @@ public class MyGrammarParser extends Parser {
 			state._fsp--;
 
 			match(input,RB,FOLLOW_RB_in_choose459); 
-			 retval.stories = (list_stories!=null?((MyGrammarParser.choose_key_value_return)list_stories).stories:null); LinkedList<String> answers = (list_stories!=null?((MyGrammarParser.choose_key_value_return)list_stories).answers:null); 
+			 retval.stories = (list_stories!=null?((MyGrammarParser.choose_key_value_return)list_stories).stories:null); retval.answers = (list_stories!=null?((MyGrammarParser.choose_key_value_return)list_stories).answers:null); 
 			}
 
 			retval.stop = input.LT(-1);
@@ -861,7 +861,7 @@ public class MyGrammarParser extends Parser {
 				}
 			}
 
-			 retval.stories = sem.getChosenStories(); LinkedList<String> answers = sem.getAnswers(); 
+			 retval.stories = sem.getChosenStories(); retval.answers = sem.getAnswers(); 
 			}
 
 			retval.stop = input.LT(-1);

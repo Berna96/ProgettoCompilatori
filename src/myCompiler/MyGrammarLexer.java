@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g 2021-03-04 16:49:02
+// $ANTLR 3.5.1 C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g 2021-03-04 17:30:00
 
   package myCompiler;
 

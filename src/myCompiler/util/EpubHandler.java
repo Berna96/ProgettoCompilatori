@@ -60,16 +60,16 @@ public class EpubHandler {
 		//crea i buttoni
 		String buttons = "";
 		//size != 0 sempre
-		if (story.choose_story.size() > 1) {
+		if (story.choose_story!=null && story.choose_story.size() > 1) {
 			int num_buttons = story.choose_story.size();
 			buttons += MULT_CHOICE;
 			for (int i=0; i<num_buttons; i++) {
-				buttons += MessageFormat.format(BUTTON_WRAPPER, story.choose_story.get(i).title + ".html", story.answers.get(i));
+				buttons += MessageFormat.format(BUTTON_WRAPPER, story.choose_story.get(i).name + ".html", story.answers.get(i));
 			}
 			
-		}else {
+		}else if (story.next_story!=null){
 			buttons += SINGLE_CHOICE;
-			buttons += MessageFormat.format(BUTTON_WRAPPER, story.next_story.title + ".html", SINGLE_CHOICE_BUTTON_ANSWER);
+			buttons += MessageFormat.format(BUTTON_WRAPPER, story.next_story.name + ".html", SINGLE_CHOICE_BUTTON_ANSWER);
 		}
 		//head e body
 		String head = "<title>" + story.title + "</title>" +
@@ -80,7 +80,7 @@ public class EpubHandler {
 		//FORMATTAZIONE STRINGHE HEAD + BODY
 		MessageFormat fmt = new MessageFormat(HTML_WRAPPER);
 		String fileContent = fmt.format(args);
-		BufferedWriter writer = new BufferedWriter(new FileWriter("./output/" + story.title + ".html"));
+		BufferedWriter writer = new BufferedWriter(new FileWriter("./output/" + story.name + ".html"));
 	    writer.write(fileContent);
 	    writer.close();
 	}
