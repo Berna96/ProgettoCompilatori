@@ -50,7 +50,7 @@ public class ParserUser {
 	    	EpubHandler eh = new EpubHandler(parser.getMetadata());
 	    	eh.createEpub();
 	    } else {
-	    	EpubHandler.abort();
+	    	//EpubHandler.abort();
 	    	for (int i=0; i < parser.getErrors().size(); i++) {
 		    	System.out.println(parser.getErrors().get(i));
 		    }

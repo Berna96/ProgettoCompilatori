@@ -210,10 +210,10 @@ public class ParserSemantic {
 	
 	/*----------GESTIONE GRAFO----------*/
 	public void updateGraphInfo() {
-		CycleDetector<Story, DefaultEdge> cycle_detector = new CycleDetector<>(env.graph);
-		ConnectivityInspector<Story, DefaultEdge> connectivity_inspector = new ConnectivityInspector<>(env.graph);
-		env.cyclic = cycle_detector.detectCycles();
-		env.connected = connectivity_inspector.isConnected();
+		env.cycle_detector = new CycleDetector<>(env.graph);
+		env.connectivity_inspector = new ConnectivityInspector<>(env.graph);
+		env.cyclic = env.cycle_detector.detectCycles();
+		env.connected = env.connectivity_inspector.isConnected();
 	}
 	/*----------FINE GESTIONE GRAFO----------*/
 	

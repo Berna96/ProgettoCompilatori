@@ -4,6 +4,8 @@ import java.util.LinkedList;
 
 import org.antlr.runtime.Token;
 import org.jgrapht.Graph;
+import org.jgrapht.alg.connectivity.ConnectivityInspector;
+import org.jgrapht.alg.cycle.CycleDetector;
 //import org.jgrapht.alg.connectivity.ConnectivityInspector;
 //import org.jgrapht.alg.cycle.CycleDetector;
 import org.jgrapht.graph.DefaultEdge;
@@ -21,11 +23,12 @@ public class ParserEnvironment {
 	public LibroGame librogame;
 	
 	public Metadata metadata;
-	//public LinkedList<String> chosenStories;
 	public LinkedList<Token> chosenStories;
 	public LinkedList<String> answers;
 	
 	public Graph<Story, DefaultEdge> graph;
+	CycleDetector<Story, DefaultEdge> cycle_detector;
+	ConnectivityInspector<Story, DefaultEdge> connectivity_inspector;
 	public boolean cyclic;
 	public boolean connected;
 	
@@ -40,10 +43,6 @@ public class ParserEnvironment {
 		librogame = new LibroGame();
 		
 		graph = new SimpleDirectedGraph<>(DefaultEdge.class);
-		/*
-		cycle_detector = new CycleDetector<>(graph);
-		connectivity_inspector = new ConnectivityInspector<>(graph); // non si aggiorna in tempo reale
-		*/
 		cyclic = false;
 		connected = true;
 	}

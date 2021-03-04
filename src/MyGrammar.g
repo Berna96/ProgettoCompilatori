@@ -71,7 +71,7 @@ options {
 start
 @init{	init(); }
 :
-	metadata story+ {sem.createFilesFromStories();}
+	metadata story+ {sem.updateGraphInfo(); /*sem.createFilesFromStories();*/}
 ;
 
 
@@ -135,8 +135,7 @@ story	:
 			 	   $title_story.title_story,
 			 	   $text,
 			 	   $chosen_stories.stories,
-			 	   $chosen_stories.answers);
-		   sem.updateGraphInfo();}
+			 	   $chosen_stories.answers);}
 	;
 
 	/*
@@ -215,7 +214,6 @@ fragment CHAR_NOT_ALLOWED
 
 BOOK 	: 'BOOK'
 	;
-
 STORY 	: 'STORY'
 	;
 CHOOSE : 'CHOOSE'
