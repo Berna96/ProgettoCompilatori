@@ -4,7 +4,7 @@
 		author : "Gianluca",
 		author : "Flaccodori",
 		publisher : "Mondadori",
-		image : \\path\to\image.png,
+		image : cover.jpg,
 		year : 2020
 }
 
@@ -60,6 +60,7 @@ $$
 {ENDSTORY}
 
 // choose senza branches
+/*
 {STORY Storia10 -> Storia11}
 $$
 {CHOOSE
@@ -67,6 +68,7 @@ $$
 "Scelta2" : Storia13
 }
 {ENDSTORY}
+*/
 
 
 // branches senza choose
@@ -76,6 +78,8 @@ $$
 {ENDSTORY}
 */
 
+/*
 {STORY Storia1}
 $$
 {ENDSTORY}
+*/

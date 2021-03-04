@@ -7,6 +7,7 @@ import org.antlr.runtime.CommonTokenStream;
 
 import myCompiler.MyGrammarLexer;
 import myCompiler.MyGrammarParser;
+import myCompiler.util.EpubHandler;
 
 //import myCompiler.util.*;
 //import myCompiler.util.error.*;
@@ -37,10 +38,6 @@ public class ParserUser {
 	    System.out.println(parser.getMetadata());
 	    System.out.println(parser.getBook());
 	    
-	    for (int i=0; i < parser.getErrors().size(); i++) {
-	    	System.out.println(parser.getErrors().get(i));
-	    }
-	    
 	    for (int i=0; i < parser.getWarnings().size(); i++) {
 	    	System.out.println(parser.getWarnings().get(i));
 	    }
@@ -49,17 +46,16 @@ public class ParserUser {
 	    System.out.println("Connesso: " + parser.isConnected());
 	    
 	    
-	    //libreria epub
-	    
-/*
-	    System.out.println("\n"+ parser.getTraslation()+"\n\n\n");
-	    
-	    System.out.println("ERRORI:" + parser.getEnv().errorList.size());
-	    
-	    for (int i=0;i<parser.getEnv().errorList.size();i++) {
-	    	System.out.println((i+1) + ".\t" + parser.getEnv().errorList.get(i));
+	    if (parser.getErrors().isEmpty()) {
+	    	EpubHandler eh = new EpubHandler(parser.getMetadata());
+	    	eh.createEpub();
+	    } else {
+	    	EpubHandler.abort();
+	    	for (int i=0; i < parser.getErrors().size(); i++) {
+		    	System.out.println(parser.getErrors().get(i));
+		    }
 	    }
-*/
+	    
 		} catch (Exception e) {
 			System.out.println ("Parsing con ANTLR abortito\n\n");
 			e.printStackTrace();

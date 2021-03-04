@@ -50,7 +50,7 @@ public class EpubHandlerTester {
 		
 		for (int i= 0; i<3; i++) {
 			try {
-				EpubHandler.createFileFromStory(stories[i], answ0);
+				EpubHandler.createFileFromStory(stories[i]);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

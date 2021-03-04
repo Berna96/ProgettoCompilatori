@@ -71,7 +71,7 @@ options {
 start
 @init{	init(); }
 :
-	metadata story+
+	metadata story+ {sem.createFilesFromStories();}
 ;
 
 
@@ -79,7 +79,7 @@ start
 metadata 
 	: LB BOOK
 	  book_key_value *
-	  RB
+	  RB { sem.createCover(); }
 	;
 
 book_key_value 

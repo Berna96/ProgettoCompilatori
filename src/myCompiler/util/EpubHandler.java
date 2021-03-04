@@ -56,7 +56,7 @@ public class EpubHandler {
 	    writer.close();
 	}
 	//Crea un file per storia
-	public static void createFileFromStory(Story story, LinkedList<String> answers) throws IOException{
+	public static void createFileFromStory(Story story) throws IOException{
 		//crea i buttoni
 		String buttons = "";
 		//size != 0 sempre
@@ -64,7 +64,7 @@ public class EpubHandler {
 			int num_buttons = story.choose_story.size();
 			buttons += MULT_CHOICE;
 			for (int i=0; i<num_buttons; i++) {
-				buttons += MessageFormat.format(BUTTON_WRAPPER, story.choose_story.get(i).title + ".html", answers.get(i));
+				buttons += MessageFormat.format(BUTTON_WRAPPER, story.choose_story.get(i).title + ".html", story.answers.get(i));
 			}
 			
 		}else {
@@ -126,8 +126,14 @@ public class EpubHandler {
 		    Content c = new Content(myme_type, chapt_file.getName(), chapt_bytes);
 	        book.addContent(c);
 	    }
+
+		System.out.println(meta.cover_path);
+		
 		//Add image to book
 		File image_file = new File(meta.cover_path);
+		
+		System.out.println(image_file.getName());
+		
 		byte[] img_byte = FileUtils.readFileToByteArray(image_file);
     	String myme_type = MediaTypeUtil.getMediaTypeFromExt("jpg");
     	Content c = new Content(myme_type, image_file.getName(), img_byte);

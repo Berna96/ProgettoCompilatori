@@ -1,6 +1,9 @@
 package myCompiler.util;
 
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Set;
 
 import org.antlr.runtime.Token;
 import org.jgrapht.alg.connectivity.ConnectivityInspector;
@@ -38,6 +41,16 @@ public class ParserSemantic {
 	
 	public void setCover(Token cover) {
 		env.metadata.cover_path = cover.getText();
+	}
+	
+	public void createCover() {
+		try {
+			EpubHandler.createCover(env.metadata);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			// ERRORE COMPILAZIONE: NON E' STATO POSSIBILE CREARE IL FILE
+		}
 	}
 	/*----------FINE METADATA----------*/
 	
@@ -113,8 +126,9 @@ public class ParserSemantic {
 		env.graph.addEdge(story, nextStory); // collego story alla nextStory nel grafo
 	}
 	
-	private void manageBranchesStory(Story story, LinkedList<Token> chosen_stories) {
-		LinkedList<Story> choose_story = new LinkedList<Story>(); // preparo la LinkedList
+	private void manageBranchesStory(Story story, LinkedList<String> answers, LinkedList<Token> chosen_stories) {
+		LinkedList<String> choose_answer = new LinkedList<String>();
+		LinkedList<Story> choose_story = new LinkedList<Story>();
 		// ciclo i nomi delle storie possibili
 		for (int i=0; i < chosen_stories.size(); i++) {
 			Token chosen_story_i = chosen_stories.get(i);
@@ -130,6 +144,7 @@ public class ParserSemantic {
 			choose_story.add(temp_story);
 		}
 		story.setChoose_story(choose_story);
+		story.setAnswers(answers);
 	}
 	
 	public void manageStoryBlock(Token this_story, Token next_story, boolean hasBranches, Token title, Token text, LinkedList<Token> chosen_stories, LinkedList<String> answers) {
@@ -154,10 +169,10 @@ public class ParserSemantic {
 				// ERRORE COMPILAZIONE: BRANCHES SENZA BLOCCO CHOSEN !!!
 				addError(ErrType.ERROR,ErrCauses.BRANCH_NO_CHOOSE,ErrSolution.BRANCH_NO_CHOOSE,this_story);
 			}
-			manageBranchesStory(story,chosen_stories);
+			manageBranchesStory(story,answers,chosen_stories);
 		}
 		// STORIA FINALE
-		else {}
+		//else {}
 	}
 	
 	/*
@@ -201,4 +216,25 @@ public class ParserSemantic {
 		env.connected = connectivity_inspector.isConnected();
 	}
 	/*----------FINE GESTIONE GRAFO----------*/
+	
+	/*-----------GESTIONE FILES EPUB-----------*/
+	public void createFilesFromStories() {
+		
+		try {
+			Set<String> names = env.librogame.storyTable.keySet();
+			Iterator<String> itr = names.iterator();
+			while (itr.hasNext()) {
+				String story_name = itr.next();
+				Story story = env.librogame.getStory(story_name);
+				EpubHandler.createFileFromStory(story);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			// ERRORE COMPILAZIONE: NON E' STATO POSSIBILE CREARE IL FILE
+		}
+		
+	}
+	/*-----------FINE GESTIONE FILES EPUB-----------*/
+	
 }
