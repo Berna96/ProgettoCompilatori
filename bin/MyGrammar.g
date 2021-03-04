@@ -134,7 +134,8 @@ story	:
 			 	   $story_name.hasBranches,
 			 	   $title_story.title_story,
 			 	   $text,
-			 	   $chosen_stories.stories);
+			 	   $chosen_stories.stories,
+			 	   $chosen_stories.answers);
 		   sem.updateGraphInfo();}
 	;
 
@@ -152,21 +153,21 @@ title	returns [Token title_story] //[String title_story]
 	LB TITLE title_st=STRING_VALUE RB {$title_story = $title_st;} //{$title_story = $title_st.getText();}
 	;
 
-choose	returns [LinkedList<Token> stories] //[LinkedList<String> stories]
+choose	returns [LinkedList<Token> stories, LinkedList<String> answers] //[LinkedList<String> stories]
 	:
 	LB CHOOSE 
 		list_stories = choose_key_value
 	RB
-	{ $stories = $list_stories.stories;}
+	{ $stories = $list_stories.stories; LinkedList<String> answers = $list_stories.answers; }
 	;
 
-choose_key_value returns [LinkedList<Token> stories]
+choose_key_value returns [LinkedList<Token> stories, LinkedList<String> answers]
 	:
-		STRING_VALUE COL story_name_1 = STORY_NAME {sem.insertChosenStory($story_name_1);}
+		ans_1 = STRING_VALUE COL story_name_1 = STORY_NAME {sem.insertChosenStory($story_name_1); sem.insertAnswers($ans_1);}
 		(
-		COMMA STRING_VALUE COL story_name_n=STORY_NAME	{sem.insertChosenStory($story_name_n);}
+		COMMA ans_2 = STRING_VALUE COL story_name_n=STORY_NAME	{sem.insertChosenStory($story_name_n); sem.insertAnswers($ans_2);}
 		)*
-		{ $stories = sem.getChosenStories(); }  			
+		{ $stories = sem.getChosenStories(); LinkedList<String> answers = sem.getAnswers(); }  			
 	;
 
 /*

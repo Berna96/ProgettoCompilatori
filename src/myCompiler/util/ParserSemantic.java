@@ -81,7 +81,7 @@ public class ParserSemantic {
 			String title_text = title.getText();
 			if (title_text.isEmpty()) {
 				// WARNING COMPILAZIONE: TITOLO VUOTO !!!
-				//addWarning(,,,title);
+				//addWarning(WarnType.INCOMPLETE_INFO, WarnCauses.MISSING_STORY_FIELD, null, title);
 			}
 			story.setTitle(title.getText()); // salvo il titolo
 		}
@@ -132,7 +132,7 @@ public class ParserSemantic {
 		story.setChoose_story(choose_story);
 	}
 	
-	public void manageStoryBlock(Token this_story, Token next_story, boolean hasBranches, Token title, Token text, LinkedList<Token> chosen_stories) {
+	public void manageStoryBlock(Token this_story, Token next_story, boolean hasBranches, Token title, Token text, LinkedList<Token> chosen_stories, LinkedList<String> answers) {
 		Story story = manageThisStory(this_story); // fare che se ritorna null significa che gia' esiste?
 		
 		if (title != null)
@@ -177,6 +177,20 @@ public class ParserSemantic {
 		env.chosenStories.clear();
 		return clone;
 	}
+	
+	public void insertAnswers(Token answer_token){
+		//env.chosenStories.add(story.getText());
+		String answer = answer_token.getText().replace("\"", "");
+		env.answers.add(answer);
+	}
+	
+	public LinkedList<String> getAnswers(){
+		@SuppressWarnings("unchecked")
+		LinkedList<String> clone = (LinkedList<String>) env.answers.clone();
+		env.answers.clear();
+		return clone;
+	}
+	
 	/*----------FINE STORIE----------*/
 	
 	/*----------GESTIONE GRAFO----------*/

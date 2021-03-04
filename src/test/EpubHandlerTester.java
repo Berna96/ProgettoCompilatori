@@ -19,6 +19,7 @@ public class EpubHandlerTester {
 		meta.authors.add("mimma");
 		meta.year = 1992;
 		
+		
 		//ParserSemantic
 		EpubHandler hand = new EpubHandler(meta);
 		try {
@@ -38,6 +39,9 @@ public class EpubHandlerTester {
 		}
 		stories[0].choose_story.add(stories[1]); //0 -> 1,2
 		stories[0].choose_story.add(stories[2]);
+		LinkedList<String> answ0 = new LinkedList<>();
+		answ0.add("fight");
+		answ0.add("run away");
 		stories[1].choose_story.add(stories[2]);// 1 -> 2
 		stories[1].next_story = stories[2];
 		stories[2].choose_story.add(stories[0]);// 2 -> 0
@@ -46,7 +50,7 @@ public class EpubHandlerTester {
 		
 		for (int i= 0; i<3; i++) {
 			try {
-				EpubHandler.createFileFromStory(stories[i]);
+				EpubHandler.createFileFromStory(stories[i], answ0);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
