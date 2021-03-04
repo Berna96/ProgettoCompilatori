@@ -4,7 +4,7 @@
 		author : "Gianluca",
 		author : "Flaccodori",
 		publisher : "Mondadori",
-		image : cover.jpg,
+		image : "./output/book_cover.jpg",
 		year : 2020
 }
 

@@ -40,7 +40,7 @@ public class ParserSemantic {
 	}
 	
 	public void setCover(Token cover) {
-		env.metadata.cover_path = cover.getText();
+		env.metadata.cover_path = cover.getText().replace("\"", "");
 	}
 	
 	public void createCover() {

@@ -104,7 +104,7 @@ publisher_kv
 	:	PUBLISHER COL publisher=STRING_VALUE { sem.setPublisher($publisher); }	
 	;
 	
-image_kv:	IMAGE COL image_path=IMAGE_PATH { sem.setCover($image_path); }	
+image_kv:	IMAGE COL image_path=STRING_VALUE { sem.setCover($image_path); }	
 	;
 year_kv	:	YEAR COL year=NUMBER_VALUE { sem.setYear($year); }
 	;
@@ -278,7 +278,7 @@ NUMBER_VALUE	: DIGIT (DIGIT)*;
 
 
 IMAGE_PATH 
-	:	( ('\\')* NAME )+ ('.jpg' | '.png')
+	:	( ('\\')+ (LETTER | DIGIT | '_') )+ ('.jpg' | '.png')
 	;
 
 COMMENT :	('//' ~ ('\n' | '\r')* '\r'? '\n' |
