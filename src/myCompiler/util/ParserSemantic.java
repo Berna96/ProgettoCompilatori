@@ -91,22 +91,22 @@ public class ParserSemantic {
 	
 	private void manageTitleStory(Story story, Token title) {
 		if (title != null) {
-			String title_text = title.getText();
+			String title_text = title.getText().replace("\"", "");
 			if (title_text.isEmpty()) {
 				// WARNING COMPILAZIONE: TITOLO VUOTO !!!
 				//addWarning(WarnType.INCOMPLETE_INFO, WarnCauses.MISSING_STORY_FIELD, null, title);
 			}
-			story.setTitle(title.getText()); // salvo il titolo
+			story.setTitle(title_text); // salvo il titolo
 		}
 	}
 	
 	private void manageTextStory(Story story, Token text) {
 		if (text != null) {
-			String text_story = text.getText();
+			String text_story = text.getText().replace("$", "");
 			if (text_story.isEmpty()) {
 				// WARNING COMPILAZIONE: TESTO VUOTO !!!
 			}
-			story.setText(text.getText()); // salvo il testo
+			story.setText(text_story); // salvo il testo
 		} else {
 			// WARNING COMPILAZIONE: TESTO ASSENTE !!!
 		}
@@ -226,7 +226,13 @@ public class ParserSemantic {
 			while (itr.hasNext()) {
 				String story_name = itr.next();
 				Story story = env.librogame.getStory(story_name);
-				EpubHandler.createFileFromStory(story);
+				//CONTROLLO SE STORIE COMPLETE
+				if (story.choose_story != null || story.next_story != null || story.text != null) {
+					EpubHandler.createFileFromStory(story);
+				}else {
+					//ERRORE : ALCUNE STORIE NON SONO DEFINITE
+				}
+				
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
