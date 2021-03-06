@@ -61,12 +61,10 @@ $Bravo, hai ucciso il drago!$
 $Rifaccio una storia gia' definita$
 {ENDSTORY}
 
-// branches senza choose
-
+// branches senza choose e non connesso (warning)
 {STORY Storia7 -> BRANCHES}
 $Ok bro$
 {ENDSTORY}
-
 
 // choose senza branches, con next_story
 {STORY Storia8 -> Storia9}
@@ -83,7 +81,7 @@ $Ok sis$
 // titolo non riempito
 {STORY Storia12 -> Storia13}
 {TITLE ""}
-$Ciiiao$
+$Titolo vuoto$
 {ENDSTORY}
 
 // testo non riempito
@@ -93,5 +91,5 @@ $$
 
 // ciclico
 {STORY Storia14 -> Storia12}
-$$
+$Crea un ciclo$
 {ENDSTORY}

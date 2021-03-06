@@ -3,9 +3,9 @@ package myCompiler.util.error;
 public enum ErrCauses {
 	CHOOSE_NO_BRANCH ("Definito CHOOSE ma non specificato BRANCHES"),
 	BRANCH_NO_CHOOSE ("Specificato BRANCHES ma non definito CHOOSE"),
-	START_NO_EXIST ("Non definita la storia iniziale"),
+	//START_NO_EXIST ("Non definita la storia iniziale"),
 	DOUBLE_STORY ("Hai definito {0} piu' di una volta"),
-	NEXT_STORY_CHOOSE("Hai definito \"-> {0}\" e il tag CHOOSE");
+	NEXT_STORY_CHOOSE("Hai fissato {0} come prossima storia insieme a CHOOSE");
 	
 	String text;
 	

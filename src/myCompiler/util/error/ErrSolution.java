@@ -4,9 +4,9 @@ public enum ErrSolution {
 
 	CHOOSE_NO_BRANCH("\"-> BRANCHES\" necessario, altrimenti togliere CHOOSE"),
 	BRANCH_NO_CHOOSE ("CHOOSE necessario, altrimenti togliere \"-> BRANCHES\""),
-	START_NO_EXIST ("Identificare la prima storia e sostituire STORY con STARTSTORY"),
+	//START_NO_EXIST ("Identificare la prima storia e sostituire STORY con STARTSTORY"),
 	DOUBLE_STORY ("Rinomina una delle due storie"),
-	NEXT_STORY_CHOOSE("Sostituisci \"-> {0} con \"-> BRANCHES\", altrimenti togliere CHOOSE");
+	NEXT_STORY_CHOOSE("Sostituire \"-> {0}\" con \"-> BRANCHES\", altrimenti togliere CHOOSE");
 	
 	String text;
 	

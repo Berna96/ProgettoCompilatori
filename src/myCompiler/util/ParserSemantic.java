@@ -166,8 +166,8 @@ public class ParserSemantic {
 		// NEXT_STORY
 		if (next_story != null) {
 			if (chosen_stories != null) {
-				// ERRORE COMPILAZIONE: BLOCCO CHOSEN SENZA BRANCHES !!!
-				addError(ErrType.ERROR,ErrCauses.CHOOSE_NO_BRANCH,ErrSolution.CHOOSE_NO_BRANCH,next_story,next_story);
+				// ERRORE COMPILAZIONE: BLOCCO CHOSEN SENZA BRANCHES !!! (in realta next_story_choose)
+				addError(ErrType.ERROR,ErrCauses.NEXT_STORY_CHOOSE,ErrSolution.NEXT_STORY_CHOOSE,next_story,next_story);
 			}
 			manageNextStory(story,this_story,next_story);
 		}
@@ -182,7 +182,10 @@ public class ParserSemantic {
 			}
 		}
 		// STORIA FINALE
-		//else {}
+		else {
+			if (chosen_stories != null)
+				addError(ErrType.ERROR,ErrCauses.CHOOSE_NO_BRANCH,ErrSolution.CHOOSE_NO_BRANCH,this_story,this_story);
+		}
 	}
 	
 	/*
