@@ -228,7 +228,7 @@ public class ParserSemantic {
 			addWarning(WarnType.CYCLIC,WarnCauses.CYCLIC,WarnSolution.REDEF_PATH_STORIES);
 		}
 		
-		if (env.connectivity_inspector.isConnected()) {
+		if (!env.connectivity_inspector.isConnected()) {
 			// WARNING: NON CONNESSO !!!
 			addWarning(WarnType.UNATTAINABLE,WarnCauses.UNATTAINABLE,WarnSolution.REDEF_PATH_STORIES);
 		}
