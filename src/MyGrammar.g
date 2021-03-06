@@ -58,20 +58,20 @@ options {
   public LinkedList<CompilationError> getErrors() {
   	return env.errorList;
   }
-  
+  /*
   public boolean isCyclic() {
   	return env.cyclic;
   }
   public boolean isConnected() {
   	return env.connected;
   }
-  
+  */
 }
 
 start
 @init{	init(); }
 :
-	metadata story+ {sem.updateGraphInfo(); /*sem.createFilesFromStories();*/}
+	metadata story+ {sem.checkGraph(); /*sem.createFilesFromStories();*/}
 ;
 
 

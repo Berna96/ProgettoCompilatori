@@ -44,6 +44,7 @@ public class ParserSemantic {
 	}
 	
 	public void createCover() {
+		/*
 		try {
 			EpubHandler.createCover(env.metadata);
 		} catch (IOException e) {
@@ -51,23 +52,30 @@ public class ParserSemantic {
 			e.printStackTrace();
 			// ERRORE COMPILAZIONE: NON E' STATO POSSIBILE CREARE IL FILE
 		}
+		*/
 	}
 	/*----------FINE METADATA----------*/
 	
-	/*----------ERRORI E WARNING----------*/	
-	private void addError(ErrType tipo, ErrCauses causa, ErrSolution soluzione, Token riferimento) {
-		Integer line = riferimento.getLine();
-		Integer char_position = riferimento.getCharPositionInLine();
+	/*----------ERRORI E WARNING----------*/
+	private void addError(ErrType tipo, ErrCauses causa, ErrSolution soluzione, Token token_coord_ref, Token token_ref) {
+		Integer line = token_coord_ref.getLine();
+		Integer char_position = token_coord_ref.getCharPositionInLine();
 		Coordinates coord = new Coordinates(line,char_position);
-		CompilationError c_error = new CompilationError(tipo,causa,soluzione,coord);
+		//CompilationError c_error = new CompilationError(tipo,causa,soluzione,coord);
+		CompilationError c_error = new CompilationError(tipo,causa,soluzione,coord,token_ref.getText());
 		env.errorList.add(c_error);
 	}
 	
-	private void addWarning(WarnType tipo, WarnCauses causa, WarnSolution soluzione, Token riferimento) {
-		Integer line = riferimento.getLine();
-		Integer char_position = riferimento.getCharPositionInLine();
+	private void addWarning(WarnType tipo, WarnCauses causa, WarnSolution soluzione, Token token_coord_ref, Token token_ref) {
+		Integer line = token_coord_ref.getLine();
+		Integer char_position = token_coord_ref.getCharPositionInLine();
 		Coordinates coord = new Coordinates(line,char_position);
-		CompilationWarning c_warning = new CompilationWarning(tipo,causa,soluzione,coord);
+		CompilationWarning c_warning = new CompilationWarning(tipo,causa,soluzione,coord, token_ref.getText());
+		env.warningList.add(c_warning);
+	}
+	// per le proprieta dell intero librogame, non riferito a singoli token (ciclico / non connesso)
+	private void addWarning(WarnType tipo, WarnCauses causa, WarnSolution soluzione) {
+		CompilationWarning c_warning = new CompilationWarning(tipo,causa,soluzione,null,null);
 		env.warningList.add(c_warning);
 	}
 	/*----------FINE ERRORI E WARNING----------*/
@@ -84,35 +92,35 @@ public class ParserSemantic {
 		} else if (story.choose_story != null || story.next_story != null || story.text != null) {
 			// story esiste gia' ed e' ben definita
 			// ERRORE COMPILAZIONE: RIDONDANZA !!!
-			addError(ErrType.ERROR,ErrCauses.DOUBLE_STORY,ErrSolution.DOUBLE_STORY,this_story);
+			addError(ErrType.ERROR,ErrCauses.DOUBLE_STORY,ErrSolution.DOUBLE_STORY,this_story,this_story);
 		}
 		return story;
 	}
 	
-	private void manageTitleStory(Story story, Token title) {
-		if (title != null) {
-			String title_text = title.getText();
-			if (title_text.isEmpty()) {
-				// WARNING COMPILAZIONE: TITOLO VUOTO !!!
-				//addWarning(WarnType.INCOMPLETE_INFO, WarnCauses.MISSING_STORY_FIELD, null, title);
-			}
-			story.setTitle(title.getText()); // salvo il titolo
+	private void manageTitleStory(Story story, Token story_token, Token title) {
+		String title_text = title.getText().replace("\"", "");
+		if (title_text.isEmpty()) {
+			// WARNING COMPILAZIONE: TITOLO VUOTO !!!
+			addWarning(WarnType.INCOMPLETE_STORY,WarnCauses.TITLE_EMPTY,WarnSolution.TITLE_EMPTY,title,story_token);
 		}
+		story.setTitle(title_text); // salvo il titolo
 	}
 	
-	private void manageTextStory(Story story, Token text) {
+	private void manageTextStory(Story story, Token story_token, Token text) {
 		if (text != null) {
-			String text_story = text.getText();
+			String text_story = text.getText().replace("$", "");
 			if (text_story.isEmpty()) {
 				// WARNING COMPILAZIONE: TESTO VUOTO !!!
+				addWarning(WarnType.INCOMPLETE_STORY,WarnCauses.TEXT_EMPTY,WarnSolution.TEXT_EMPTY,text,story_token);
 			}
-			story.setText(text.getText()); // salvo il testo
+			story.setText(text_story); // salvo il testo
 		} else {
 			// WARNING COMPILAZIONE: TESTO ASSENTE !!!
+			
 		}
 	}
 	
-	private void manageNextStory(Story story, Token next_story) {
+	private void manageNextStory(Story story, Token story_token, Token next_story) {
 		String next_story_name = next_story.getText();
 		// controllo se gia' esiste nella storyTable
 		Story nextStory = env.librogame.getStory(next_story_name);
@@ -126,7 +134,7 @@ public class ParserSemantic {
 		env.graph.addEdge(story, nextStory); // collego story alla nextStory nel grafo
 	}
 	
-	private void manageBranchesStory(Story story, LinkedList<String> answers, LinkedList<Token> chosen_stories) {
+	private void manageBranchesStory(Story story, Token story_token, LinkedList<String> answers, LinkedList<Token> chosen_stories) {
 		LinkedList<String> choose_answer = new LinkedList<String>();
 		LinkedList<Story> choose_story = new LinkedList<Story>();
 		// ciclo i nomi delle storie possibili
@@ -151,25 +159,27 @@ public class ParserSemantic {
 		Story story = manageThisStory(this_story); // fare che se ritorna null significa che gia' esiste?
 		
 		if (title != null)
-			manageTitleStory(story, title);
+			manageTitleStory(story, this_story, title);
 		
-		manageTextStory(story,text);
+		manageTextStory(story,this_story,text);
 		
 		// NEXT_STORY
 		if (next_story != null) {
 			if (chosen_stories != null) {
 				// ERRORE COMPILAZIONE: BLOCCO CHOSEN SENZA BRANCHES !!!
-				addError(ErrType.ERROR,ErrCauses.CHOOSE_NO_BRANCH,ErrSolution.CHOOSE_NO_BRANCH,next_story);
+				addError(ErrType.ERROR,ErrCauses.CHOOSE_NO_BRANCH,ErrSolution.CHOOSE_NO_BRANCH,next_story,next_story);
 			}
-			manageNextStory(story,next_story);
+			manageNextStory(story,this_story,next_story);
 		}
 		// BRANCHES
 		else if (hasBranches) {
 			if (chosen_stories == null) {
 				// ERRORE COMPILAZIONE: BRANCHES SENZA BLOCCO CHOSEN !!!
-				addError(ErrType.ERROR,ErrCauses.BRANCH_NO_CHOOSE,ErrSolution.BRANCH_NO_CHOOSE,this_story);
+				addError(ErrType.ERROR,ErrCauses.BRANCH_NO_CHOOSE,ErrSolution.BRANCH_NO_CHOOSE,this_story,this_story);
+			} else {
+				// gestisco solo se c'e' anche CHOSEN
+				manageBranchesStory(story,this_story,answers,chosen_stories);
 			}
-			manageBranchesStory(story,answers,chosen_stories);
 		}
 		// STORIA FINALE
 		//else {}
@@ -209,11 +219,19 @@ public class ParserSemantic {
 	/*----------FINE STORIE----------*/
 	
 	/*----------GESTIONE GRAFO----------*/
-	public void updateGraphInfo() {
+	public void checkGraph() {
 		env.cycle_detector = new CycleDetector<>(env.graph);
 		env.connectivity_inspector = new ConnectivityInspector<>(env.graph);
-		env.cyclic = env.cycle_detector.detectCycles();
-		env.connected = env.connectivity_inspector.isConnected();
+		
+		if (env.cycle_detector.detectCycles()) {
+			// WARNING: CICLICLO !!!
+			addWarning(WarnType.CYCLIC,WarnCauses.CYCLIC,WarnSolution.REDEF_PATH_STORIES);
+		}
+		
+		if (env.connectivity_inspector.isConnected()) {
+			// WARNING: NON CONNESSO !!!
+			addWarning(WarnType.UNATTAINABLE,WarnCauses.UNATTAINABLE,WarnSolution.REDEF_PATH_STORIES);
+		}
 	}
 	/*----------FINE GESTIONE GRAFO----------*/
 	

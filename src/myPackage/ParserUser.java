@@ -42,13 +42,14 @@ public class ParserUser {
 	    	System.out.println(parser.getWarnings().get(i));
 	    }
 	    
-	    System.out.println("Ciclico: " + parser.isCyclic());
-	    System.out.println("Connesso: " + parser.isConnected());
+	    //System.out.println("Ciclico: " + parser.isCyclic());
+	    //System.out.println("Connesso: " + parser.isConnected());
 	    
+	    System.out.println();
 	    
 	    if (parser.getErrors().isEmpty()) {
-	    	EpubHandler eh = new EpubHandler(parser.getMetadata());
-	    	eh.createEpub();
+	    	//EpubHandler eh = new EpubHandler(parser.getMetadata());
+	    	//eh.createEpub();
 	    } else {
 	    	//EpubHandler.abort();
 	    	for (int i=0; i < parser.getErrors().size(); i++) {

@@ -5,7 +5,9 @@ public enum WarnSolution {
 	SPEC_TAG("specificare il tag {0}"),
 	DEF_MORE_STORIES("definire piu' di una storia oppure cambiare la sintassi e sostiruire -> BRANCHES con -> {0}"),
 	REDEF_PATH_STORIES("ridefinire meglio il percorso delle storie"),
-	SPEC_CORR_PATH ("specificare il percorso corretto");
+	SPEC_CORR_PATH ("specificare il percorso corretto"),
+	TITLE_EMPTY ("Riempire TITLE oppure toglierlo"),
+	TEXT_EMPTY ("Riempire TEXT oppure toglierlo");
 	
 	String text;
 	WarnSolution(String text){

@@ -1,5 +1,7 @@
 package myCompiler.util.warning;
 
+import java.text.MessageFormat;
+
 import myCompiler.Coordinates;
 
 public class CompilationWarning {
@@ -8,6 +10,16 @@ public class CompilationWarning {
 	public WarnSolution solution;
 	public Coordinates coordinates;
 	
+	public String token_ref;
+	
+	public CompilationWarning(WarnType type, WarnCauses cause, WarnSolution solution, Coordinates coordinates, String token_ref) {
+		this.type = type;
+		this.cause = cause;
+		this.solution = solution;
+		this.coordinates = coordinates;
+		this.token_ref = token_ref;
+	}
+
 	public CompilationWarning(WarnType type, WarnCauses cause, WarnSolution solution, Coordinates coordinates) {
 		this.type = type;
 		this.cause = cause;
@@ -17,9 +29,12 @@ public class CompilationWarning {
 
 	@Override
 	public String toString() {
-		String output = "WARNING: " + type + " alle coordinate " + coordinates + ".\n";
-		output += "Causa: " + cause + "\n";
-		output += "Soluzione: " + solution + "\n\n";
+		String output = "WARNING: " + type;
+		if (coordinates != null)
+			output += " alle coordinate " + coordinates + ".\n";
+		else output += "\n";
+		output += MessageFormat.format("Causa: " + cause + "\n", token_ref);
+		output += MessageFormat.format("Soluzione: " + solution + "\n", token_ref);
 		return output;
 	}
 }

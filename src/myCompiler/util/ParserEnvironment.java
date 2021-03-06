@@ -29,8 +29,8 @@ public class ParserEnvironment {
 	public Graph<Story, DefaultEdge> graph;
 	CycleDetector<Story, DefaultEdge> cycle_detector;
 	ConnectivityInspector<Story, DefaultEdge> connectivity_inspector;
-	public boolean cyclic;
-	public boolean connected;
+	//public boolean cyclic;
+	//public boolean connected;
 	
 	public ParserEnvironment() {
 		translation = "";
@@ -43,7 +43,7 @@ public class ParserEnvironment {
 		librogame = new LibroGame();
 		
 		graph = new SimpleDirectedGraph<>(DefaultEdge.class);
-		cyclic = false;
-		connected = true;
+		//cyclic = false;
+		//connected = true;
 	}
 }
