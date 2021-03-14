@@ -5,7 +5,8 @@ public enum ErrCauses {
 	BRANCH_NO_CHOOSE ("Specificato BRANCHES ma non definito CHOOSE"),
 	//START_NO_EXIST ("Non definita la storia iniziale"),
 	DOUBLE_STORY ("Hai definito {0} piu' di una volta"),
-	NEXT_STORY_CHOOSE("Hai fissato {0} come prossima storia insieme a CHOOSE");
+	NEXT_STORY_CHOOSE("Hai fissato {0} come prossima storia insieme a CHOOSE"),
+	UNDEF_STORY("Storia \"{0}\" non definita");
 	
 	String text;
 	

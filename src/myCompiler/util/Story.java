@@ -29,6 +29,10 @@ public class Story {
 	public void setNext_story(Story next_story) {
 		this.next_story = next_story;
 	}
+	
+	public boolean isComplete() {
+		return text != null;
+	}
 		
 	@Override
 	public String toString() {

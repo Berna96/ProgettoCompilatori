@@ -1,5 +1,6 @@
 package myCompiler.util;
 
+import java.util.Hashtable;
 import java.util.LinkedList;
 
 import org.antlr.runtime.Token;
@@ -26,6 +27,14 @@ public class ParserEnvironment {
 	public LinkedList<Token> chosenStories;
 	public LinkedList<String> answers;
 	
+	/*
+	 * tokenStoryTable associa una Story ad un Token.
+	 * Controllare se story.isComplete()
+	 * Se story e' completa, il Token associato e' il blocco Story in cui e' stata definita
+	 * Se story non e' completa, il Token associato e' quello dove compare il nome della storia non ancora definita
+	 */
+	public Hashtable<Story, Token> tokenStoryTable;
+	
 	public Graph<Story, DefaultEdge> graph;
 	CycleDetector<Story, DefaultEdge> cycle_detector;
 	ConnectivityInspector<Story, DefaultEdge> connectivity_inspector;
@@ -39,6 +48,8 @@ public class ParserEnvironment {
 		metadata = new Metadata();
 		chosenStories = new LinkedList<>();
 		answers = new LinkedList<>();
+		
+		tokenStoryTable = new Hashtable<>();
 		
 		librogame = new LibroGame();
 		

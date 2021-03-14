@@ -1,6 +1,7 @@
 package myCompiler.util;
 
 import java.io.IOException;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
@@ -88,11 +89,15 @@ public class ParserSemantic {
 		if (story == null) {
 			story = new Story(this_story_name); // creo la nuova story
 			env.librogame.addStory(story); // aggiungo la story nella storyTable
+			env.tokenStoryTable.put(story,this_story); // tengo traccia del token della storia definita
 			env.graph.addVertex(story); // aggiungo la story nel grafo
 		} else if (story.choose_story != null || story.next_story != null || story.text != null) {
 			// story esiste gia' ed e' ben definita
 			// ERRORE COMPILAZIONE: RIDONDANZA !!!
 			addError(ErrType.ERROR,ErrCauses.DOUBLE_STORY,ErrSolution.DOUBLE_STORY,this_story,this_story);
+		} else {
+			// story esiste gia' ed e' ancora da definire
+			env.tokenStoryTable.replace(story, this_story); // aggiorno con il nuovo token
 		}
 		return story;
 	}
@@ -128,6 +133,7 @@ public class ParserSemantic {
 		if (nextStory == null) {
 			nextStory = new Story(next_story_name); // creo la nuova nextStory
 			env.librogame.addStory(nextStory); // aggiungo nextStory nella storyTable
+			env.tokenStoryTable.put(nextStory,next_story); // tengo traccia del token della storia ancora da definire
 			env.graph.addVertex(nextStory); // aggiungo nextStory nel grafo
 		}
 		story.setNext_story(nextStory); // setto next story di story
@@ -146,6 +152,7 @@ public class ParserSemantic {
 			if (temp_story == null) {
 				temp_story = new Story(chosen_story_name_i); // creo la nuova temp_story i-esima
 				env.librogame.addStory(temp_story); // aggiungo la temp_story i-esima nella storyTable
+				env.tokenStoryTable.put(temp_story,chosen_story_i); // tengo traccia del token della storia da definire
 				env.graph.addVertex(temp_story); // aggiungo la temp_story i-esima nel grafo
 			}
 			env.graph.addEdge(story, temp_story); // collego story alla temp_story i-esima
@@ -217,6 +224,19 @@ public class ParserSemantic {
 		LinkedList<String> clone = (LinkedList<String>) env.answers.clone();
 		env.answers.clear();
 		return clone;
+	}
+	
+	public void checkStories() {
+		Set<Story> names = env.tokenStoryTable.keySet();
+		Iterator<Story> itr = names.iterator();
+		while (itr.hasNext()) {
+			Story story = itr.next();
+			Token storyToken = env.tokenStoryTable.get(story);
+			if (!story.isComplete()) {
+				// ERRORE COMPILAZIONE : STORIA NON DEFINITA
+				addError(ErrType.ERROR,ErrCauses.UNDEF_STORY,ErrSolution.UNDEF_STORY,storyToken,storyToken);
+			}
+		}
 	}
 	
 	/*----------FINE STORIE----------*/
