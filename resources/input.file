@@ -67,6 +67,7 @@ $Ok bro$
 {ENDSTORY}
 
 // choose senza branches, con next_story
+// inoltre la Storia9 non esiste
 {STORY Storia8 -> Storia9}
 $Ok sis$
 {CHOOSE
@@ -75,6 +76,14 @@ $Ok sis$
 }
 {ENDSTORY}
 
+// Storia10 e Storia11 non esistono
+{STORY Storia7 -> BRANCHES}
+$Ok bro$
+{CHOOSE
+"Scelta1" : Storia10,
+"Scelta2" : Storia11
+}
+{ENDSTORY}
 
 // CONTROLLO DEGLI WARNING
 
