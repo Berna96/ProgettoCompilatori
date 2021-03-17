@@ -260,6 +260,8 @@ public class ParserSemantic {
 	
 	/*-----------GESTIONE FILES EPUB-----------*/
 	public void createFilesFromStories() {
+		if (!env.errorList.isEmpty())
+			return;
 		
 		try {
 			Set<String> names = env.librogame.storyTable.keySet();
@@ -270,15 +272,13 @@ public class ParserSemantic {
 				//CONTROLLO SE STORIE COMPLETE
 				if (story.choose_story != null || story.next_story != null || story.text != null) {
 					EpubHandler.createFileFromStory(story);
-				}else {
-					//ERRORE : ALCUNE STORIE NON SONO DEFINITE
 				}
-				
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			// ERRORE COMPILAZIONE: NON E' STATO POSSIBILE CREARE IL FILE
+			addError(ErrType.GEN_FILES_ERROR,ErrCauses.UNKNOWN,ErrSolution.NO_SOLUTION,null,null);
 		}
 		
 	}

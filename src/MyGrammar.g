@@ -71,7 +71,7 @@ options {
 start
 @init{	init(); }
 :
-	metadata story+ {sem.checkGraph(); sem.checkStories(); /*sem.createFilesFromStories();*/}
+	metadata story+ {sem.checkGraph(); sem.checkStories(); sem.createFilesFromStories();}
 ;
 
 

@@ -1,11 +1,11 @@
 //info generali sul libro
 {BOOK 
 		// metadata non completo come dovrebbe
-		title : "",
+		title : "hELLO",
 		author : "Gianluca Flaccadori",
 		author : "Davide Guido Bernasconi",
 		//publisher : "Mondadori",
-		image : cover.jpg,
+		image : "./output/book_cover.jpg",
 		year : 2020
 }
 
@@ -56,7 +56,7 @@ $Bravo, hai ucciso il drago!$
 // E FINO A QUI E' SCRITTO COME DOVREBBE.
 
 // CONTROLLO DEGLI ERRORI
-
+/*
 //doppione di storia
 {STORY Storia1}
 $Rifaccio una storia gia' definita$
@@ -103,3 +103,5 @@ $$
 {STORY Storia14 -> Storia12}
 $Crea un ciclo$
 {ENDSTORY}
+
+*/

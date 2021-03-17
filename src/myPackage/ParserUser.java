@@ -48,10 +48,10 @@ public class ParserUser {
 	    System.out.println();
 	    
 	    if (parser.getErrors().isEmpty()) {
-	    	//EpubHandler eh = new EpubHandler(parser.getMetadata());
-	    	//eh.createEpub();
+	    	EpubHandler eh = new EpubHandler(parser.getMetadata());
+	    	eh.createEpub();
 	    } else {
-	    	//EpubHandler.abort();
+	    	EpubHandler.abort();
 	    	for (int i=0; i < parser.getErrors().size(); i++) {
 		    	System.out.println(parser.getErrors().get(i));
 		    }

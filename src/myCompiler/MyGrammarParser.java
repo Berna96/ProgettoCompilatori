@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g 2021-03-14 11:54:50
+// $ANTLR 3.5.1 C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g 2021-03-17 16:17:55
 
   package myCompiler;
   
@@ -154,7 +154,7 @@ public class MyGrammarParser extends Parser {
 				cnt1++;
 			}
 
-			sem.checkGraph(); sem.checkStories(); /*sem.createFilesFromStories();*/
+			sem.checkGraph(); sem.checkStories(); sem.createFilesFromStories();
 			}
 
 		}
@@ -468,17 +468,17 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "image_kv"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:107:1: image_kv : IMAGE COL image_path= IMAGE_PATH ;
+	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:107:1: image_kv : IMAGE COL image_path= STRING_VALUE ;
 	public final void image_kv() throws RecognitionException {
 		Token image_path=null;
 
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:107:9: ( IMAGE COL image_path= IMAGE_PATH )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:107:11: IMAGE COL image_path= IMAGE_PATH
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:107:9: ( IMAGE COL image_path= STRING_VALUE )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:107:11: IMAGE COL image_path= STRING_VALUE
 			{
 			match(input,IMAGE,FOLLOW_IMAGE_in_image_kv249); 
 			match(input,COL,FOLLOW_COL_in_image_kv251); 
-			image_path=(Token)match(input,IMAGE_PATH,FOLLOW_IMAGE_PATH_in_image_kv255); 
+			image_path=(Token)match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_image_kv255); 
 			 sem.setCover(image_path); 
 			}
 
@@ -791,7 +791,7 @@ public class MyGrammarParser extends Parser {
 			state._fsp--;
 
 			match(input,RB,FOLLOW_RB_in_choose459); 
-			 retval.stories = (list_stories!=null?((MyGrammarParser.choose_key_value_return)list_stories).stories:null); LinkedList<String> answers = (list_stories!=null?((MyGrammarParser.choose_key_value_return)list_stories).answers:null); 
+			 retval.stories = (list_stories!=null?((MyGrammarParser.choose_key_value_return)list_stories).stories:null); retval.answers = (list_stories!=null?((MyGrammarParser.choose_key_value_return)list_stories).answers:null); 
 			}
 
 			retval.stop = input.LT(-1);
@@ -860,7 +860,7 @@ public class MyGrammarParser extends Parser {
 				}
 			}
 
-			 retval.stories = sem.getChosenStories(); LinkedList<String> answers = sem.getAnswers(); 
+			 retval.stories = sem.getChosenStories(); retval.answers = sem.getAnswers(); 
 			}
 
 			retval.stop = input.LT(-1);
@@ -905,8 +905,8 @@ public class MyGrammarParser extends Parser {
 	public static final BitSet FOLLOW_COL_in_publisher_kv232 = new BitSet(new long[]{0x0000000020000000L});
 	public static final BitSet FOLLOW_STRING_VALUE_in_publisher_kv236 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_IMAGE_in_image_kv249 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_COL_in_image_kv251 = new BitSet(new long[]{0x0000000000020000L});
-	public static final BitSet FOLLOW_IMAGE_PATH_in_image_kv255 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_COL_in_image_kv251 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_STRING_VALUE_in_image_kv255 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_YEAR_in_year_kv267 = new BitSet(new long[]{0x0000000000000400L});
 	public static final BitSet FOLLOW_COL_in_year_kv269 = new BitSet(new long[]{0x0000000000200000L});
 	public static final BitSet FOLLOW_NUMBER_VALUE_in_year_kv273 = new BitSet(new long[]{0x0000000000000002L});
