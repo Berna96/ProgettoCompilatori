@@ -104,7 +104,7 @@ publisher_kv
 	:	PUBLISHER COL publisher=STRING_VALUE { sem.setPublisher($publisher); }	
 	;
 	
-image_kv:	IMAGE COL image_path=IMAGE_PATH { sem.setCover($image_path); }	
+image_kv:	IMAGE COL image_path=STRING_VALUE { sem.setCover($image_path); }	
 	;
 year_kv	:	YEAR COL year=NUMBER_VALUE { sem.setYear($year); }
 	;
@@ -157,7 +157,7 @@ choose	returns [LinkedList<Token> stories, LinkedList<String> answers] //[Linked
 	LB CHOOSE 
 		list_stories = choose_key_value
 	RB
-	{ $stories = $list_stories.stories; LinkedList<String> answers = $list_stories.answers; }
+	{ $stories = $list_stories.stories; $answers = $list_stories.answers; }
 	;
 
 choose_key_value returns [LinkedList<Token> stories, LinkedList<String> answers]
@@ -166,7 +166,7 @@ choose_key_value returns [LinkedList<Token> stories, LinkedList<String> answers]
 		(
 		COMMA ans_2 = STRING_VALUE COL story_name_n=STORY_NAME	{sem.insertChosenStory($story_name_n); sem.insertAnswers($ans_2);}
 		)*
-		{ $stories = sem.getChosenStories(); LinkedList<String> answers = sem.getAnswers(); }  			
+		{ $stories = sem.getChosenStories(); $answers = sem.getAnswers(); }  			
 	;
 
 /*
@@ -276,7 +276,7 @@ NUMBER_VALUE	: DIGIT (DIGIT)*;
 
 
 IMAGE_PATH 
-	:	( ('\\')* NAME )+ ('.jpg' | '.png')
+	:	( ('\\')+ (LETTER | DIGIT | '_') )+ ('.jpg' | '.png')
 	;
 
 COMMENT :	('//' ~ ('\n' | '\r')* '\r'? '\n' |

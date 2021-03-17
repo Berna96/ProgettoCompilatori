@@ -41,7 +41,7 @@ public class ParserSemantic {
 	}
 	
 	public void setCover(Token cover) {
-		env.metadata.cover_path = cover.getText();
+		env.metadata.cover_path = cover.getText().replace("\"", "");
 	}
 	
 	public void createCover() {
@@ -267,7 +267,13 @@ public class ParserSemantic {
 			while (itr.hasNext()) {
 				String story_name = itr.next();
 				Story story = env.librogame.getStory(story_name);
-				EpubHandler.createFileFromStory(story);
+				//CONTROLLO SE STORIE COMPLETE
+				if (story.choose_story != null || story.next_story != null || story.text != null) {
+					EpubHandler.createFileFromStory(story);
+				}else {
+					//ERRORE : ALCUNE STORIE NON SONO DEFINITE
+				}
+				
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
