@@ -1,22 +1,23 @@
 //info generali sul libro
 {BOOK 
-		title : "Ciao, come va",
-		author : "Gianluca",
-		author : "Flaccodori",
-		publisher : "Mondadori",
-		image : "./output/book_cover.jpg",
+		// metadata non completo come dovrebbe
+		title : "",
+		author : "Gianluca Flaccadori",
+		author : "Davide Guido Bernasconi",
+		//publisher : "Mondadori",
+		image : cover.jpg,
 		year : 2020
 }
 
-//storia senza scelte
+//storia senza scelte con next_story
 {STORY Storia1 -> Storia2}
+{TITLE "Cosi' ha inizio" }
 $C'era una volta...$
 {ENDSTORY}
 
 //storia con scelte multiple
 {STORY Storia2 -> BRANCHES}
-{TITLE "la storia del drago" }
-$un drago che volava e sputava fuoco e ...$
+$un drago che volava e sputava fuoco...$
 {CHOOSE 
 	"fight" : Storia3, 
 	"RunAway" : Storia4,
@@ -24,23 +25,81 @@ $un drago che volava e sputava fuoco e ...$
 	}
 {ENDSTORY}
 
-//
+//altra storia con scelte multiple
 {STORY Storia3 -> BRANCHES}
 {TITLE "la storia del drago" }
-$Perchè non cè un drago che sia grande come te...$
+$Decidi di affrontarlo con ...$
 {CHOOSE 
-	"A" : Storia5, 
-	"B" : Storia5,
-	"C" : Storia6
+	"spada" : Storia5, 
+	"ascia" : Storia5,
+	"pugni" : Storia6
 }
 {ENDSTORY}
-	
-{STORY Storia5 -> BRANCHES}
-{TITLE "la storia del drago" }
-$viene giu una valanga ...$
+
+//storia finale
+{STORY Storia4}
+{TITLE "Fine della storia" }
+$Ti ha preso e divorato$
+{ENDSTORY}
+
+//storia finale
+{STORY Storia6}
+{TITLE "Fine della storia" }
+$Ti ha mangiato i pugni e ti ha cotto per bene$
+{ENDSTORY}
+
+{STORY Storia5}
+{TITLE "Comunque finita" }
+$Bravo, hai ucciso il drago!$
+{ENDSTORY}
+
+// E FINO A QUI E' SCRITTO COME DOVREBBE.
+
+// CONTROLLO DEGLI ERRORI
+
+//doppione di storia
+{STORY Storia1}
+$Rifaccio una storia gia' definita$
+{ENDSTORY}
+
+// branches senza choose e non connesso (warning)
+{STORY Storia7 -> BRANCHES}
+$Ok bro$
+{ENDSTORY}
+
+// choose senza branches, con next_story
+// inoltre la Storia9 non esiste
+{STORY Storia8 -> Storia9}
+$Ok sis$
 {CHOOSE
-	"D" : Storia7, 
-	"E" : Storia8,
-	"F" : Storia9
-	}
+"Scelta1" : Storia10,
+"Scelta2" : Storia11
+}
+{ENDSTORY}
+
+// Storia10 e Storia11 non esistono
+{STORY Storia7 -> BRANCHES}
+$Ok bro$
+{CHOOSE
+"Scelta1" : Storia10,
+"Scelta2" : Storia11
+}
+{ENDSTORY}
+
+// CONTROLLO DEGLI WARNING
+
+// titolo non riempito
+{STORY Storia12 -> Storia13}
+{TITLE ""}
+$Titolo vuoto$
+{ENDSTORY}
+
+// testo non riempito
+{STORY Storia13 -> Storia14}
+$$
+{ENDSTORY}
+
+// ciclico
+{STORY Storia14 -> Storia12}
+$Crea un ciclo$
 {ENDSTORY}

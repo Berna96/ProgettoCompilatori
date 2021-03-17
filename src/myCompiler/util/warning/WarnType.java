@@ -1,8 +1,9 @@
 package myCompiler.util.warning;
 
 public enum WarnType {
-	INCOMPLETE_INFO ("Informazione Incompleta"),
-	UNATTAINABLE ("Irraggiungibilita'  delle storie"),
+	INCOMPLETE_INFO ("Informazione incompleta"),
+	INCOMPLETE_STORY ("Storia incompleta"),
+	UNATTAINABLE ("Irraggiungibilita' delle storie"),
 	CYCLIC ("Ciclicita'  delle storie"),
 	ERROR_INFO("Informazione errata");
 	

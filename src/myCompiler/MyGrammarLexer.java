@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g 2021-03-04 17:30:00
+// $ANTLR 3.5.1 C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g 2021-03-14 11:54:50
 
   package myCompiler;
 
@@ -64,13 +64,13 @@ public class MyGrammarLexer extends Lexer {
 	public MyGrammarLexer(CharStream input, RecognizerSharedState state) {
 		super(input,state);
 	}
-	@Override public String getGrammarFileName() { return "C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g"; }
+	@Override public String getGrammarFileName() { return "C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g"; }
 
 	// $ANTLR start "LETTER"
 	public final void mLETTER() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:189:2: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:188:2: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -92,8 +92,8 @@ public class MyGrammarLexer extends Lexer {
 	// $ANTLR start "DIGIT"
 	public final void mDIGIT() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:192:2: ( ( '0' .. '9' ) )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:191:2: ( ( '0' .. '9' ) )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:
 			{
 			if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 				input.consume();
@@ -115,8 +115,8 @@ public class MyGrammarLexer extends Lexer {
 	// $ANTLR start "DOLL"
 	public final void mDOLL() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:195:2: ( '$' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:195:4: '$'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:194:2: ( '$' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:194:4: '$'
 			{
 			match('$'); 
 			}
@@ -131,12 +131,12 @@ public class MyGrammarLexer extends Lexer {
 	// $ANTLR start "NAME"
 	public final void mNAME() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:198:2: ( LETTER ( LETTER | DIGIT )* )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:198:4: LETTER ( LETTER | DIGIT )*
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:197:2: ( LETTER ( LETTER | DIGIT )* )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:197:4: LETTER ( LETTER | DIGIT )*
 			{
 			mLETTER(); 
 
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:198:11: ( LETTER | DIGIT )*
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:197:11: ( LETTER | DIGIT )*
 			loop1:
 			while (true) {
 				int alt1=2;
@@ -147,7 +147,7 @@ public class MyGrammarLexer extends Lexer {
 
 				switch (alt1) {
 				case 1 :
-					// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:
+					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 						input.consume();
@@ -177,8 +177,8 @@ public class MyGrammarLexer extends Lexer {
 	// $ANTLR start "CHAR_NOT_ALLOWED"
 	public final void mCHAR_NOT_ALLOWED() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:203:2: ( '<' | '>' | ':' | '\"' | '/' | '\\\\' | '|' | '?' | '*' | '.' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:202:2: ( '<' | '>' | ':' | '\"' | '/' | '\\\\' | '|' | '?' | '*' | '.' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:
 			{
 			if ( input.LA(1)=='\"'||input.LA(1)=='*'||(input.LA(1) >= '.' && input.LA(1) <= '/')||input.LA(1)==':'||input.LA(1)=='<'||(input.LA(1) >= '>' && input.LA(1) <= '?')||input.LA(1)=='\\'||input.LA(1)=='|' ) {
 				input.consume();
@@ -202,8 +202,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = BOOK;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:216:7: ( 'BOOK' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:216:9: 'BOOK'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:215:7: ( 'BOOK' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:215:9: 'BOOK'
 			{
 			match("BOOK"); 
 
@@ -223,8 +223,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = STORY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:219:8: ( 'STORY' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:219:10: 'STORY'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:217:8: ( 'STORY' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:217:10: 'STORY'
 			{
 			match("STORY"); 
 
@@ -244,8 +244,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = CHOOSE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:221:8: ( 'CHOOSE' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:221:10: 'CHOOSE'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:219:8: ( 'CHOOSE' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:219:10: 'CHOOSE'
 			{
 			match("CHOOSE"); 
 
@@ -265,8 +265,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = TITLE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:223:8: ( 'TITLE' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:223:10: 'TITLE'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:221:8: ( 'TITLE' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:221:10: 'TITLE'
 			{
 			match("TITLE"); 
 
@@ -286,8 +286,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = ENDSTORY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:225:10: ( 'ENDSTORY' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:225:12: 'ENDSTORY'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:223:10: ( 'ENDSTORY' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:223:12: 'ENDSTORY'
 			{
 			match("ENDSTORY"); 
 
@@ -307,8 +307,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = TITLE_S;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:227:10: ( 'title' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:227:12: 'title'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:225:10: ( 'title' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:225:12: 'title'
 			{
 			match("title"); 
 
@@ -328,8 +328,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = AUTHOR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:231:2: ( 'author' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:231:4: 'author'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:229:2: ( 'author' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:229:4: 'author'
 			{
 			match("author"); 
 
@@ -349,8 +349,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = PUBLISHER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:233:2: ( 'publisher' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:233:4: 'publisher'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:231:2: ( 'publisher' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:231:4: 'publisher'
 			{
 			match("publisher"); 
 
@@ -370,8 +370,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = YEAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:236:2: ( 'year' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:236:4: 'year'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:234:2: ( 'year' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:234:4: 'year'
 			{
 			match("year"); 
 
@@ -389,11 +389,11 @@ public class MyGrammarLexer extends Lexer {
 	// $ANTLR start "STRING"
 	public final void mSTRING() throws RecognitionException {
 		try {
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:238:2: ( '\"' (~ '\"' )* '\"' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:238:4: '\"' (~ '\"' )* '\"'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:236:2: ( '\"' (~ '\"' )* '\"' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:236:4: '\"' (~ '\"' )* '\"'
 			{
 			match('\"'); 
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:238:8: (~ '\"' )*
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:236:8: (~ '\"' )*
 			loop2:
 			while (true) {
 				int alt2=2;
@@ -404,7 +404,7 @@ public class MyGrammarLexer extends Lexer {
 
 				switch (alt2) {
 				case 1 :
-					// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:
+					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:
 					{
 					if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '\uFFFF') ) {
 						input.consume();
@@ -437,8 +437,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = IMAGE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:240:2: ( 'image' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:240:4: 'image'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:238:2: ( 'image' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:238:4: 'image'
 			{
 			match("image"); 
 
@@ -458,8 +458,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = LB;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:245:2: ( '{' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:245:4: '{'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:243:2: ( '{' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:243:4: '{'
 			{
 			match('{'); 
 			}
@@ -478,8 +478,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = RB;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:249:2: ( '}' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:249:4: '}'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:247:2: ( '}' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:247:4: '}'
 			{
 			match('}'); 
 			}
@@ -498,8 +498,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = SC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:253:5: ( ';' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:253:7: ';'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:251:5: ( ';' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:251:7: ';'
 			{
 			match(';'); 
 			}
@@ -518,8 +518,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = COL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:256:7: ( ':' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:256:9: ':'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:254:7: ( ':' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:254:9: ':'
 			{
 			match(':'); 
 			}
@@ -538,8 +538,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = ARROW;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:259:7: ( '->' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:259:9: '->'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:257:7: ( '->' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:257:9: '->'
 			{
 			match("->"); 
 
@@ -559,8 +559,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = COMMA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:262:7: ( ',' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:262:10: ','
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:260:7: ( ',' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:260:10: ','
 			{
 			match(','); 
 			}
@@ -579,8 +579,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = BRANCHES;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:265:10: ( 'BRANCHES' )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:265:12: 'BRANCHES'
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:263:10: ( 'BRANCHES' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:263:12: 'BRANCHES'
 			{
 			match("BRANCHES"); 
 
@@ -600,8 +600,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = STRING_VALUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:270:14: ( STRING )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:270:16: STRING
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:268:14: ( STRING )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:268:16: STRING
 			{
 			mSTRING(); 
 
@@ -621,8 +621,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = STORY_NAME;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:274:2: ( NAME )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:274:4: NAME
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:272:2: ( NAME )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:272:4: NAME
 			{
 			mNAME(); 
 
@@ -642,12 +642,12 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = NUMBER_VALUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:277:14: ( DIGIT ( DIGIT )* )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:277:16: DIGIT ( DIGIT )*
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:275:14: ( DIGIT ( DIGIT )* )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:275:16: DIGIT ( DIGIT )*
 			{
 			mDIGIT(); 
 
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:277:22: ( DIGIT )*
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:275:22: ( DIGIT )*
 			loop3:
 			while (true) {
 				int alt3=2;
@@ -658,7 +658,7 @@ public class MyGrammarLexer extends Lexer {
 
 				switch (alt3) {
 				case 1 :
-					// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:
+					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -692,25 +692,24 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = IMAGE_PATH;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:281:2: ( ( ( '\\\\' )+ ( LETTER | DIGIT | '_' ) )+ ( '.jpg' | '.png' ) )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:281:4: ( ( '\\\\' )+ ( LETTER | DIGIT | '_' ) )+ ( '.jpg' | '.png' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:279:2: ( ( ( '\\\\' )* NAME )+ ( '.jpg' | '.png' ) )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:279:4: ( ( '\\\\' )* NAME )+ ( '.jpg' | '.png' )
 			{
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:281:4: ( ( '\\\\' )+ ( LETTER | DIGIT | '_' ) )+
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:279:4: ( ( '\\\\' )* NAME )+
 			int cnt5=0;
 			loop5:
 			while (true) {
 				int alt5=2;
 				int LA5_0 = input.LA(1);
-				if ( (LA5_0=='\\') ) {
+				if ( ((LA5_0 >= 'A' && LA5_0 <= 'Z')||LA5_0=='\\'||(LA5_0 >= 'a' && LA5_0 <= 'z')) ) {
 					alt5=1;
 				}
 
 				switch (alt5) {
 				case 1 :
-					// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:281:6: ( '\\\\' )+ ( LETTER | DIGIT | '_' )
+					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:279:6: ( '\\\\' )* NAME
 					{
-					// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:281:6: ( '\\\\' )+
-					int cnt4=0;
+					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:279:6: ( '\\\\' )*
 					loop4:
 					while (true) {
 						int alt4=2;
@@ -721,28 +720,19 @@ public class MyGrammarLexer extends Lexer {
 
 						switch (alt4) {
 						case 1 :
-							// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:281:7: '\\\\'
+							// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:279:7: '\\\\'
 							{
 							match('\\'); 
 							}
 							break;
 
 						default :
-							if ( cnt4 >= 1 ) break loop4;
-							EarlyExitException eee = new EarlyExitException(4, input);
-							throw eee;
+							break loop4;
 						}
-						cnt4++;
 					}
 
-					if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
-						input.consume();
-					}
-					else {
-						MismatchedSetException mse = new MismatchedSetException(null,input);
-						recover(mse);
-						throw mse;
-					}
+					mNAME(); 
+
 					}
 					break;
 
@@ -754,7 +744,7 @@ public class MyGrammarLexer extends Lexer {
 				cnt5++;
 			}
 
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:281:40: ( '.jpg' | '.png' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:279:22: ( '.jpg' | '.png' )
 			int alt6=2;
 			int LA6_0 = input.LA(1);
 			if ( (LA6_0=='.') ) {
@@ -788,14 +778,14 @@ public class MyGrammarLexer extends Lexer {
 
 			switch (alt6) {
 				case 1 :
-					// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:281:41: '.jpg'
+					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:279:23: '.jpg'
 					{
 					match(".jpg"); 
 
 					}
 					break;
 				case 2 :
-					// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:281:50: '.png'
+					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:279:32: '.png'
 					{
 					match(".png"); 
 
@@ -820,10 +810,10 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = COMMENT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:284:9: ( ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' ) )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:284:11: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:282:9: ( ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' ) )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:282:11: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
 			{
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:284:11: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:282:11: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
 			int alt10=2;
 			int LA10_0 = input.LA(1);
 			if ( (LA10_0=='/') ) {
@@ -857,11 +847,11 @@ public class MyGrammarLexer extends Lexer {
 
 			switch (alt10) {
 				case 1 :
-					// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:284:12: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:282:12: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
 					{
 					match("//"); 
 
-					// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:284:17: (~ ( '\\n' | '\\r' ) )*
+					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:282:17: (~ ( '\\n' | '\\r' ) )*
 					loop7:
 					while (true) {
 						int alt7=2;
@@ -872,7 +862,7 @@ public class MyGrammarLexer extends Lexer {
 
 						switch (alt7) {
 						case 1 :
-							// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:
+							// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:
 							{
 							if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '\uFFFF') ) {
 								input.consume();
@@ -890,7 +880,7 @@ public class MyGrammarLexer extends Lexer {
 						}
 					}
 
-					// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:284:34: ( '\\r' )?
+					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:282:34: ( '\\r' )?
 					int alt8=2;
 					int LA8_0 = input.LA(1);
 					if ( (LA8_0=='\r') ) {
@@ -898,7 +888,7 @@ public class MyGrammarLexer extends Lexer {
 					}
 					switch (alt8) {
 						case 1 :
-							// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:284:34: '\\r'
+							// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:282:34: '\\r'
 							{
 							match('\r'); 
 							}
@@ -910,11 +900,11 @@ public class MyGrammarLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:285:3: '/*' ( options {greedy=false; } : . )* '*/'
+					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:283:3: '/*' ( options {greedy=false; } : . )* '*/'
 					{
 					match("/*"); 
 
-					// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:285:8: ( options {greedy=false; } : . )*
+					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:283:8: ( options {greedy=false; } : . )*
 					loop9:
 					while (true) {
 						int alt9=2;
@@ -935,7 +925,7 @@ public class MyGrammarLexer extends Lexer {
 
 						switch (alt9) {
 						case 1 :
-							// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:285:36: .
+							// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:283:36: .
 							{
 							matchAny(); 
 							}
@@ -970,12 +960,12 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = TEXT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:290:7: ( DOLL (~ DOLL )* DOLL )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:292:3: DOLL (~ DOLL )* DOLL
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:288:7: ( DOLL (~ DOLL )* DOLL )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:290:3: DOLL (~ DOLL )* DOLL
 			{
 			mDOLL(); 
 
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:292:8: (~ DOLL )*
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:290:8: (~ DOLL )*
 			loop11:
 			while (true) {
 				int alt11=2;
@@ -986,7 +976,7 @@ public class MyGrammarLexer extends Lexer {
 
 				switch (alt11) {
 				case 1 :
-					// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:
+					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:
 					{
 					if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '#')||(input.LA(1) >= '%' && input.LA(1) <= '\uFFFF') ) {
 						input.consume();
@@ -1022,8 +1012,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:303:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:303:9: ( ' ' | '\\t' | '\\r' | '\\n' )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:301:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:301:9: ( ' ' | '\\t' | '\\r' | '\\n' )
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 				input.consume();
@@ -1050,8 +1040,8 @@ public class MyGrammarLexer extends Lexer {
 		try {
 			int _type = SCAN_ERROR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:310:5: ( . )
-			// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:310:7: .
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:308:5: ( . )
+			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:308:7: .
 			{
 			matchAny(); 
 			 printMsg();
@@ -1068,180 +1058,180 @@ public class MyGrammarLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:8: ( BOOK | STORY | CHOOSE | TITLE | ENDSTORY | TITLE_S | AUTHOR | PUBLISHER | YEAR | IMAGE | LB | RB | SC | COL | ARROW | COMMA | BRANCHES | STRING_VALUE | STORY_NAME | NUMBER_VALUE | IMAGE_PATH | COMMENT | TEXT | WS | SCAN_ERROR )
+		// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:8: ( BOOK | STORY | CHOOSE | TITLE | ENDSTORY | TITLE_S | AUTHOR | PUBLISHER | YEAR | IMAGE | LB | RB | SC | COL | ARROW | COMMA | BRANCHES | STRING_VALUE | STORY_NAME | NUMBER_VALUE | IMAGE_PATH | COMMENT | TEXT | WS | SCAN_ERROR )
 		int alt12=25;
 		alt12 = dfa12.predict(input);
 		switch (alt12) {
 			case 1 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:10: BOOK
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:10: BOOK
 				{
 				mBOOK(); 
 
 				}
 				break;
 			case 2 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:15: STORY
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:15: STORY
 				{
 				mSTORY(); 
 
 				}
 				break;
 			case 3 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:21: CHOOSE
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:21: CHOOSE
 				{
 				mCHOOSE(); 
 
 				}
 				break;
 			case 4 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:28: TITLE
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:28: TITLE
 				{
 				mTITLE(); 
 
 				}
 				break;
 			case 5 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:34: ENDSTORY
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:34: ENDSTORY
 				{
 				mENDSTORY(); 
 
 				}
 				break;
 			case 6 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:43: TITLE_S
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:43: TITLE_S
 				{
 				mTITLE_S(); 
 
 				}
 				break;
 			case 7 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:51: AUTHOR
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:51: AUTHOR
 				{
 				mAUTHOR(); 
 
 				}
 				break;
 			case 8 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:58: PUBLISHER
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:58: PUBLISHER
 				{
 				mPUBLISHER(); 
 
 				}
 				break;
 			case 9 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:68: YEAR
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:68: YEAR
 				{
 				mYEAR(); 
 
 				}
 				break;
 			case 10 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:73: IMAGE
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:73: IMAGE
 				{
 				mIMAGE(); 
 
 				}
 				break;
 			case 11 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:79: LB
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:79: LB
 				{
 				mLB(); 
 
 				}
 				break;
 			case 12 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:82: RB
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:82: RB
 				{
 				mRB(); 
 
 				}
 				break;
 			case 13 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:85: SC
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:85: SC
 				{
 				mSC(); 
 
 				}
 				break;
 			case 14 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:88: COL
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:88: COL
 				{
 				mCOL(); 
 
 				}
 				break;
 			case 15 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:92: ARROW
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:92: ARROW
 				{
 				mARROW(); 
 
 				}
 				break;
 			case 16 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:98: COMMA
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:98: COMMA
 				{
 				mCOMMA(); 
 
 				}
 				break;
 			case 17 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:104: BRANCHES
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:104: BRANCHES
 				{
 				mBRANCHES(); 
 
 				}
 				break;
 			case 18 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:113: STRING_VALUE
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:113: STRING_VALUE
 				{
 				mSTRING_VALUE(); 
 
 				}
 				break;
 			case 19 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:126: STORY_NAME
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:126: STORY_NAME
 				{
 				mSTORY_NAME(); 
 
 				}
 				break;
 			case 20 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:137: NUMBER_VALUE
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:137: NUMBER_VALUE
 				{
 				mNUMBER_VALUE(); 
 
 				}
 				break;
 			case 21 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:150: IMAGE_PATH
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:150: IMAGE_PATH
 				{
 				mIMAGE_PATH(); 
 
 				}
 				break;
 			case 22 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:161: COMMENT
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:161: COMMENT
 				{
 				mCOMMENT(); 
 
 				}
 				break;
 			case 23 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:169: TEXT
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:169: TEXT
 				{
 				mTEXT(); 
 
 				}
 				break;
 			case 24 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:174: WS
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:174: WS
 				{
 				mWS(); 
 
 				}
 				break;
 			case 25 :
-				// C:\\Users\\berna\\git\\ProgettoCompilatori\\src\\MyGrammar.g:1:177: SCAN_ERROR
+				// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:1:177: SCAN_ERROR
 				{
 				mSCAN_ERROR(); 
 
@@ -1254,82 +1244,93 @@ public class MyGrammarLexer extends Lexer {
 
 	protected DFA12 dfa12 = new DFA12(this);
 	static final String DFA12_eotS =
-		"\1\uffff\12\33\4\uffff\1\30\1\uffff\1\30\2\uffff\3\30\2\uffff\2\33\1\uffff"+
-		"\11\33\14\uffff\13\33\1\107\10\33\1\120\1\33\1\uffff\1\33\1\123\1\33\1"+
-		"\125\1\33\1\127\2\33\1\uffff\1\132\1\33\1\uffff\1\134\1\uffff\1\33\1\uffff"+
-		"\1\136\1\33\1\uffff\1\33\1\uffff\1\33\1\uffff\1\33\1\143\1\144\1\33\2"+
-		"\uffff\1\146\1\uffff";
+		"\1\uffff\12\33\4\uffff\1\30\1\uffff\1\30\1\33\1\uffff\3\30\2\uffff\2\33"+
+		"\1\uffff\1\33\1\uffff\12\33\13\uffff\13\33\1\111\10\33\1\122\1\33\1\uffff"+
+		"\1\33\1\125\1\33\1\127\1\33\1\131\2\33\1\uffff\1\134\1\33\1\uffff\1\136"+
+		"\1\uffff\1\33\1\uffff\1\140\1\33\1\uffff\1\33\1\uffff\1\33\1\uffff\1\33"+
+		"\1\145\1\146\1\33\2\uffff\1\150\1\uffff";
 	static final String DFA12_eofS =
-		"\147\uffff";
+		"\151\uffff";
 	static final String DFA12_minS =
-		"\1\0\1\117\1\124\1\110\1\111\1\116\1\151\2\165\1\145\1\155\4\uffff\1\76"+
-		"\1\uffff\1\0\2\uffff\1\60\1\52\1\0\2\uffff\1\117\1\101\1\uffff\2\117\1"+
-		"\124\1\104\2\164\1\142\2\141\14\uffff\1\113\1\116\1\122\1\117\1\114\1"+
-		"\123\1\154\1\150\1\154\1\162\1\147\1\60\1\103\1\131\1\123\1\105\1\124"+
-		"\1\145\1\157\1\151\1\60\1\145\1\uffff\1\110\1\60\1\105\1\60\1\117\1\60"+
-		"\1\162\1\163\1\uffff\1\60\1\105\1\uffff\1\60\1\uffff\1\122\1\uffff\1\60"+
-		"\1\150\1\uffff\1\123\1\uffff\1\131\1\uffff\1\145\2\60\1\162\2\uffff\1"+
-		"\60\1\uffff";
+		"\1\0\12\56\4\uffff\1\76\1\uffff\1\0\1\56\1\uffff\1\101\1\52\1\0\2\uffff"+
+		"\2\56\1\uffff\1\56\1\uffff\12\56\13\uffff\26\56\1\uffff\10\56\1\uffff"+
+		"\2\56\1\uffff\1\56\1\uffff\1\56\1\uffff\2\56\1\uffff\1\56\1\uffff\1\56"+
+		"\1\uffff\4\56\2\uffff\1\56\1\uffff";
 	static final String DFA12_maxS =
-		"\1\uffff\1\122\1\124\1\110\1\111\1\116\1\151\2\165\1\145\1\155\4\uffff"+
-		"\1\76\1\uffff\1\uffff\2\uffff\1\172\1\57\1\uffff\2\uffff\1\117\1\101\1"+
-		"\uffff\2\117\1\124\1\104\2\164\1\142\2\141\14\uffff\1\113\1\116\1\122"+
-		"\1\117\1\114\1\123\1\154\1\150\1\154\1\162\1\147\1\172\1\103\1\131\1\123"+
-		"\1\105\1\124\1\145\1\157\1\151\1\172\1\145\1\uffff\1\110\1\172\1\105\1"+
-		"\172\1\117\1\172\1\162\1\163\1\uffff\1\172\1\105\1\uffff\1\172\1\uffff"+
-		"\1\122\1\uffff\1\172\1\150\1\uffff\1\123\1\uffff\1\131\1\uffff\1\145\2"+
-		"\172\1\162\2\uffff\1\172\1\uffff";
+		"\1\uffff\12\172\4\uffff\1\76\1\uffff\1\uffff\1\172\1\uffff\1\172\1\57"+
+		"\1\uffff\2\uffff\2\172\1\uffff\1\172\1\uffff\12\172\13\uffff\26\172\1"+
+		"\uffff\10\172\1\uffff\2\172\1\uffff\1\172\1\uffff\1\172\1\uffff\2\172"+
+		"\1\uffff\1\172\1\uffff\1\172\1\uffff\4\172\2\uffff\1\172\1\uffff";
 	static final String DFA12_acceptS =
-		"\13\uffff\1\13\1\14\1\15\1\16\1\uffff\1\20\1\uffff\1\23\1\24\3\uffff\1"+
-		"\30\1\31\2\uffff\1\23\11\uffff\1\13\1\14\1\15\1\16\1\17\1\20\1\22\1\24"+
-		"\1\25\1\26\1\27\1\30\26\uffff\1\1\10\uffff\1\11\2\uffff\1\2\1\uffff\1"+
-		"\4\1\uffff\1\6\2\uffff\1\12\1\uffff\1\3\1\uffff\1\7\4\uffff\1\21\1\5\1"+
-		"\uffff\1\10";
+		"\13\uffff\1\13\1\14\1\15\1\16\1\uffff\1\20\2\uffff\1\24\3\uffff\1\30\1"+
+		"\31\2\uffff\1\23\1\uffff\1\25\12\uffff\1\13\1\14\1\15\1\16\1\17\1\20\1"+
+		"\22\1\24\1\26\1\27\1\30\26\uffff\1\1\10\uffff\1\11\2\uffff\1\2\1\uffff"+
+		"\1\4\1\uffff\1\6\2\uffff\1\12\1\uffff\1\3\1\uffff\1\7\4\uffff\1\21\1\5"+
+		"\1\uffff\1\10";
 	static final String DFA12_specialS =
-		"\1\2\20\uffff\1\1\4\uffff\1\0\120\uffff}>";
+		"\1\2\20\uffff\1\1\4\uffff\1\0\122\uffff}>";
 	static final String[] DFA12_transitionS = {
 			"\11\30\2\27\2\30\1\27\22\30\1\27\1\30\1\21\1\30\1\26\7\30\1\20\1\17\1"+
 			"\30\1\25\12\23\1\16\1\15\5\30\1\22\1\1\1\3\1\22\1\5\15\22\1\2\1\4\6\22"+
 			"\1\30\1\24\4\30\1\7\7\22\1\12\6\22\1\10\3\22\1\6\4\22\1\11\1\22\1\13"+
 			"\1\30\1\14\uff82\30",
-			"\1\31\2\uffff\1\32",
-			"\1\34",
-			"\1\35",
-			"\1\36",
-			"\1\37",
-			"\1\40",
-			"\1\41",
-			"\1\42",
-			"\1\43",
-			"\1\44",
+			"\1\35\1\uffff\12\36\7\uffff\16\34\1\31\2\34\1\32\10\34\1\uffff\1\35"+
+			"\4\uffff\32\34",
+			"\1\35\1\uffff\12\36\7\uffff\23\34\1\37\6\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\7\34\1\40\22\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\10\34\1\41\21\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\15\34\1\42\14\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\10\34\1\43\21"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\24\34\1\44\5"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\24\34\1\45\5"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\4\34\1\46\25"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\14\34\1\47\15"+
+			"\34",
 			"",
 			"",
 			"",
 			"",
-			"\1\51",
+			"\1\54",
 			"",
-			"\0\53",
+			"\0\56",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\32\34",
 			"",
-			"",
-			"\12\55\7\uffff\32\55\1\uffff\1\55\2\uffff\1\55\1\uffff\32\55",
-			"\1\56\4\uffff\1\56",
-			"\0\57",
-			"",
-			"",
-			"\1\61",
-			"\1\62",
-			"",
-			"\1\63",
-			"\1\64",
-			"\1\65",
-			"\1\66",
-			"\1\67",
-			"\1\70",
-			"\1\71",
-			"\1\72",
-			"\1\73",
+			"\32\35\1\uffff\1\35\4\uffff\32\35",
+			"\1\60\4\uffff\1\60",
+			"\0\61",
 			"",
 			"",
+			"\1\35\1\uffff\12\36\7\uffff\16\34\1\63\13\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\1\64\31\34\1\uffff\1\35\4\uffff\32\34",
+			"",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\32\34",
+			"",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\32\34",
+			"\1\35\1\uffff\12\36\7\uffff\16\34\1\65\13\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\16\34\1\66\13\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\23\34\1\67\6\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\3\34\1\70\26\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\23\34\1\71\6"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\23\34\1\72\6"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\1\34\1\73\30"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\1\74\31\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\1\75\31\34",
 			"",
 			"",
 			"",
@@ -1340,59 +1341,92 @@ public class MyGrammarLexer extends Lexer {
 			"",
 			"",
 			"",
-			"\1\74",
-			"\1\75",
-			"\1\76",
-			"\1\77",
-			"\1\100",
-			"\1\101",
-			"\1\102",
-			"\1\103",
-			"\1\104",
-			"\1\105",
-			"\1\106",
-			"\12\33\7\uffff\32\33\6\uffff\32\33",
-			"\1\110",
-			"\1\111",
-			"\1\112",
-			"\1\113",
-			"\1\114",
-			"\1\115",
-			"\1\116",
-			"\1\117",
-			"\12\33\7\uffff\32\33\6\uffff\32\33",
-			"\1\121",
 			"",
-			"\1\122",
-			"\12\33\7\uffff\32\33\6\uffff\32\33",
-			"\1\124",
-			"\12\33\7\uffff\32\33\6\uffff\32\33",
-			"\1\126",
-			"\12\33\7\uffff\32\33\6\uffff\32\33",
-			"\1\130",
-			"\1\131",
+			"\1\35\1\uffff\12\36\7\uffff\12\34\1\76\17\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\15\34\1\77\14\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\21\34\1\100\10\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\16\34\1\101\13\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\13\34\1\102\16\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\22\34\1\103\7\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\13\34\1\104\16"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\7\34\1\105\22"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\13\34\1\106\16"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\21\34\1\107\10"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\6\34\1\110\23"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\32\34",
+			"\1\35\1\uffff\12\36\7\uffff\2\34\1\112\27\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\30\34\1\113\1\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\22\34\1\114\7\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\4\34\1\115\25\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\23\34\1\116\6\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\4\34\1\117\25"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\16\34\1\120\13"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\10\34\1\121\21"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\32\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\4\34\1\123\25"+
+			"\34",
 			"",
-			"\12\33\7\uffff\32\33\6\uffff\32\33",
-			"\1\133",
+			"\1\35\1\uffff\12\36\7\uffff\7\34\1\124\22\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\32\34",
+			"\1\35\1\uffff\12\36\7\uffff\4\34\1\126\25\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\32\34",
+			"\1\35\1\uffff\12\36\7\uffff\16\34\1\130\13\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\32\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\21\34\1\132\10"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\22\34\1\133\7"+
+			"\34",
 			"",
-			"\12\33\7\uffff\32\33\6\uffff\32\33",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\32\34",
+			"\1\35\1\uffff\12\36\7\uffff\4\34\1\135\25\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
 			"",
-			"\1\135",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\32\34",
 			"",
-			"\12\33\7\uffff\32\33\6\uffff\32\33",
-			"\1\137",
+			"\1\35\1\uffff\12\36\7\uffff\21\34\1\137\10\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
 			"",
-			"\1\140",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\32\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\7\34\1\141\22"+
+			"\34",
 			"",
-			"\1\141",
+			"\1\35\1\uffff\12\36\7\uffff\22\34\1\142\7\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
 			"",
-			"\1\142",
-			"\12\33\7\uffff\32\33\6\uffff\32\33",
-			"\12\33\7\uffff\32\33\6\uffff\32\33",
-			"\1\145",
+			"\1\35\1\uffff\12\36\7\uffff\30\34\1\143\1\34\1\uffff\1\35\4\uffff\32"+
+			"\34",
+			"",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\4\34\1\144\25"+
+			"\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\32\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\32\34",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\21\34\1\147\10"+
+			"\34",
 			"",
 			"",
-			"\12\33\7\uffff\32\33\6\uffff\32\33",
+			"\1\35\1\uffff\12\36\7\uffff\32\34\1\uffff\1\35\4\uffff\32\34",
 			""
 	};
 
@@ -1437,7 +1471,7 @@ public class MyGrammarLexer extends Lexer {
 					case 0 : 
 						int LA12_22 = input.LA(1);
 						s = -1;
-						if ( ((LA12_22 >= '\u0000' && LA12_22 <= '\uFFFF')) ) {s = 47;}
+						if ( ((LA12_22 >= '\u0000' && LA12_22 <= '\uFFFF')) ) {s = 49;}
 						else s = 24;
 						if ( s>=0 ) return s;
 						break;
@@ -1445,7 +1479,7 @@ public class MyGrammarLexer extends Lexer {
 					case 1 : 
 						int LA12_17 = input.LA(1);
 						s = -1;
-						if ( ((LA12_17 >= '\u0000' && LA12_17 <= '\uFFFF')) ) {s = 43;}
+						if ( ((LA12_17 >= '\u0000' && LA12_17 <= '\uFFFF')) ) {s = 46;}
 						else s = 24;
 						if ( s>=0 ) return s;
 						break;
