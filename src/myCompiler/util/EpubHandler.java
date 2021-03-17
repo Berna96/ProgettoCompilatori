@@ -26,8 +26,6 @@ public class EpubHandler {
 	private static final String FILENAME_DEFAULT = "./output/output.epub";
 	private static final String HTML_WRAPPER = "<html xmlns=\"http://www.w3.org/1999/xhtml\"><head>{0}</head><body>{1}</body></html>";
 	private static final String BUTTON_WRAPPER = "<a href=\"{0}\" class=\"button\">{1}</a>\r\n";
-	private static final String SINGLE_CHOICE = "\r\n<h3 class=\"choice\">La storia continua! Premi il bottone per continuare</h3>\r\n";
-	private static final String MULT_CHOICE = "\r\n<h3 class=\"choice\">La storia si complica! Scegli tu come continuare la Storia!</h3>\r\n";
 	private static final String SINGLE_CHOICE_BUTTON_ANSWER = "Continua la storia!";
 	
 	public EpubHandler(Metadata meta) {
@@ -58,23 +56,29 @@ public class EpubHandler {
 	//Crea un file per storia
 	public static void createFileFromStory(Story story) throws IOException{
 		//crea i buttoni
-		String buttons = "";
+		String buttons = "\r\n";
 		//size != 0 sempre
 		if (story.choose_story!=null && story.choose_story.size() > 1) {
 			int num_buttons = story.choose_story.size();
-			buttons += MULT_CHOICE;
+			//buttons += MULT_CHOICE;
 			for (int i=0; i<num_buttons; i++) {
 				buttons += MessageFormat.format(BUTTON_WRAPPER, story.choose_story.get(i).name + ".html", story.answers.get(i));
 			}
 			
 		}else if (story.next_story!=null){
-			buttons += SINGLE_CHOICE;
+			//buttons += SINGLE_CHOICE;
 			buttons += MessageFormat.format(BUTTON_WRAPPER, story.next_story.name + ".html", SINGLE_CHOICE_BUTTON_ANSWER);
 		}
+		//crea il titolo
+		String title_body = "";
+		if (story.title != null) {
+			title_body = "<h3>" + story.title + "</h3>\r\n";
+		}
+		
 		//head e body
 		String head = "<title>" + story.title + "</title>" +
 				  	  "<link rel=\"stylesheet\" href=\"mystyle.css\">";
-		String text = story.text + buttons;
+		String text = title_body + story.text + buttons;
 		Object[] args = {head, text};
 		
 		//FORMATTAZIONE STRINGHE HEAD + BODY

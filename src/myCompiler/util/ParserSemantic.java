@@ -264,6 +264,8 @@ public class ParserSemantic {
 			return;
 		
 		try {
+			EpubHandler.createCover(env.metadata);
+			//crea i file dalle storie
 			Set<String> names = env.librogame.storyTable.keySet();
 			Iterator<String> itr = names.iterator();
 			while (itr.hasNext()) {
