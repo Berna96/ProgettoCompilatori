@@ -1,9 +1,10 @@
 //info generali sul libro
 {BOOK 
-		title : "La storia del drago",
+		// metadata non completo come dovrebbe
+		title : "",
 		author : "Gianluca Flaccadori",
 		author : "Davide Guido Bernasconi",
-		publisher : "Mondadori",
+		//publisher : "Mondadori",
 		image : cover.jpg,
 		year : 2020
 }

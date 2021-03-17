@@ -94,7 +94,7 @@ public class ParserSemantic {
 		} else if (story.choose_story != null || story.next_story != null || story.text != null) {
 			// story esiste gia' ed e' ben definita
 			// ERRORE COMPILAZIONE: RIDONDANZA !!!
-			addError(ErrType.ERROR,ErrCauses.DOUBLE_STORY,ErrSolution.DOUBLE_STORY,this_story,this_story);
+			addError(ErrType.IDENTIF_ERROR,ErrCauses.DOUBLE_STORY,ErrSolution.DOUBLE_STORY,this_story,this_story);
 		} else {
 			// story esiste gia' ed e' ancora da definire
 			env.tokenStoryTable.replace(story, this_story); // aggiorno con il nuovo token
@@ -174,7 +174,7 @@ public class ParserSemantic {
 		if (next_story != null) {
 			if (chosen_stories != null) {
 				// ERRORE COMPILAZIONE: BLOCCO CHOSEN SENZA BRANCHES !!! (in realta next_story_choose)
-				addError(ErrType.ERROR,ErrCauses.NEXT_STORY_CHOOSE,ErrSolution.NEXT_STORY_CHOOSE,next_story,next_story);
+				addError(ErrType.SYNTAX_ERROR,ErrCauses.NEXT_STORY_CHOOSE,ErrSolution.NEXT_STORY_CHOOSE,next_story,next_story);
 			}
 			manageNextStory(story,this_story,next_story);
 		}
@@ -182,7 +182,7 @@ public class ParserSemantic {
 		else if (hasBranches) {
 			if (chosen_stories == null) {
 				// ERRORE COMPILAZIONE: BRANCHES SENZA BLOCCO CHOSEN !!!
-				addError(ErrType.ERROR,ErrCauses.BRANCH_NO_CHOOSE,ErrSolution.BRANCH_NO_CHOOSE,this_story,this_story);
+				addError(ErrType.SYNTAX_ERROR,ErrCauses.BRANCH_NO_CHOOSE,ErrSolution.BRANCH_NO_CHOOSE,this_story,this_story);
 			} else {
 				// gestisco solo se c'e' anche CHOSEN
 				manageBranchesStory(story,this_story,answers,chosen_stories);
@@ -191,7 +191,7 @@ public class ParserSemantic {
 		// STORIA FINALE
 		else {
 			if (chosen_stories != null)
-				addError(ErrType.ERROR,ErrCauses.CHOOSE_NO_BRANCH,ErrSolution.CHOOSE_NO_BRANCH,this_story,this_story);
+				addError(ErrType.SYNTAX_ERROR,ErrCauses.CHOOSE_NO_BRANCH,ErrSolution.CHOOSE_NO_BRANCH,this_story,this_story);
 		}
 	}
 	
@@ -234,7 +234,7 @@ public class ParserSemantic {
 			Token storyToken = env.tokenStoryTable.get(story);
 			if (!story.isComplete()) {
 				// ERRORE COMPILAZIONE : STORIA NON DEFINITA
-				addError(ErrType.ERROR,ErrCauses.UNDEF_STORY,ErrSolution.UNDEF_STORY,storyToken,storyToken);
+				addError(ErrType.UNDEF_STORY_ERROR,ErrCauses.UNDEF_STORY,ErrSolution.UNDEF_STORY,storyToken,storyToken);
 			}
 		}
 	}
