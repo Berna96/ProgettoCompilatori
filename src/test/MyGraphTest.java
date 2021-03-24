@@ -52,7 +52,14 @@ public class MyGraphTest {
 		ConnectivityInspector<String, DefaultEdge> conn2 = new ConnectivityInspector<>(graph);
 		System.out.println( "Connesso? " + conn2.isConnected() + ". " + conn2.connectedSets());
 		
-		
+		Graph<String, DefaultEdge> graph2 = new SimpleDirectedGraph<>(DefaultEdge.class);
+		String s1 = "Ciaone";
+		graph2.addVertex(s1);
+		try {
+			graph2.addEdge(s1, s1);
+		}catch(IllegalArgumentException e) {
+			
+		}
 	}
 
 }

@@ -14,7 +14,7 @@ options {
 @lexer::members{
 	int nErrori = 0;
 	
-	void printMsg () {
+	void scan_error () {
 		nErrori++;
 		System.out.println("n. Errori Trovati: \t" + nErrori);
 	}
@@ -58,14 +58,6 @@ options {
   public LinkedList<CompilationError> getErrors() {
   	return env.errorList;
   }
-  /*
-  public boolean isCyclic() {
-  	return env.cyclic;
-  }
-  public boolean isConnected() {
-  	return env.connected;
-  }
-  */
 }
 
 start
@@ -168,20 +160,6 @@ choose_key_value returns [LinkedList<Token> stories, LinkedList<String> answers]
 		)*
 		{ $stories = sem.getChosenStories(); $answers = sem.getAnswers(); }  			
 	;
-
-/*
-choose_key_value returns [LinkedList<String> stories]
-	:
-		STRING_VALUE COL story_name_1 = STORY_NAME {sem.insertChosenStory($story_name_1);}
-		(
-		COMMA STRING_VALUE COL story_name_n=STORY_NAME	{sem.insertChosenStory($story_name_n);}
-		)*
-		{ $stories = sem.getChosenStories(); }  			
-	;
-*/
-
-// LEXER TOKENS
-
 	
 
 fragment LETTER 
@@ -263,7 +241,6 @@ COMMA	: 	','
 BRANCHES : 'BRANCHES'
 	;
 
-//BOOK_KEY 	:   TITLE_S | AUTHOR | PUBLISHER | IMAGE | YEAR ;
 
 STRING_VALUE	: STRING ;
 
@@ -305,5 +282,5 @@ WS  :   ( ' '
         ) {skip();  /* $channel=HIDDEN; */}
     ;
 SCAN_ERROR   
-    : . { printMsg();}
+    : . { scan_error();}
     ;

@@ -56,7 +56,7 @@ $Bravo, hai ucciso il drago!$
 // E FINO A QUI E' SCRITTO COME DOVREBBE.
 
 // CONTROLLO DEGLI ERRORI
-/*
+
 //doppione di storia
 {STORY Storia1}
 $Rifaccio una storia gia' definita$
@@ -104,4 +104,23 @@ $$
 $Crea un ciclo$
 {ENDSTORY}
 
-*/
+
+// ALTRI ERRORI
+
+{STORY StoriaA -> "StoriaB"}
+$Crea un ciclo$
+{ENDSTORY}
+
+{STORY StoriaB}
+$Crea un ciclo$
+$Doppio testo$
+{ENDSTORY}
+
+{STORY StoriaC}
+$Crea un ciclo$
+{ENDSTORY}
+
+{STORY StoriaD -> BRANCHES}
+$Crea un ciclo$
+{CHOOSE "Scelta1" : StoriaC, "Scelta2" : StoriaD}
+{ENDSTORY}

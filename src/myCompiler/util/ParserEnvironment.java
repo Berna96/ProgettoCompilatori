@@ -23,6 +23,8 @@ public class ParserEnvironment {
 	
 	public LibroGame librogame;
 	
+	public boolean cyclic = false;
+	
 	public Metadata metadata;
 	public LinkedList<Token> chosenStories;
 	public LinkedList<String> answers;

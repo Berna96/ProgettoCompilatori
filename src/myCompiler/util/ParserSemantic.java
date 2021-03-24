@@ -25,35 +25,49 @@ public class ParserSemantic {
 	
 	/*----------METADATA----------*/
 	public void setPublisher(Token publisher) {
-		env.metadata.publisher = publisher.getText().replace("\"", "");
+		if (!publisher.getText().isEmpty())
+			env.metadata.publisher = publisher.getText().replace("\"", "");
+		else
+			addWarning(WarnType.INCOMPLETE_INFO, WarnCauses.MISSING_META_FIELD, WarnSolution.SPEC_FIELD,publisher,publisher);
 	}
 	
 	public void setTitleBook(Token title_book) {
-		env.metadata.title = title_book.getText().replace("\"", "");
+		if (!title_book.getText().isEmpty())
+			env.metadata.title = title_book.getText().replace("\"", "");
+		else
+			addWarning(WarnType.INCOMPLETE_INFO, WarnCauses.MISSING_META_FIELD, WarnSolution.SPEC_FIELD,title_book,title_book);
 	}
 	
 	public void addAuthor(Token author) {
-		env.metadata.authors.add(author.getText().replace("\"", ""));
+		if (!author.getText().isEmpty())
+			env.metadata.authors.add(author.getText().replace("\"", ""));
+		else
+			addWarning(WarnType.INCOMPLETE_INFO, WarnCauses.MISSING_META_FIELD, WarnSolution.SPEC_FIELD,author,author);
 	}
 	
 	public void setYear(Token year) {
-		env.metadata.year = Integer.parseInt(year.getText());
+		if (!year.getText().isEmpty())
+			env.metadata.year = Integer.parseInt(year.getText());
+		else
+			addWarning(WarnType.INCOMPLETE_INFO, WarnCauses.MISSING_META_FIELD, WarnSolution.SPEC_FIELD,year,year);
 	}
 	
 	public void setCover(Token cover) {
-		env.metadata.cover_path = cover.getText().replace("\"", "");
+		if (!cover.getText().isEmpty())
+			env.metadata.cover_path = cover.getText().replace("\"", "");
+		else
+			addWarning(WarnType.INCOMPLETE_INFO, WarnCauses.MISSING_META_FIELD, WarnSolution.SPEC_FIELD,cover,cover);
 	}
 	
 	public void createCover() {
-		/*
 		try {
 			EpubHandler.createCover(env.metadata);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			// ERRORE COMPILAZIONE: NON E' STATO POSSIBILE CREARE IL FILE
+			addWarning(WarnType.INCOMPLETE_INFO, WarnCauses.NOT_EXIST_IMAGE_PATH, WarnSolution.SPEC_CORR_PATH);
 		}
-		*/
 	}
 	/*----------FINE METADATA----------*/
 	
@@ -79,6 +93,11 @@ public class ParserSemantic {
 		CompilationWarning c_warning = new CompilationWarning(tipo,causa,soluzione,null,null);
 		env.warningList.add(c_warning);
 	}
+	/*
+	public void scan_error(Token tk) {
+		addError(ErrType.TOKEN_UNRECOGNIZED, ErrCauses.TOKEN_UNRECOGNIZED, ErrSolution.TOKEN_UNRECOGNIZED, tk, tk);
+	}
+	*/
 	/*----------FINE ERRORI E WARNING----------*/
 	
 	/*----------STORIE----------*/
@@ -155,7 +174,13 @@ public class ParserSemantic {
 				env.tokenStoryTable.put(temp_story,chosen_story_i); // tengo traccia del token della storia da definire
 				env.graph.addVertex(temp_story); // aggiungo la temp_story i-esima nel grafo
 			}
-			env.graph.addEdge(story, temp_story); // collego story alla temp_story i-esima
+			try {
+				env.graph.addEdge(story, temp_story); // collego story alla temp_story i-esima
+			}catch(IllegalArgumentException e) {
+				// WARNING COMPILAZIONE: CICLICO!!!
+				addWarning(WarnType.CYCLIC,WarnCauses.CYCLIC,WarnSolution.REDEF_PATH_STORIES);
+				env.cyclic = true;
+			}
 			choose_story.add(temp_story);
 		}
 		story.setChoose_story(choose_story);
@@ -246,7 +271,7 @@ public class ParserSemantic {
 		env.cycle_detector = new CycleDetector<>(env.graph);
 		env.connectivity_inspector = new ConnectivityInspector<>(env.graph);
 		
-		if (env.cycle_detector.detectCycles()) {
+		if (!env.cyclic && env.cycle_detector.detectCycles()) {
 			// WARNING: CICLICLO !!!
 			addWarning(WarnType.CYCLIC,WarnCauses.CYCLIC,WarnSolution.REDEF_PATH_STORIES);
 		}
@@ -260,6 +285,7 @@ public class ParserSemantic {
 	
 	/*-----------GESTIONE FILES EPUB-----------*/
 	public void createFilesFromStories() {
+		// solo se non ci sono errori
 		if (!env.errorList.isEmpty())
 			return;
 		
@@ -277,9 +303,7 @@ public class ParserSemantic {
 				}
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			// ERRORE COMPILAZIONE: NON E' STATO POSSIBILE CREARE IL FILE
 			addError(ErrType.GEN_FILES_ERROR,ErrCauses.UNKNOWN,ErrSolution.NO_SOLUTION,null,null);
 		}
 		

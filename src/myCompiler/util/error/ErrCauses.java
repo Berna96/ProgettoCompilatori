@@ -6,7 +6,9 @@ public enum ErrCauses {
 	BRANCH_NO_CHOOSE ("Specificato BRANCHES ma non definito CHOOSE"),
 	DOUBLE_STORY ("Hai definito {0} piu' di una volta"),
 	NEXT_STORY_CHOOSE("Hai fissato {0} come prossima storia insieme a CHOOSE"),
-	UNDEF_STORY("Storia \"{0}\" non definita");
+	UNDEF_STORY("Storia {0} non definita"),
+	SYNTAX_ERROR("{0} non rispetta la sintassi del linguaggio"),
+	TOKEN_UNRECOGNIZED("Token {0} non riconosciuto");
 	
 	String text;
 	
