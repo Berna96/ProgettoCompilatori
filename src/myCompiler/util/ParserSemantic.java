@@ -1,7 +1,7 @@
 package myCompiler.util;
 
 import java.io.IOException;
-import java.util.Hashtable;
+//import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
@@ -9,7 +9,7 @@ import java.util.Set;
 import org.antlr.runtime.Token;
 import org.jgrapht.alg.connectivity.ConnectivityInspector;
 import org.jgrapht.alg.cycle.CycleDetector;
-import org.jgrapht.graph.DefaultEdge;
+//import org.jgrapht.graph.DefaultEdge;
 
 import myCompiler.Coordinates;
 import myCompiler.util.error.*;
@@ -160,7 +160,7 @@ public class ParserSemantic {
 	}
 	
 	private void manageBranchesStory(Story story, Token story_token, LinkedList<String> answers, LinkedList<Token> chosen_stories) {
-		LinkedList<String> choose_answer = new LinkedList<String>();
+		//LinkedList<String> choose_answer = new LinkedList<String>();
 		LinkedList<Story> choose_story = new LinkedList<Story>();
 		// ciclo i nomi delle storie possibili
 		for (int i=0; i < chosen_stories.size(); i++) {

@@ -6,16 +6,16 @@ import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.text.MessageFormat;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
+//import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
-import coza.opencollab.epub.creator.EpubConstants;
+//import coza.opencollab.epub.creator.EpubConstants;
 import coza.opencollab.epub.creator.model.Content;
 import coza.opencollab.epub.creator.model.EpubBook;
-import coza.opencollab.epub.creator.model.Landmark;
+//import coza.opencollab.epub.creator.model.Landmark;
 import coza.opencollab.epub.creator.util.EpubWriter;
 import coza.opencollab.epub.creator.util.MediaTypeUtil;
 
