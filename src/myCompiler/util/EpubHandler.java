@@ -5,6 +5,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.DosFileAttributes;
 import java.text.MessageFormat;
 //import java.util.ArrayList;
 import java.util.LinkedList;
@@ -34,14 +38,43 @@ public class EpubHandler {
 		book = new EpubBook("english", "book", meta.title, authors);
 	}
 	
+	private static void setHiddenAttrib(Path filePath) {		
+		try {
+			DosFileAttributes attr = Files.readAttributes(filePath, DosFileAttributes.class);
+			if (!attr.isHidden())
+				Files.setAttribute(filePath, "dos:hidden", true);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+	}
+	
 	//crea cover per il libro
 	public static void createCover(Metadata meta) throws IOException {
+		File output_path = new File("./output/");
+		if (!output_path.exists() || !output_path.isDirectory()) {
+			Path filePath = Paths.get("./output/");
+			Files.createDirectories(filePath);
+			setHiddenAttrib(filePath);
+		}
+		
+		String img = "";
+		if (meta.cover_path != null) {
+			img = "<img src=\"" + meta.cover_path.replace("./output/", "") +"\" alt=\"cover image\" class=\"cover\">\r\n";
+		}
+		String publisher = "";
+		if (meta.publisher!=null) {
+			publisher = "<h3 class=\"publisher\">" + meta.publisher + "</h3>\r\n";
+		}
+		String year = "";
+		if (meta.year != null) {
+			year = "<h4 class=\"year\">" + meta.year.toString() + "</h4>";
+		}
 		//body in html
-		String body = "<img src=\"" + meta.cover_path.replace("./output/", "") +"\" alt=\"cover image\" class=\"cover\">\r\n"
+		String body = img
 					+ "<h1 id=\"title\" class=\"title\">" + meta.title + "</h1>\r\n"
 					+ "<h2 class=\"author\">" + genStringFromAuthors(meta.authors) + "</h2>\r\n<br />\r\n"
-					+ "<h3 class=\"publisher\">" + meta.publisher + "</h3>\r\n"
-					+ "<h4 class=\"year\">" + meta.year.toString() + "</h4>";
+					+ publisher
+					+ year;
 		//head in html
 		String head = "<title>" + meta.title + "</title>" +
 					  "<link rel=\"stylesheet\" href=\"mystyle.css\">";
@@ -55,6 +88,13 @@ public class EpubHandler {
 	}
 	//Crea un file per storia
 	public static void createFileFromStory(Story story) throws IOException{
+		File output_path = new File("./output/");
+		if (!output_path.exists() || !output_path.isDirectory()) {
+			Path filePath = Paths.get("./output/");
+			Files.createDirectories(filePath);
+			setHiddenAttrib(filePath);
+		}
+		
 		//crea i buttoni
 		String buttons = "\r\n";
 		//size != 0 sempre
