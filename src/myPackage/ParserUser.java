@@ -31,7 +31,7 @@ public class ParserUser {
 			
 			if (args.length > 1) {
 				fileOut = args[1];
-				System.out.println("Verra' creato " + args[1]);
+				System.out.println("Verra' creato " + fileOut);
 			} else {
 				System.out.println("Verra' creato librogame.epub in questa cartella");
 				fileOut = "./librogame.epub";

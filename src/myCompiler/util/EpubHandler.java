@@ -27,7 +27,7 @@ public class EpubHandler {
 	private EpubBook book;
 	private Metadata meta;
 	private String authors;
-	private static final String FILENAME_DEFAULT = "./output/output.epub";
+	private static final String FILENAME_DEFAULT = "./librogame.epub";
 	private static final String HTML_WRAPPER = "<html xmlns=\"http://www.w3.org/1999/xhtml\"><head>{0}</head><body>{1}</body></html>";
 	private static final String BUTTON_WRAPPER = "<a href=\"{0}\" class=\"button\">{1}</a>\r\n";
 	private static final String SINGLE_CHOICE_BUTTON_ANSWER = "Continua la storia!";
