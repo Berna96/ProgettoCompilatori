@@ -174,16 +174,15 @@ public class EpubHandler {
 		System.out.println(meta.cover_path);
 		
 		//Add image to book
-		File image_file = new File(meta.cover_path);
-		
-		System.out.println(image_file.getName());
-		
-		byte[] img_byte = FileUtils.readFileToByteArray(image_file);
-    	String myme_type = MediaTypeUtil.getMediaTypeFromExt("jpg");
-    	Content c = new Content(myme_type, image_file.getName(), img_byte);
-        book.addContent(c);
-        book.addCoverImage(img_byte, myme_type, image_file.getName());
-        
+		if (meta.cover_path != null) {
+			File image_file = new File(meta.cover_path);
+				
+			byte[] img_byte = FileUtils.readFileToByteArray(image_file);
+			String myme_type = MediaTypeUtil.getMediaTypeFromExt("jpg");
+			Content c = new Content(myme_type, image_file.getName(), img_byte);
+			book.addContent(c);
+			book.addCoverImage(img_byte, myme_type, image_file.getName());
+		}
         //ADD CSS
         File css_file = new File("./output/mystyle.css");
 		byte[] css_byte = FileUtils.readFileToByteArray(css_file);
