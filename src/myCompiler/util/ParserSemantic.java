@@ -53,18 +53,17 @@ public class ParserSemantic {
 	}
 	
 	public void setCover(Token cover) {
-		if (!cover.getText().isEmpty())
+		if (cover.getText() != null && !cover.getText().isEmpty()) {
 			env.metadata.cover_path = cover.getText().replace("\"", "");
-		else
+		} else {
 			addWarning(WarnType.INCOMPLETE_INFO, WarnCauses.MISSING_META_FIELD, WarnSolution.SPEC_FIELD,cover,cover);
+		}
 	}
 	
 	public void createCover() {
 		try {
 			EpubHandler.createCover(env.metadata);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			// ERRORE COMPILAZIONE: NON E' STATO POSSIBILE CREARE IL FILE
 			addWarning(WarnType.INCOMPLETE_INFO, WarnCauses.NOT_EXIST_IMAGE_PATH, WarnSolution.SPEC_CORR_PATH);
 		}
