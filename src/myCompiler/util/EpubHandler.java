@@ -37,11 +37,23 @@ public class EpubHandler {
 	//crea cover per il libro
 	public static void createCover(Metadata meta) throws IOException {
 		//body in html
-		String body = "<img src=\"" + meta.cover_path.replace("./output/", "") +"\" alt=\"cover image\" class=\"cover\">\r\n"
+		String img = "";
+		if (meta.cover_path != null) {
+			img = "<img src=\"" + meta.cover_path.replace("./output/", "") +"\" alt=\"cover image\" class=\"cover\">\r\n";
+		}
+		String publisher = "";
+		if (meta.publisher!=null) {
+			publisher = "<h3 class=\"publisher\">" + meta.publisher + "</h3>\r\n";
+		}
+		String year = "";
+		if (meta.year != null) {
+			year = "<h4 class=\"year\">" + meta.year.toString() + "</h4>";
+		}
+		String body = img
 					+ "<h1 id=\"title\" class=\"title\">" + meta.title + "</h1>\r\n"
 					+ "<h2 class=\"author\">" + genStringFromAuthors(meta.authors) + "</h2>\r\n<br />\r\n"
-					+ "<h3 class=\"publisher\">" + meta.publisher + "</h3>\r\n"
-					+ "<h4 class=\"year\">" + meta.year.toString() + "</h4>";
+					+ publisher
+					+ year;
 		//head in html
 		String head = "<title>" + meta.title + "</title>" +
 					  "<link rel=\"stylesheet\" href=\"mystyle.css\">";

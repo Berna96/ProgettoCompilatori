@@ -12,7 +12,7 @@
 //storia senza scelte con next_story
 {STORY Storia1 -> Storia2}
 {TITLE "Cosi' ha inizio" }
-$C'era una volta...$
+C'era una volta...
 {ENDSTORY}
 
 //storia con scelte multiple

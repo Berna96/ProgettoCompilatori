@@ -285,9 +285,9 @@ COMMENT :	('//' ~ ('\n' | '\r')* '\r'? '\n' |
 	;
 
 
-TEXT 	:     //LETTER ( options {greedù3 = false;} : ~( LB | RB ))*
+TEXT 	:     LETTER ~( LB | RB )*
 		//~( DOLL | DIGIT) ~(LB | RB)*
-		DOLL ~DOLL* DOLL
+		//DOLL ~DOLL* DOLL
 		//'\'' ~( '\'' )* '\''
 	;
 
