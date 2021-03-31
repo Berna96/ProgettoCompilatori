@@ -52,6 +52,7 @@ public class EpubHandler {
 											+ "  display: inline-block;\r\n"
 											+ "  font-size: 16px;\r\n"
 											+ "}";
+	private static final String TEMP_FOLDER = "./output/";
 	
 	public EpubHandler(Metadata meta) {
 		this.meta = meta;
@@ -71,16 +72,16 @@ public class EpubHandler {
 	
 	//crea cover per il libro
 	public static void createCover(Metadata meta) throws IOException {
-		File output_path = new File("./output/");
+		File output_path = new File(TEMP_FOLDER);
 		if (!output_path.exists() || !output_path.isDirectory()) {
-			Path filePath = Paths.get("./output/");
+			Path filePath = Paths.get(TEMP_FOLDER);
 			Files.createDirectories(filePath);
 			setHiddenAttrib(filePath);
 		}
 		
 		String img = "";
 		if (meta.cover_path != null) {
-			img = "<img src=\"" + meta.cover_path.replace("./output/", "") +"\" alt=\"cover image\" class=\"cover\">\r\n";
+			img = "<img src=\"" + meta.cover_path.replace(TEMP_FOLDER, "") +"\" alt=\"cover image\" class=\"cover\">\r\n";
 		}
 		String publisher = "";
 		if (meta.publisher!=null) {
@@ -103,15 +104,15 @@ public class EpubHandler {
 		Object[] args = {head, body};
 		MessageFormat fmt = new MessageFormat(HTML_WRAPPER);
 		String fileContent = fmt.format(args);
-		BufferedWriter writer = new BufferedWriter(new FileWriter("./output/cover.html"));
+		BufferedWriter writer = new BufferedWriter(new FileWriter(TEMP_FOLDER +"cover.html"));
 	    writer.write(fileContent);
 	    writer.close();
 	}
 	//Crea un file per storia
 	public static void createFileFromStory(Story story) throws IOException{
-		File output_path = new File("./output/");
+		File output_path = new File(TEMP_FOLDER);
 		if (!output_path.exists() || !output_path.isDirectory()) {
-			Path filePath = Paths.get("./output/");
+			Path filePath = Paths.get(TEMP_FOLDER);
 			Files.createDirectories(filePath);
 			setHiddenAttrib(filePath);
 		}
@@ -145,22 +146,25 @@ public class EpubHandler {
 		//FORMATTAZIONE STRINGHE HEAD + BODY
 		MessageFormat fmt = new MessageFormat(HTML_WRAPPER);
 		String fileContent = fmt.format(args);
-		BufferedWriter writer = new BufferedWriter(new FileWriter("./output/" + story.name + ".html"));
+		BufferedWriter writer = new BufferedWriter(new FileWriter(TEMP_FOLDER + story.name + ".html"));
 	    writer.write(fileContent);
 	    writer.close();
 	}
 	
+	static boolean deleteDirectory(File directoryToBeDeleted) {
+	    File[] allContents = directoryToBeDeleted.listFiles();
+	    if (allContents != null) {
+	        for (File file : allContents) {
+	            deleteDirectory(file);
+	        }
+	    }
+	    return directoryToBeDeleted.delete();
+	}
+	
 	//cancella tutti i file che sono stati creati durante il parsing
 	public static void abort() throws Exception {
-		File folder = new File("./output");
-		File[] listOfFiles = folder.listFiles(new FilenameFilter() {
-		    public boolean accept(File dir, String name) {
-		        return name.toLowerCase().endsWith(".html");
-		    }
-		});
-		for (File file : listOfFiles) {
-			if (!file.delete()) throw new Exception("file not deleted!");
-		}
+		File folder = new File(TEMP_FOLDER);
+		deleteDirectory(folder);
 	}
 	
 	private static String genStringFromAuthors(LinkedList<String> authors) {
@@ -178,7 +182,7 @@ public class EpubHandler {
 	}
 	//create epub
 	public void createEpub(String filename) throws IOException {
-		File folder = new File("./output");
+		File folder = new File(TEMP_FOLDER);
 		File[] listOfFiles = folder.listFiles(new FilenameFilter() {
 		    public boolean accept(File dir, String name) {
 		        return name.toLowerCase().endsWith(".html");
@@ -205,10 +209,10 @@ public class EpubHandler {
 			book.addCoverImage(img_byte, myme_type, image_file.getName());
 		}
         //ADD CSS
-        FileWriter css_writer = new FileWriter("./output/mystyle.css");
+        FileWriter css_writer = new FileWriter(TEMP_FOLDER + "mystyle.css");
         css_writer.write(STYLE_CSS);
         css_writer.close();
-        File css_file = new File("./output/mystyle.css");
+        File css_file = new File(TEMP_FOLDER + "mystyle.css");
 		byte[] css_byte = FileUtils.readFileToByteArray(css_file);
     	String myme_type_css = MediaTypeUtil.getMediaTypeFromExt("css");
     	Content cs = new Content(myme_type_css, "mystyle.css", css_byte);
@@ -216,5 +220,7 @@ public class EpubHandler {
         
 		EpubWriter writer = new EpubWriter();
 	    writer.writeEpubToFile(book, filename);
+	    
+	    deleteDirectory(folder);
 	}
 }
