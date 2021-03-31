@@ -29,7 +29,7 @@ public class EpubHandler {
 	private String authors;
 	private static final String FILENAME_DEFAULT = "./librogame.epub";
 	private static final String HTML_WRAPPER = "<html xmlns=\"http://www.w3.org/1999/xhtml\"><head>{0}</head><body>{1}</body></html>";
-	private static final String BUTTON_WRAPPER = "<a href=\"{0}\" class=\"button\">{1}</a>\r\n";
+	private static final String BUTTON_WRAPPER = "<a href=\"{0}\" class=\"button\">{1}</a></br>";
 	private static final String SINGLE_CHOICE_BUTTON_ANSWER = "Continua la storia!";
 	private static final String STYLE_CSS = ".cover {\r\n"
 											+ "	display: block;\r\n"
@@ -43,7 +43,7 @@ public class EpubHandler {
 											+ "}\r\n"
 											+ "\r\n"
 											+ ".button {\r\n"
-											+ "  background-color: #A6FE08;\r\n"
+											+ "  background-color: #008CBA;\r\n"
 											+ "  border: none;\r\n"
 											+ "  color: white;\r\n"
 											+ "  padding: 15px 32px;\r\n"
@@ -117,7 +117,7 @@ public class EpubHandler {
 		}
 		
 		//crea i buttoni
-		String buttons = "\r\n";
+		String buttons = "</br>";
 		//size != 0 sempre
 		if (story.choose_story!=null && story.choose_story.size() > 1) {
 			int num_buttons = story.choose_story.size();
@@ -192,7 +192,7 @@ public class EpubHandler {
 	        book.addContent(c);
 	    }
 
-		System.out.println(meta.cover_path);
+		//System.out.println(meta.cover_path);
 		
 		//Add image to book
 		if (meta.cover_path != null) {
