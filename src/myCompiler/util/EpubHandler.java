@@ -31,6 +31,27 @@ public class EpubHandler {
 	private static final String HTML_WRAPPER = "<html xmlns=\"http://www.w3.org/1999/xhtml\"><head>{0}</head><body>{1}</body></html>";
 	private static final String BUTTON_WRAPPER = "<a href=\"{0}\" class=\"button\">{1}</a>\r\n";
 	private static final String SINGLE_CHOICE_BUTTON_ANSWER = "Continua la storia!";
+	private static final String STYLE_CSS = ".cover {\r\n"
+											+ "	display: block;\r\n"
+											+ "  	margin-left: auto;\r\n"
+											+ "  	margin-right: auto;\r\n"
+											+ "  	width: 50%;\r\n"
+											+ "}\r\n"
+											+ "\r\n"
+											+ ".title .author .publisher .year {\r\n"
+											+ "	text-align: center;\r\n"
+											+ "}\r\n"
+											+ "\r\n"
+											+ ".button {\r\n"
+											+ "  background-color: #A6FE08;\r\n"
+											+ "  border: none;\r\n"
+											+ "  color: white;\r\n"
+											+ "  padding: 15px 32px;\r\n"
+											+ "  text-align: center;\r\n"
+											+ "  text-decoration: none;\r\n"
+											+ "  display: inline-block;\r\n"
+											+ "  font-size: 16px;\r\n"
+											+ "}";
 	
 	public EpubHandler(Metadata meta) {
 		this.meta = meta;
@@ -184,13 +205,14 @@ public class EpubHandler {
 			book.addCoverImage(img_byte, myme_type, image_file.getName());
 		}
         //ADD CSS
+        FileWriter css_writer = new FileWriter("./output/mystyle.css");
+        css_writer.write(STYLE_CSS);
+        css_writer.close();
         File css_file = new File("./output/mystyle.css");
 		byte[] css_byte = FileUtils.readFileToByteArray(css_file);
     	String myme_type_css = MediaTypeUtil.getMediaTypeFromExt("css");
     	Content cs = new Content(myme_type_css, "mystyle.css", css_byte);
         book.addContent(cs);
-        
-        
         
 		EpubWriter writer = new EpubWriter();
 	    writer.writeEpubToFile(book, filename);
