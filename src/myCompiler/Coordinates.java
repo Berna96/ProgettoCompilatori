@@ -1,6 +1,6 @@
 package myCompiler;
 
-public class Coordinates {
+public class Coordinates implements Comparable<Coordinates> {
 	private final Integer row;
 	private final Integer column;
 	
@@ -19,5 +19,13 @@ public class Coordinates {
 		
 	public String toString() {
 		return "(" + row + "," + column + ")";
+	}
+
+	@Override
+	public int compareTo(Coordinates c) {
+		if (this.getRow().compareTo(c.getRow()) == 0)
+			return this.getColumn().compareTo(c.getColumn());
+		else 
+			return this.getRow().compareTo(c.getRow());
 	}
 }

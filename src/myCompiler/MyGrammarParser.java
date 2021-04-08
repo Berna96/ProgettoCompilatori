@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g 2021-03-21 12:51:37
+// $ANTLR 3.5.1 C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g 2021-04-08 10:38:39
 
   package myCompiler;
   
@@ -72,7 +72,7 @@ public class MyGrammarParser extends Parser {
 	}
 
 	@Override public String[] getTokenNames() { return MyGrammarParser.tokenNames; }
-	@Override public String getGrammarFileName() { return "C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g"; }
+	@Override public String getGrammarFileName() { return "C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g"; }
 
 
 	  
@@ -102,22 +102,28 @@ public class MyGrammarParser extends Parser {
 	  public LinkedList<CompilationError> getErrors() {
 	  	return env.errorList;
 	  }
+	  
+	  public void displayRecognitionError(String[] tokenNames, RecognitionException e){
+	  	Token tk = input.LT(1);
+	  	sem.manageSyntaxError(tk);
+	  }
+	  
 
 
 
 	// $ANTLR start "start"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:63:1: start : metadata ( story )+ ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:69:1: start : metadata ( story )+ ;
 	public final void start() throws RecognitionException {
 			init(); 
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:65:2: ( metadata ( story )+ )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:66:2: metadata ( story )+
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:71:2: ( metadata ( story )+ )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:72:2: metadata ( story )+
 			{
 			pushFollow(FOLLOW_metadata_in_start67);
 			metadata();
 			state._fsp--;
 
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:66:11: ( story )+
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:72:11: ( story )+
 			int cnt1=0;
 			loop1:
 			while (true) {
@@ -129,7 +135,7 @@ public class MyGrammarParser extends Parser {
 
 				switch (alt1) {
 				case 1 :
-					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:66:11: story
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:72:11: story
 					{
 					pushFollow(FOLLOW_story_in_start69);
 					story();
@@ -146,7 +152,7 @@ public class MyGrammarParser extends Parser {
 				cnt1++;
 			}
 
-			sem.checkGraph(); sem.checkStories(); sem.createFilesFromStories();
+			sem.checkGraph(); sem.checkStories(); sem.createFilesFromStories(); sem.reorderErrors();
 			}
 
 		}
@@ -163,15 +169,15 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "metadata"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:71:1: metadata : LB BOOK ( book_key_value )* RB ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:77:1: metadata : LB BOOK ( book_key_value )* RB ;
 	public final void metadata() throws RecognitionException {
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:72:2: ( LB BOOK ( book_key_value )* RB )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:72:4: LB BOOK ( book_key_value )* RB
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:78:2: ( LB BOOK ( book_key_value )* RB )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:78:4: LB BOOK ( book_key_value )* RB
 			{
 			match(input,LB,FOLLOW_LB_in_metadata85); 
 			match(input,BOOK,FOLLOW_BOOK_in_metadata87); 
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:73:4: ( book_key_value )*
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:79:4: ( book_key_value )*
 			loop2:
 			while (true) {
 				int alt2=2;
@@ -182,7 +188,7 @@ public class MyGrammarParser extends Parser {
 
 				switch (alt2) {
 				case 1 :
-					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:73:4: book_key_value
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:79:4: book_key_value
 					{
 					pushFollow(FOLLOW_book_key_value_in_metadata92);
 					book_key_value();
@@ -214,17 +220,17 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "book_key_value"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:77:1: book_key_value : title_kv ( COMMA author_kv )+ ( COMMA pvy_kv )* ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:83:1: book_key_value : title_kv ( COMMA author_kv )+ ( COMMA pvy_kv )* ;
 	public final void book_key_value() throws RecognitionException {
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:78:2: ( title_kv ( COMMA author_kv )+ ( COMMA pvy_kv )* )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:79:4: title_kv ( COMMA author_kv )+ ( COMMA pvy_kv )*
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:84:2: ( title_kv ( COMMA author_kv )+ ( COMMA pvy_kv )* )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:85:4: title_kv ( COMMA author_kv )+ ( COMMA pvy_kv )*
 			{
 			pushFollow(FOLLOW_title_kv_in_book_key_value120);
 			title_kv();
 			state._fsp--;
 
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:80:4: ( COMMA author_kv )+
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:86:4: ( COMMA author_kv )+
 			int cnt3=0;
 			loop3:
 			while (true) {
@@ -240,7 +246,7 @@ public class MyGrammarParser extends Parser {
 
 				switch (alt3) {
 				case 1 :
-					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:80:5: COMMA author_kv
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:86:5: COMMA author_kv
 					{
 					match(input,COMMA,FOLLOW_COMMA_in_book_key_value127); 
 					pushFollow(FOLLOW_author_kv_in_book_key_value129);
@@ -258,7 +264,7 @@ public class MyGrammarParser extends Parser {
 				cnt3++;
 			}
 
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:81:4: ( COMMA pvy_kv )*
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:87:4: ( COMMA pvy_kv )*
 			loop4:
 			while (true) {
 				int alt4=2;
@@ -269,7 +275,7 @@ public class MyGrammarParser extends Parser {
 
 				switch (alt4) {
 				case 1 :
-					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:81:5: COMMA pvy_kv
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:87:5: COMMA pvy_kv
 					{
 					match(input,COMMA,FOLLOW_COMMA_in_book_key_value137); 
 					pushFollow(FOLLOW_pvy_kv_in_book_key_value139);
@@ -300,13 +306,13 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "title_kv"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:83:1: title_kv : TITLE_S COL title_book= STRING_VALUE ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:89:1: title_kv : TITLE_S COL title_book= STRING_VALUE ;
 	public final void title_kv() throws RecognitionException {
 		Token title_book=null;
 
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:84:2: ( TITLE_S COL title_book= STRING_VALUE )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:84:4: TITLE_S COL title_book= STRING_VALUE
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:90:2: ( TITLE_S COL title_book= STRING_VALUE )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:90:4: TITLE_S COL title_book= STRING_VALUE
 			{
 			match(input,TITLE_S,FOLLOW_TITLE_S_in_title_kv154); 
 			match(input,COL,FOLLOW_COL_in_title_kv156); 
@@ -328,13 +334,13 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "author_kv"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:86:1: author_kv : AUTHOR COL author= STRING_VALUE ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:92:1: author_kv : AUTHOR COL author= STRING_VALUE ;
 	public final void author_kv() throws RecognitionException {
 		Token author=null;
 
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:87:2: ( AUTHOR COL author= STRING_VALUE )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:87:4: AUTHOR COL author= STRING_VALUE
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:93:2: ( AUTHOR COL author= STRING_VALUE )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:93:4: AUTHOR COL author= STRING_VALUE
 			{
 			match(input,AUTHOR,FOLLOW_AUTHOR_in_author_kv172); 
 			match(input,COL,FOLLOW_COL_in_author_kv174); 
@@ -356,13 +362,13 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "pvy_kv"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:90:1: pvy_kv : ( publisher_kv | image_kv | year_kv ) ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:96:1: pvy_kv : ( publisher_kv | image_kv | year_kv ) ;
 	public final void pvy_kv() throws RecognitionException {
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:90:8: ( ( publisher_kv | image_kv | year_kv ) )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:91:3: ( publisher_kv | image_kv | year_kv )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:96:8: ( ( publisher_kv | image_kv | year_kv ) )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:97:3: ( publisher_kv | image_kv | year_kv )
 			{
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:91:3: ( publisher_kv | image_kv | year_kv )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:97:3: ( publisher_kv | image_kv | year_kv )
 			int alt5=3;
 			switch ( input.LA(1) ) {
 			case PUBLISHER:
@@ -387,7 +393,7 @@ public class MyGrammarParser extends Parser {
 			}
 			switch (alt5) {
 				case 1 :
-					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:91:5: publisher_kv
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:97:5: publisher_kv
 					{
 					pushFollow(FOLLOW_publisher_kv_in_pvy_kv195);
 					publisher_kv();
@@ -396,7 +402,7 @@ public class MyGrammarParser extends Parser {
 					}
 					break;
 				case 2 :
-					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:92:9: image_kv
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:98:9: image_kv
 					{
 					pushFollow(FOLLOW_image_kv_in_pvy_kv207);
 					image_kv();
@@ -405,7 +411,7 @@ public class MyGrammarParser extends Parser {
 					}
 					break;
 				case 3 :
-					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:93:9: year_kv
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:99:9: year_kv
 					{
 					pushFollow(FOLLOW_year_kv_in_pvy_kv219);
 					year_kv();
@@ -432,13 +438,13 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "publisher_kv"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:95:1: publisher_kv : PUBLISHER COL publisher= STRING_VALUE ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:101:1: publisher_kv : PUBLISHER COL publisher= STRING_VALUE ;
 	public final void publisher_kv() throws RecognitionException {
 		Token publisher=null;
 
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:96:2: ( PUBLISHER COL publisher= STRING_VALUE )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:96:4: PUBLISHER COL publisher= STRING_VALUE
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:102:2: ( PUBLISHER COL publisher= STRING_VALUE )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:102:4: PUBLISHER COL publisher= STRING_VALUE
 			{
 			match(input,PUBLISHER,FOLLOW_PUBLISHER_in_publisher_kv230); 
 			match(input,COL,FOLLOW_COL_in_publisher_kv232); 
@@ -460,13 +466,13 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "image_kv"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:99:1: image_kv : IMAGE COL image_path= STRING_VALUE ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:105:1: image_kv : IMAGE COL image_path= STRING_VALUE ;
 	public final void image_kv() throws RecognitionException {
 		Token image_path=null;
 
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:99:9: ( IMAGE COL image_path= STRING_VALUE )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:99:11: IMAGE COL image_path= STRING_VALUE
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:105:9: ( IMAGE COL image_path= STRING_VALUE )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:105:11: IMAGE COL image_path= STRING_VALUE
 			{
 			match(input,IMAGE,FOLLOW_IMAGE_in_image_kv249); 
 			match(input,COL,FOLLOW_COL_in_image_kv251); 
@@ -488,13 +494,13 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "year_kv"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:101:1: year_kv : YEAR COL year= NUMBER_VALUE ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:107:1: year_kv : YEAR COL year= NUMBER_VALUE ;
 	public final void year_kv() throws RecognitionException {
 		Token year=null;
 
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:101:9: ( YEAR COL year= NUMBER_VALUE )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:101:11: YEAR COL year= NUMBER_VALUE
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:107:9: ( YEAR COL year= NUMBER_VALUE )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:107:11: YEAR COL year= NUMBER_VALUE
 			{
 			match(input,YEAR,FOLLOW_YEAR_in_year_kv267); 
 			match(input,COL,FOLLOW_COL_in_year_kv269); 
@@ -522,7 +528,7 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "start_story"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:104:1: start_story returns [Token this_story, Token next_story, boolean hasBranches] : LB STORY this_st= STORY_NAME ( ARROW (next_st= STORY_NAME | BRANCHES ) )? RB ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:110:1: start_story returns [Token this_story, Token next_story, boolean hasBranches] : LB STORY this_st= STORY_NAME ( ARROW (next_st= STORY_NAME | BRANCHES ) )? RB ;
 	public final MyGrammarParser.start_story_return start_story() throws RecognitionException {
 		MyGrammarParser.start_story_return retval = new MyGrammarParser.start_story_return();
 		retval.start = input.LT(1);
@@ -531,15 +537,15 @@ public class MyGrammarParser extends Parser {
 		Token next_st=null;
 
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:105:2: ( LB STORY this_st= STORY_NAME ( ARROW (next_st= STORY_NAME | BRANCHES ) )? RB )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:105:4: LB STORY this_st= STORY_NAME ( ARROW (next_st= STORY_NAME | BRANCHES ) )? RB
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:111:2: ( LB STORY this_st= STORY_NAME ( ARROW (next_st= STORY_NAME | BRANCHES ) )? RB )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:111:4: LB STORY this_st= STORY_NAME ( ARROW (next_st= STORY_NAME | BRANCHES ) )? RB
 			{
 			retval.hasBranches = false;
 			match(input,LB,FOLLOW_LB_in_start_story295); 
 			match(input,STORY,FOLLOW_STORY_in_start_story297); 
 			this_st=(Token)match(input,STORY_NAME,FOLLOW_STORY_NAME_in_start_story301); 
 			retval.this_story =this_st;
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:107:3: ( ARROW (next_st= STORY_NAME | BRANCHES ) )?
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:113:3: ( ARROW (next_st= STORY_NAME | BRANCHES ) )?
 			int alt7=2;
 			int LA7_0 = input.LA(1);
 			if ( (LA7_0==ARROW) ) {
@@ -547,10 +553,10 @@ public class MyGrammarParser extends Parser {
 			}
 			switch (alt7) {
 				case 1 :
-					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:107:4: ARROW (next_st= STORY_NAME | BRANCHES )
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:113:4: ARROW (next_st= STORY_NAME | BRANCHES )
 					{
 					match(input,ARROW,FOLLOW_ARROW_in_start_story309); 
-					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:108:3: (next_st= STORY_NAME | BRANCHES )
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:114:3: (next_st= STORY_NAME | BRANCHES )
 					int alt6=2;
 					int LA6_0 = input.LA(1);
 					if ( (LA6_0==STORY_NAME) ) {
@@ -568,14 +574,14 @@ public class MyGrammarParser extends Parser {
 
 					switch (alt6) {
 						case 1 :
-							// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:108:4: next_st= STORY_NAME
+							// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:114:4: next_st= STORY_NAME
 							{
 							next_st=(Token)match(input,STORY_NAME,FOLLOW_STORY_NAME_in_start_story317); 
 							retval.next_story =next_st;
 							}
 							break;
 						case 2 :
-							// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:110:3: BRANCHES
+							// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:116:3: BRANCHES
 							{
 							match(input,BRANCHES,FOLLOW_BRANCHES_in_start_story329); 
 							retval.hasBranches = true;
@@ -609,11 +615,11 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "end_story"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:115:1: fragment end_story : LB ENDSTORY RB ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:121:1: fragment end_story : LB ENDSTORY RB ;
 	public final void end_story() throws RecognitionException {
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:116:2: ( LB ENDSTORY RB )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:116:4: LB ENDSTORY RB
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:122:2: ( LB ENDSTORY RB )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:122:4: LB ENDSTORY RB
 			{
 			match(input,LB,FOLLOW_LB_in_end_story352); 
 			match(input,ENDSTORY,FOLLOW_ENDSTORY_in_end_story354); 
@@ -637,7 +643,7 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "story"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:119:1: story : story_name= start_story (title_story= title )? text= TEXT (chosen_stories= choose )? end_story ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:125:1: story : story_name= start_story (title_story= title )? text= TEXT (chosen_stories= choose )? end_story ;
 	public final MyGrammarParser.story_return story() throws RecognitionException {
 		MyGrammarParser.story_return retval = new MyGrammarParser.story_return();
 		retval.start = input.LT(1);
@@ -648,14 +654,14 @@ public class MyGrammarParser extends Parser {
 		ParserRuleReturnScope chosen_stories =null;
 
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:119:7: (story_name= start_story (title_story= title )? text= TEXT (chosen_stories= choose )? end_story )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:120:2: story_name= start_story (title_story= title )? text= TEXT (chosen_stories= choose )? end_story
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:125:7: (story_name= start_story (title_story= title )? text= TEXT (chosen_stories= choose )? end_story )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:126:2: story_name= start_story (title_story= title )? text= TEXT (chosen_stories= choose )? end_story
 			{
 			pushFollow(FOLLOW_start_story_in_story369);
 			story_name=start_story();
 			state._fsp--;
 
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:121:14: (title_story= title )?
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:127:14: (title_story= title )?
 			int alt8=2;
 			int LA8_0 = input.LA(1);
 			if ( (LA8_0==LB) ) {
@@ -663,7 +669,7 @@ public class MyGrammarParser extends Parser {
 			}
 			switch (alt8) {
 				case 1 :
-					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:121:14: title_story= title
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:127:14: title_story= title
 					{
 					pushFollow(FOLLOW_title_in_story376);
 					title_story=title();
@@ -675,7 +681,7 @@ public class MyGrammarParser extends Parser {
 			}
 
 			text=(Token)match(input,TEXT,FOLLOW_TEXT_in_story382); 
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:123:17: (chosen_stories= choose )?
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:129:17: (chosen_stories= choose )?
 			int alt9=2;
 			int LA9_0 = input.LA(1);
 			if ( (LA9_0==LB) ) {
@@ -686,7 +692,7 @@ public class MyGrammarParser extends Parser {
 			}
 			switch (alt9) {
 				case 1 :
-					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:123:17: chosen_stories= choose
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:129:17: chosen_stories= choose
 					{
 					pushFollow(FOLLOW_choose_in_story389);
 					chosen_stories=choose();
@@ -727,7 +733,7 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "title"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:141:1: title returns [Token title_story] : LB TITLE title_st= STRING_VALUE RB ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:147:1: title returns [Token title_story] : LB TITLE title_st= STRING_VALUE RB ;
 	public final Token title() throws RecognitionException {
 		Token title_story = null;
 
@@ -735,8 +741,8 @@ public class MyGrammarParser extends Parser {
 		Token title_st=null;
 
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:142:2: ( LB TITLE title_st= STRING_VALUE RB )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:144:2: LB TITLE title_st= STRING_VALUE RB
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:148:2: ( LB TITLE title_st= STRING_VALUE RB )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:150:2: LB TITLE title_st= STRING_VALUE RB
 			{
 			match(input,LB,FOLLOW_LB_in_title417); 
 			match(input,TITLE,FOLLOW_TITLE_in_title419); 
@@ -765,7 +771,7 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "choose"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:147:1: choose returns [LinkedList<Token> stories, LinkedList<String> answers] : LB CHOOSE list_stories= choose_key_value RB ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:153:1: choose returns [LinkedList<Token> stories, LinkedList<String> answers] : LB CHOOSE list_stories= choose_key_value RB ;
 	public final MyGrammarParser.choose_return choose() throws RecognitionException {
 		MyGrammarParser.choose_return retval = new MyGrammarParser.choose_return();
 		retval.start = input.LT(1);
@@ -773,8 +779,8 @@ public class MyGrammarParser extends Parser {
 		ParserRuleReturnScope list_stories =null;
 
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:148:2: ( LB CHOOSE list_stories= choose_key_value RB )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:149:2: LB CHOOSE list_stories= choose_key_value RB
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:154:2: ( LB CHOOSE list_stories= choose_key_value RB )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:155:2: LB CHOOSE list_stories= choose_key_value RB
 			{
 			match(input,LB,FOLLOW_LB_in_choose445); 
 			match(input,CHOOSE,FOLLOW_CHOOSE_in_choose447); 
@@ -808,7 +814,7 @@ public class MyGrammarParser extends Parser {
 
 
 	// $ANTLR start "choose_key_value"
-	// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:155:1: choose_key_value returns [LinkedList<Token> stories, LinkedList<String> answers] : ans_1= STRING_VALUE COL story_name_1= STORY_NAME ( COMMA ans_2= STRING_VALUE COL story_name_n= STORY_NAME )* ;
+	// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:161:1: choose_key_value returns [LinkedList<Token> stories, LinkedList<String> answers] : ans_1= STRING_VALUE COL story_name_1= STORY_NAME ( COMMA ans_2= STRING_VALUE COL story_name_n= STORY_NAME )* ;
 	public final MyGrammarParser.choose_key_value_return choose_key_value() throws RecognitionException {
 		MyGrammarParser.choose_key_value_return retval = new MyGrammarParser.choose_key_value_return();
 		retval.start = input.LT(1);
@@ -819,14 +825,14 @@ public class MyGrammarParser extends Parser {
 		Token story_name_n=null;
 
 		try {
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:156:2: (ans_1= STRING_VALUE COL story_name_1= STORY_NAME ( COMMA ans_2= STRING_VALUE COL story_name_n= STORY_NAME )* )
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:157:3: ans_1= STRING_VALUE COL story_name_1= STORY_NAME ( COMMA ans_2= STRING_VALUE COL story_name_n= STORY_NAME )*
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:162:2: (ans_1= STRING_VALUE COL story_name_1= STORY_NAME ( COMMA ans_2= STRING_VALUE COL story_name_n= STORY_NAME )* )
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:163:3: ans_1= STRING_VALUE COL story_name_1= STORY_NAME ( COMMA ans_2= STRING_VALUE COL story_name_n= STORY_NAME )*
 			{
 			ans_1=(Token)match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_choose_key_value483); 
 			match(input,COL,FOLLOW_COL_in_choose_key_value485); 
 			story_name_1=(Token)match(input,STORY_NAME,FOLLOW_STORY_NAME_in_choose_key_value491); 
 			sem.insertChosenStory(story_name_1); sem.insertAnswers(ans_1);
-			// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:158:3: ( COMMA ans_2= STRING_VALUE COL story_name_n= STORY_NAME )*
+			// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:164:3: ( COMMA ans_2= STRING_VALUE COL story_name_n= STORY_NAME )*
 			loop10:
 			while (true) {
 				int alt10=2;
@@ -837,7 +843,7 @@ public class MyGrammarParser extends Parser {
 
 				switch (alt10) {
 				case 1 :
-					// C:\\Users\\gianl\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:159:3: COMMA ans_2= STRING_VALUE COL story_name_n= STORY_NAME
+					// C:\\Users\\gianl\\OneDrive\\Desktop\\Unibg\\Magistrale\\Linguaggi formali e compilatori\\Progetto\\eclipse-workspace\\ProgettoCompilatori\\src\\MyGrammar.g:165:3: COMMA ans_2= STRING_VALUE COL story_name_n= STORY_NAME
 					{
 					match(input,COMMA,FOLLOW_COMMA_in_choose_key_value501); 
 					ans_2=(Token)match(input,STRING_VALUE,FOLLOW_STRING_VALUE_in_choose_key_value507); 

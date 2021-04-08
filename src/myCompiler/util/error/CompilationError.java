@@ -4,7 +4,7 @@ import java.text.MessageFormat;
 
 import myCompiler.Coordinates;
 
-public class CompilationError {
+public class CompilationError implements Comparable<CompilationError> {
 	public ErrType type;
 	public ErrCauses cause;
 	public ErrSolution solution;
@@ -25,6 +25,11 @@ public class CompilationError {
 		this.cause = cause;
 		this.solution = solution;
 		this.coordinates = coordinates;
+	}
+	
+	@Override
+	public int compareTo(CompilationError c_err) {
+		return this.coordinates.compareTo(c_err.coordinates);
 	}
 
 	@Override

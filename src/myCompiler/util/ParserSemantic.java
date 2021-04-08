@@ -1,6 +1,7 @@
 package myCompiler.util;
 
 import java.io.IOException;
+import java.util.Collections;
 //import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -79,6 +80,9 @@ public class ParserSemantic {
 		CompilationError c_error = new CompilationError(tipo,causa,soluzione,coord,token_ref.getText());
 		env.errorList.add(c_error);
 	}
+	public void manageSyntaxError(Token tk) {
+		addError(ErrType.SYNTAX_ERROR,ErrCauses.SYNTAX_ERROR,ErrSolution.SYNTAX_ERROR,tk,tk);
+	}
 	
 	private void addWarning(WarnType tipo, WarnCauses causa, WarnSolution soluzione, Token token_coord_ref, Token token_ref) {
 		Integer line = token_coord_ref.getLine();
@@ -91,6 +95,10 @@ public class ParserSemantic {
 	private void addWarning(WarnType tipo, WarnCauses causa, WarnSolution soluzione) {
 		CompilationWarning c_warning = new CompilationWarning(tipo,causa,soluzione,null,null);
 		env.warningList.add(c_warning);
+	}
+	
+	public void reorderErrors() {
+		Collections.sort(env.errorList);
 	}
 	/*
 	public void scan_error(Token tk) {
