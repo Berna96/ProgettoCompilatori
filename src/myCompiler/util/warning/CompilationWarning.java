@@ -3,12 +3,12 @@ package myCompiler.util.warning;
 import java.text.MessageFormat;
 
 import myCompiler.Coordinates;
+import myCompiler.util.CompilationMessage;
 
-public class CompilationWarning {
+public class CompilationWarning extends CompilationMessage {
 	public WarnType type;
 	public WarnCauses cause;
 	public WarnSolution solution;
-	public Coordinates coordinates;
 	
 	public String token_ref;
 	

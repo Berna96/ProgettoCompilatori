@@ -9,7 +9,8 @@ public enum WarnCauses {
 	CYCLIC ("Il percoso della scelte delle storie e' ciclico, questo permette di ritornare a una storia gia'  passata"),
 	NOT_EXIST_IMAGE_PATH ("Il percorso dell'immagine di copertina e' errato o il file non esiste"),
 	TITLE_EMPTY ("Blocco TITLE della storia {0} definito ma vuoto"),
-	TEXT_EMPTY ("Blocco TEXT della storia {0} definito ma vuoto");
+	TEXT_EMPTY ("Blocco TEXT della storia {0} definito ma vuoto"),
+	OVER_MAX_CHOOSES("Hai definito troppe scelte nella storia {0}");
 	
 	String text;
 	

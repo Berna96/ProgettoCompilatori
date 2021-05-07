@@ -2,12 +2,14 @@ package myPackage;
 
 import java.io.File;
 import java.io.FileReader;
+import java.util.LinkedList;
 
 import org.antlr.runtime.ANTLRReaderStream;
 import org.antlr.runtime.CommonTokenStream;
 
 import myCompiler.MyGrammarLexer;
 import myCompiler.MyGrammarParser;
+import myCompiler.util.CompilationMessage;
 import myCompiler.util.EpubHandler;
 
 
@@ -44,20 +46,23 @@ public class ParserUser {
 
 				parser.start();
 		    
-				for (int i=0; i < parser.getWarnings().size(); i++) {
-					System.out.println(parser.getWarnings().get(i));
-				}
-		    
 				System.out.println();
+				
+				LinkedList<CompilationMessage> errors_and_warnings = new LinkedList<>();
+				errors_and_warnings.addAll(parser.getWarnings());
+				errors_and_warnings.addAll(parser.getErrors());
+				errors_and_warnings.sort(null);
 		    
 				if (parser.getErrors().isEmpty()) {
 					EpubHandler eh = new EpubHandler(parser.getMetadata());
 					eh.createEpub(fileOut);
 				} else {
 					EpubHandler.abort();
-					for (int i=0; i < parser.getErrors().size(); i++)
-						System.out.println(parser.getErrors().get(i));
 				}
+			
+				for (int i=0; i < errors_and_warnings.size(); i++)
+					System.out.println(errors_and_warnings.get(i));
+				
 			} catch (Exception e) {
 				System.out.println ("Parsing con ANTLR abortito\n\n");
 				e.printStackTrace();

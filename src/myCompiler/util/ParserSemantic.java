@@ -1,12 +1,14 @@
 package myCompiler.util;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 //import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
 
+//import org.antlr.runtime.CommonToken;
 import org.antlr.runtime.Token;
 import org.jgrapht.alg.connectivity.ConnectivityInspector;
 import org.jgrapht.alg.cycle.CycleDetector;
@@ -20,6 +22,7 @@ import myCompiler.util.warning.*;
 
 public class ParserSemantic {
 	ParserEnvironment env;
+	public static int MAX_CHOOSES = 10;
 	public ParserSemantic (ParserEnvironment e) {
 		env = e;
 	}
@@ -161,17 +164,44 @@ public class ParserSemantic {
 			env.librogame.addStory(nextStory); // aggiungo nextStory nella storyTable
 			env.tokenStoryTable.put(nextStory,next_story); // tengo traccia del token della storia ancora da definire
 			env.graph.addVertex(nextStory); // aggiungo nextStory nel grafo
+		} 
+		// se nextstory e' la stessa storia, errore
+		if (story.name.equals(nextStory.name)) {
+			// ERRORE COMPILAZIONE: ANELLO STORIA !!!
+			addError(ErrType.AUTO_RING,ErrCauses.AUTO_RING,ErrSolution.AUTO_RING,next_story,next_story);
+		} else {
+			// nextStory e' settata soltanto se e' un nextStory differente
+			story.setNext_story(nextStory); // setto next story di story
+			env.graph.addEdge(story, nextStory); // collego story alla nextStory nel grafo
 		}
-		story.setNext_story(nextStory); // setto next story di story
-		env.graph.addEdge(story, nextStory); // collego story alla nextStory nel grafo
 	}
 	
-	private void manageBranchesStory(Story story, Token story_token, LinkedList<String> answers, LinkedList<Token> chosen_stories) {
+	private void manageBranchesStory(Story story, Token story_token, LinkedList<Token> answers, LinkedList<Token> chosen_stories) {
 		//LinkedList<String> choose_answer = new LinkedList<String>();
 		LinkedList<Story> choose_story = new LinkedList<Story>();
+		ArrayList<String> label_list = new ArrayList<>();
+		
+		if (chosen_stories.size() > MAX_CHOOSES) {
+			// WARNING COMPILAZIONE : TROPPE SCELTE !!!
+			addWarning(WarnType.OVER_MAX_CHOOSES,WarnCauses.OVER_MAX_CHOOSES,WarnSolution.OVER_MAX_CHOOSES,story_token,story_token);
+		}
+		Integer num_chooses = chosen_stories.size() < MAX_CHOOSES ? chosen_stories.size() : MAX_CHOOSES;
+		
 		// ciclo i nomi delle storie possibili
-		for (int i=0; i < chosen_stories.size(); i++) {
+		for (int i=0; i < num_chooses; i++) {
 			Token chosen_story_i = chosen_stories.get(i);
+			
+			// controllo etichetta ridondante
+			Token choose_label_i = answers.get(i);
+			String choose_label_string_i = choose_label_i.getText().replace("\"", "");
+			if (label_list.contains(choose_label_string_i)) {
+				// ERRORE COMPILAZIONE : ETICHETTE UGUALI !!!
+				addError(ErrType.SAME_LABEL,ErrCauses.SAME_LABEL,ErrSolution.SAME_LABEL,choose_label_i,choose_label_i);
+				continue;
+			} else {
+				label_list.add(choose_label_string_i);
+			}
+			
 			String chosen_story_name_i = chosen_story_i.getText(); // nome storia i-esima
 			Story temp_story = env.librogame.getStory(chosen_story_name_i); // estraggo la storia dalla storyTable
 			// se non esiste
@@ -181,20 +211,33 @@ public class ParserSemantic {
 				env.tokenStoryTable.put(temp_story,chosen_story_i); // tengo traccia del token della storia da definire
 				env.graph.addVertex(temp_story); // aggiungo la temp_story i-esima nel grafo
 			}
+			if (story.name.equals(temp_story.name)) {
+				// ERRORE COMPILAZIONE: ANELLO STORIA !!!
+				addError(ErrType.AUTO_RING,ErrCauses.AUTO_RING,ErrSolution.AUTO_RING,chosen_story_i,chosen_story_i);
+			} else {
+				env.graph.addEdge(story, temp_story); // collego story alla temp_story i-esima
+			}
+			/*
 			try {
 				env.graph.addEdge(story, temp_story); // collego story alla temp_story i-esima
 			}catch(IllegalArgumentException e) {
 				// WARNING COMPILAZIONE: CICLICO!!!
-				addWarning(WarnType.CYCLIC,WarnCauses.CYCLIC,WarnSolution.REDEF_PATH_STORIES);
-				env.cyclic = true;
+				addError(ErrType.AUTO_RING,ErrCauses.AUTO_RING,ErrSolution.AUTO_RING,chosen_story_i,chosen_story_i);
+				//env.cyclic = true;
 			}
+			*/
 			choose_story.add(temp_story);
 		}
 		story.setChoose_story(choose_story);
-		story.setAnswers(answers);
+		LinkedList<String> answers_string = new LinkedList<>();
+		for (Token answer_token_i : answers) {
+			String answer_string_i = answer_token_i.getText().replace("\"", "");
+			answers_string.add(answer_string_i);
+		}
+		story.setAnswers(answers_string);
 	}
 	
-	public void manageStoryBlock(Token this_story, Token next_story, boolean hasBranches, Token title, Token text, LinkedList<Token> chosen_stories, LinkedList<String> answers) {
+	public void manageStoryBlock(Token this_story, Token next_story, boolean hasBranches, Token title, Token text, LinkedList<Token> chosen_stories, LinkedList<Token> answers) {
 		Story story = manageThisStory(this_story); // fare che se ritorna null significa che gia' esiste?
 		
 		if (title != null)
@@ -247,13 +290,13 @@ public class ParserSemantic {
 	
 	public void insertAnswers(Token answer_token){
 		//env.chosenStories.add(story.getText());
-		String answer = answer_token.getText().replace("\"", "");
-		env.answers.add(answer);
+		//String answer = answer_token.getText().replace("\"", "");
+		env.answers.add(answer_token);
 	}
 	
-	public LinkedList<String> getAnswers(){
+	public LinkedList<Token> getAnswers(){
 		@SuppressWarnings("unchecked")
-		LinkedList<String> clone = (LinkedList<String>) env.answers.clone();
+		LinkedList<Token> clone = (LinkedList<Token>) env.answers.clone();
 		env.answers.clear();
 		return clone;
 	}

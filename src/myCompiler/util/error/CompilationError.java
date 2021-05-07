@@ -3,12 +3,12 @@ package myCompiler.util.error;
 import java.text.MessageFormat;
 
 import myCompiler.Coordinates;
+import myCompiler.util.CompilationMessage;
 
-public class CompilationError implements Comparable<CompilationError> {
+public class CompilationError extends CompilationMessage {
 	public ErrType type;
 	public ErrCauses cause;
 	public ErrSolution solution;
-	public Coordinates coordinates;
 	
 	public String token_ref;
 	
@@ -25,11 +25,6 @@ public class CompilationError implements Comparable<CompilationError> {
 		this.cause = cause;
 		this.solution = solution;
 		this.coordinates = coordinates;
-	}
-	
-	@Override
-	public int compareTo(CompilationError c_err) {
-		return this.coordinates.compareTo(c_err.coordinates);
 	}
 
 	@Override

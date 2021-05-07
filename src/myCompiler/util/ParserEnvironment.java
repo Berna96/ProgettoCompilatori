@@ -27,7 +27,7 @@ public class ParserEnvironment {
 	
 	public Metadata metadata;
 	public LinkedList<Token> chosenStories;
-	public LinkedList<String> answers;
+	public LinkedList<Token> answers;
 	
 	/*
 	 * tokenStoryTable associa una Story ad un Token.

@@ -5,7 +5,8 @@ public enum WarnType {
 	INCOMPLETE_STORY ("Storia incompleta"),
 	UNATTAINABLE ("Irraggiungibilita' delle storie"),
 	CYCLIC ("Ciclicita'  delle storie"),
-	ERROR_INFO("Informazione errata");
+	ERROR_INFO("Informazione errata"),
+	OVER_MAX_CHOOSES("Troppe scelte");
 	
 	String text;
 	WarnType(String text){

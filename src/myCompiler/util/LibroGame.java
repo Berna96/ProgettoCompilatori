@@ -1,7 +1,7 @@
 package myCompiler.util;
 
-import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Set;
 
@@ -9,7 +9,7 @@ import java.util.Set;
 public class LibroGame {
 	// CAMPI DEDICATI AL LIBROGAME
 	public Metadata metadata;
-	public Hashtable<String, Story> storyTable;
+	public LinkedHashMap<String, Story> storyTable;
 	
 	// COSTRUTTORI
 	public LibroGame(String publisher, String title, Integer year, LinkedList<String> authors, String cover_path) {
@@ -19,14 +19,14 @@ public class LibroGame {
 		metadata.year = year;
 		metadata.authors = authors;
 		metadata.cover_path = cover_path;
-		storyTable = new Hashtable<String,Story>();
+		storyTable = new LinkedHashMap<String,Story>();
 	}
 	public LibroGame(Metadata metadata) {
-		storyTable = new Hashtable<String,Story>();
+		storyTable = new LinkedHashMap<String,Story>();
 		this.metadata = metadata;
 	}
 	public LibroGame() {
-		storyTable = new Hashtable<String,Story>(); // SEMPRE aggiornata
+		storyTable = new LinkedHashMap<String,Story>(); // SEMPRE aggiornata
 		this.metadata = new Metadata();
 	}
 	

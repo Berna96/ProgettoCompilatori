@@ -7,7 +7,8 @@ public enum WarnSolution {
 	REDEF_PATH_STORIES("Ricontrollare il percorso delle storie ed eventualmente ridefinirlo"),
 	SPEC_CORR_PATH ("Specificare un percorso corretto"),
 	TITLE_EMPTY ("Riempire TITLE oppure toglierlo"),
-	TEXT_EMPTY ("Riempire TEXT oppure toglierlo");
+	TEXT_EMPTY ("Riempire TEXT oppure toglierlo"),
+	OVER_MAX_CHOOSES("Definiscine massimo 10");
 	
 	String text;
 	WarnSolution(String text){
