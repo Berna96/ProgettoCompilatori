@@ -3,6 +3,7 @@ package myCompiler.util;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Hashtable;
 //import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -21,10 +22,12 @@ import myCompiler.util.warning.*;
 //import myCompiler.MyGrammarParser.story_return;
 
 public class ParserSemantic {
+	private boolean existAtLeastOnePath;
 	ParserEnvironment env;
 	public static int MAX_CHOOSES = 10;
 	public ParserSemantic (ParserEnvironment e) {
 		env = e;
+		existAtLeastOnePath = false;
 	}
 	
 	/*----------METADATA----------*/
@@ -317,19 +320,41 @@ public class ParserSemantic {
 	/*----------FINE STORIE----------*/
 	
 	/*----------GESTIONE GRAFO----------*/
+	private void CheckLeavesPath(Story leaf, Set<Story> listCycleVertex) {
+		for (Story story_cycle : listCycleVertex) {
+			if (env.connectivity_inspector.pathExists(story_cycle, leaf)) {
+				// WARNING: CICLICO !!!
+				addWarning(WarnType.CYCLIC,WarnCauses.CYCLIC,WarnSolution.REDEF_PATH_STORIES);
+				existAtLeastOnePath = true;
+				break;
+			}
+		}
+	}
+	
+	//TODO:controllare cpn Gian
 	public void checkGraph() {
 		env.cycle_detector = new CycleDetector<>(env.graph);
 		env.connectivity_inspector = new ConnectivityInspector<>(env.graph);
 		
 		if (!env.cyclic && env.cycle_detector.detectCycles()) {
-			// WARNING: CICLICLO !!!
-			addWarning(WarnType.CYCLIC,WarnCauses.CYCLIC,WarnSolution.REDEF_PATH_STORIES);
+			//siamo in presenza di un ciclo
+			Set<Story> listCycleVertex = env.cycle_detector.findCycles();
+			env.graph.vertexSet().stream()
+					.filter(key -> env.graph.outgoingEdgesOf(key).size() == 0)
+					.forEach(key -> CheckLeavesPath(key, listCycleVertex));
+			
+			if (!existAtLeastOnePath) {
+				//VA bene il null????????????????????????????
+				addError(ErrType.CYCLIC, ErrCauses.CYCLIC, ErrSolution.REDEF_PATH_STORIES, null, null);
+			}
+			
 		}
 		
 		if (!env.connectivity_inspector.isConnected()) {
 			// WARNING: NON CONNESSO !!!
 			addWarning(WarnType.UNATTAINABLE,WarnCauses.UNATTAINABLE,WarnSolution.REDEF_PATH_STORIES);
 		}
+		
 	}
 	/*----------FINE GESTIONE GRAFO----------*/
 	

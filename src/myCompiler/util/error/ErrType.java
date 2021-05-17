@@ -8,7 +8,8 @@ public enum ErrType {
 	UNDEF_STORY_ERROR("Errore storia non definita"),
 	GEN_FILES_ERROR("Errore nella creazione dei files"),
 	AUTO_RING("Errore di autoanello"),
-	SAME_LABEL("Errore ripetizione delle etichette");
+	SAME_LABEL("Errore ripetizione delle etichette"),
+	CYCLIC ("Ciclicita'  delle storie");
 	
 	String text;
 	
