@@ -9,11 +9,15 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
 
+import org.antlr.runtime.CommonToken;
 //import org.antlr.runtime.CommonToken;
 import org.antlr.runtime.Token;
+import org.jgrapht.GraphPath;
 import org.jgrapht.alg.connectivity.ConnectivityInspector;
 import org.jgrapht.alg.cycle.CycleDetector;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 //import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DefaultEdge;
 
 import myCompiler.Coordinates;
 import myCompiler.util.error.*;
@@ -86,6 +90,7 @@ public class ParserSemantic {
 		CompilationError c_error = new CompilationError(tipo,causa,soluzione,coord,token_ref.getText());
 		env.errorList.add(c_error);
 	}
+	
 	public void manageSyntaxError(Token tk) {
 		addError(ErrType.SYNTAX_ERROR,ErrCauses.SYNTAX_ERROR,ErrSolution.SYNTAX_ERROR,tk,tk);
 	}
@@ -321,8 +326,13 @@ public class ParserSemantic {
 	
 	/*----------GESTIONE GRAFO----------*/
 	private void CheckLeavesPath(Story leaf, Set<Story> listCycleVertex) {
+		DijkstraShortestPath<Story, DefaultEdge> dijk = new DijkstraShortestPath<>(env.graph);
 		for (Story story_cycle : listCycleVertex) {
-			if (env.connectivity_inspector.pathExists(story_cycle, leaf)) {
+			GraphPath<Story, DefaultEdge> path = dijk.getPath(story_cycle, leaf);
+			//System.out.println("path : " + path);
+			if (env.connectivity_inspector.pathExists(story_cycle, leaf) && path!=null) {
+				//System.out.println("Leaf" + leaf);
+				//System.out.println("Story in cicle : " + story_cycle);
 				// WARNING: CICLICO !!!
 				addWarning(WarnType.CYCLIC,WarnCauses.CYCLIC,WarnSolution.REDEF_PATH_STORIES);
 				existAtLeastOnePath = true;
@@ -336,16 +346,18 @@ public class ParserSemantic {
 		env.cycle_detector = new CycleDetector<>(env.graph);
 		env.connectivity_inspector = new ConnectivityInspector<>(env.graph);
 		
+		
 		if (!env.cyclic && env.cycle_detector.detectCycles()) {
 			//siamo in presenza di un ciclo
 			Set<Story> listCycleVertex = env.cycle_detector.findCycles();
 			env.graph.vertexSet().stream()
-					.filter(key -> env.graph.outgoingEdgesOf(key).size() == 0)
-					.forEach(key -> CheckLeavesPath(key, listCycleVertex));
+					.filter(leaf -> env.graph.outgoingEdgesOf(leaf).size() == 0)
+					.forEach(leaf -> CheckLeavesPath(leaf, listCycleVertex));
 			
-			if (!existAtLeastOnePath) {
-				//VA bene il null????????????????????????????
-				addError(ErrType.CYCLIC, ErrCauses.CYCLIC, ErrSolution.REDEF_PATH_STORIES, null, null);
+			if (listCycleVertex.size() == 0 || !existAtLeastOnePath) {
+				Token tk = new CommonToken(0);
+				tk.setText(env.cycle_detector.findCycles().toString());
+				addError(ErrType.CYCLIC, ErrCauses.CYCLIC, ErrSolution.REDEF_PATH_STORIES, tk, tk);
 			}
 			
 		}

@@ -3,6 +3,7 @@ package myCompiler.util;
 import java.util.LinkedList;
 
 public class Story {
+	public String index;
 	public String name;
 	public String title;
 	public String text;
@@ -12,6 +13,11 @@ public class Story {
 	
 	public Story (String name) {
 		this.name = name;
+		this.index = null;
+	}
+	
+	public void setIndex(String index) {
+		this.index = index;
 	}
 	
 	public void setTitle(String title) {

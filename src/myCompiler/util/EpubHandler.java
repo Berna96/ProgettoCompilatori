@@ -53,13 +53,11 @@ public class EpubHandler {
 											+ "  font-size: 16px;\r\n"
 											+ "}";
 	private static final String TEMP_FOLDER = "./output/";
-	private static int index;
 	
 	public EpubHandler(Metadata meta) {
 		this.meta = meta;
 		authors = genStringFromAuthors(meta.authors);
 		book = new EpubBook("english", "book", meta.title, authors);
-		index = 0;
 	}
 	
 	private static void setHiddenAttrib(Path filePath) {		
@@ -106,14 +104,13 @@ public class EpubHandler {
 		Object[] args = {head, body};
 		MessageFormat fmt = new MessageFormat(HTML_WRAPPER);
 		String fileContent = fmt.format(args);
-		BufferedWriter writer = new BufferedWriter(new FileWriter(TEMP_FOLDER +"cover.html"));
+		BufferedWriter writer = new BufferedWriter(new FileWriter(TEMP_FOLDER + "000" + "cover.html"));
 	    writer.write(fileContent);
 	    writer.close();
 	}
 	//TODO:controllare con gian
 	//Crea un file per storia
 	public static void createFileFromStory(Story story) throws IOException{
-		index++;
 		File output_path = new File(TEMP_FOLDER);
 		if (!output_path.exists() || !output_path.isDirectory()) {
 			Path filePath = Paths.get(TEMP_FOLDER);
@@ -128,12 +125,13 @@ public class EpubHandler {
 			int num_buttons = story.choose_story.size();
 			//buttons += MULT_CHOICE;
 			for (int i=0; i<num_buttons; i++) {
-				buttons += MessageFormat.format(BUTTON_WRAPPER, index + story.choose_story.get(i).name + ".html", story.answers.get(i));
+				Story choose_story = story.choose_story.get(i);
+				buttons += MessageFormat.format(BUTTON_WRAPPER, choose_story.index + choose_story.name + ".html", story.answers.get(i));
 			}
 			
 		}else if (story.next_story!=null){
-			//buttons += SINGLE_CHOICE;
-			buttons += MessageFormat.format(BUTTON_WRAPPER, index + story.next_story.name + ".html", SINGLE_CHOICE_BUTTON_ANSWER);
+			Story next_story = story.next_story;
+			buttons += MessageFormat.format(BUTTON_WRAPPER, next_story.index + next_story.name + ".html", SINGLE_CHOICE_BUTTON_ANSWER);
 		}
 		//crea il titolo
 		String title_body = "";
@@ -150,7 +148,7 @@ public class EpubHandler {
 		//FORMATTAZIONE STRINGHE HEAD + BODY
 		MessageFormat fmt = new MessageFormat(HTML_WRAPPER);
 		String fileContent = fmt.format(args);
-		BufferedWriter writer = new BufferedWriter(new FileWriter(TEMP_FOLDER + index + story.name + ".html"));
+		BufferedWriter writer = new BufferedWriter(new FileWriter(TEMP_FOLDER + story.index +story.name + ".html"));
 	    writer.write(fileContent);
 	    writer.close();
 	}

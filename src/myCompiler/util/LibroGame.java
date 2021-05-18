@@ -10,6 +10,7 @@ public class LibroGame {
 	// CAMPI DEDICATI AL LIBROGAME
 	public Metadata metadata;
 	public LinkedHashMap<String, Story> storyTable;
+	private NumberGenerator gen;
 	
 	// COSTRUTTORI
 	public LibroGame(String publisher, String title, Integer year, LinkedList<String> authors, String cover_path) {
@@ -20,19 +21,25 @@ public class LibroGame {
 		metadata.authors = authors;
 		metadata.cover_path = cover_path;
 		storyTable = new LinkedHashMap<String,Story>();
+		gen = NumberGenerator.getInstance();
 	}
 	public LibroGame(Metadata metadata) {
 		storyTable = new LinkedHashMap<String,Story>();
 		this.metadata = metadata;
+		gen = NumberGenerator.getInstance();
 	}
 	public LibroGame() {
 		storyTable = new LinkedHashMap<String,Story>(); // SEMPRE aggiornata
 		this.metadata = new Metadata();
+		gen = NumberGenerator.getInstance();
 	}
 	
 	// METODI DEDICATI AL LIBROGAME
 	public void addStory(Story story) {
 		// per i controlli in sem, story e' di certo NUOVA
+		String label = gen.getNextLabel();
+		//System.out.println(label);
+		story.setIndex(label);
 		storyTable.put(story.name, story);
 	}
 	

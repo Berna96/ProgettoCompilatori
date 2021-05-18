@@ -23,6 +23,10 @@ public class ParserUser {
 		String fileIn, fileOut;
 				
 		if (args.length > 0) {
+			if (args[0].equals("--help") || args[0].equals("-h")) {
+				System.out.println("Uso : java -jar epublibrogame.jar input_file [output_file.epub]");
+				System.exit(0);
+			}
 			fileIn = args[0];
 			File f = new File(args[0]);
 			if (!f.exists()) {
@@ -33,6 +37,10 @@ public class ParserUser {
 			
 			if (args.length > 1) {
 				fileOut = args[1];
+				if (!fileOut.contains(".epub")) {
+					System.out.println("Non specificata l'estensione .epub");
+					System.exit(1);
+				}
 				System.out.println("Verra' creato " + fileOut);
 			} else {
 				System.out.println("Verra' creato librogame.epub in questa cartella");

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import org.antlr.runtime.Token;
 import org.jgrapht.Graph;
+import org.jgrapht.GraphPath;
 import org.jgrapht.alg.connectivity.ConnectivityInspector;
 import org.jgrapht.alg.cycle.CycleDetector;
 //import org.jgrapht.alg.connectivity.ConnectivityInspector;
@@ -40,6 +41,8 @@ public class ParserEnvironment {
 	public Graph<Story, DefaultEdge> graph;
 	CycleDetector<Story, DefaultEdge> cycle_detector;
 	ConnectivityInspector<Story, DefaultEdge> connectivity_inspector;
+	GraphPath<Story, DefaultEdge> path;
+	
 	//public boolean cyclic;
 	//public boolean connected;
 	
