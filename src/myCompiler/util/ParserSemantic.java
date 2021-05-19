@@ -26,12 +26,12 @@ import myCompiler.util.warning.*;
 //import myCompiler.MyGrammarParser.story_return;
 
 public class ParserSemantic {
-	private boolean existAtLeastOnePath;
+	private boolean allCycleExit;
 	ParserEnvironment env;
 	public static int MAX_CHOOSES = 10;
 	public ParserSemantic (ParserEnvironment e) {
 		env = e;
-		existAtLeastOnePath = false;
+		allCycleExit = true;
 	}
 	
 	/*----------METADATA----------*/
@@ -326,16 +326,11 @@ public class ParserSemantic {
 	
 	/*----------GESTIONE GRAFO----------*/
 	private void CheckLeavesPath(Story leaf, Set<Story> listCycleVertex) {
-		DijkstraShortestPath<Story, DefaultEdge> dijk = new DijkstraShortestPath<>(env.graph);
+		if (!allCycleExit) return;
 		for (Story story_cycle : listCycleVertex) {
-			GraphPath<Story, DefaultEdge> path = dijk.getPath(story_cycle, leaf);
-			//System.out.println("path : " + path);
-			if (env.connectivity_inspector.pathExists(story_cycle, leaf) && path!=null) {
-				//System.out.println("Leaf" + leaf);
-				//System.out.println("Story in cicle : " + story_cycle);
-				// WARNING: CICLICO !!!
-				addWarning(WarnType.CYCLIC,WarnCauses.CYCLIC,WarnSolution.REDEF_PATH_STORIES);
-				existAtLeastOnePath = true;
+			GraphPath<Story, DefaultEdge> path = env.algo.getPath(story_cycle, leaf);
+			if (!(env.connectivity_inspector.pathExists(story_cycle, leaf) && path!=null)) {
+				allCycleExit = false;
 				break;
 			}
 		}
@@ -345,7 +340,7 @@ public class ParserSemantic {
 	public void checkGraph() {
 		env.cycle_detector = new CycleDetector<>(env.graph);
 		env.connectivity_inspector = new ConnectivityInspector<>(env.graph);
-		
+		env.algo = new DijkstraShortestPath<>(env.graph);
 		
 		if (!env.cyclic && env.cycle_detector.detectCycles()) {
 			//siamo in presenza di un ciclo
@@ -354,12 +349,15 @@ public class ParserSemantic {
 					.filter(leaf -> env.graph.outgoingEdgesOf(leaf).size() == 0)
 					.forEach(leaf -> CheckLeavesPath(leaf, listCycleVertex));
 			
-			if (listCycleVertex.size() == 0 || !existAtLeastOnePath) {
+			if (allCycleExit) {
+				//WARNING
+				addWarning(WarnType.CYCLIC,WarnCauses.CYCLIC,WarnSolution.REDEF_PATH_STORIES);
+			}else {
+				//ERROR
 				Token tk = new CommonToken(0);
 				tk.setText(env.cycle_detector.findCycles().toString());
 				addError(ErrType.CYCLIC, ErrCauses.CYCLIC, ErrSolution.REDEF_PATH_STORIES, tk, tk);
 			}
-			
 		}
 		
 		if (!env.connectivity_inspector.isConnected()) {

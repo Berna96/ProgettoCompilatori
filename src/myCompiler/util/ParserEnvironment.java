@@ -4,10 +4,12 @@ import java.util.Hashtable;
 import java.util.LinkedList;
 
 import org.antlr.runtime.Token;
+import org.graalvm.compiler.nodes.NodeView.Default;
 import org.jgrapht.Graph;
 import org.jgrapht.GraphPath;
 import org.jgrapht.alg.connectivity.ConnectivityInspector;
 import org.jgrapht.alg.cycle.CycleDetector;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 //import org.jgrapht.alg.connectivity.ConnectivityInspector;
 //import org.jgrapht.alg.cycle.CycleDetector;
 import org.jgrapht.graph.DefaultEdge;
@@ -41,7 +43,7 @@ public class ParserEnvironment {
 	public Graph<Story, DefaultEdge> graph;
 	CycleDetector<Story, DefaultEdge> cycle_detector;
 	ConnectivityInspector<Story, DefaultEdge> connectivity_inspector;
-	GraphPath<Story, DefaultEdge> path;
+	DijkstraShortestPath<Story, DefaultEdge> algo;
 	
 	//public boolean cyclic;
 	//public boolean connected;
