@@ -3,16 +3,21 @@ package myCompiler.util;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Hashtable;
 //import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
 
+import org.antlr.runtime.CommonToken;
 //import org.antlr.runtime.CommonToken;
 import org.antlr.runtime.Token;
+import org.jgrapht.GraphPath;
 import org.jgrapht.alg.connectivity.ConnectivityInspector;
 import org.jgrapht.alg.cycle.CycleDetector;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 //import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DefaultEdge;
 
 import myCompiler.Coordinates;
 import myCompiler.util.error.*;
@@ -21,10 +26,12 @@ import myCompiler.util.warning.*;
 //import myCompiler.MyGrammarParser.story_return;
 
 public class ParserSemantic {
+	private boolean allCycleExit;
 	ParserEnvironment env;
 	public static int MAX_CHOOSES = 10;
 	public ParserSemantic (ParserEnvironment e) {
 		env = e;
+		allCycleExit = true;
 	}
 	
 	/*----------METADATA----------*/
@@ -83,6 +90,7 @@ public class ParserSemantic {
 		CompilationError c_error = new CompilationError(tipo,causa,soluzione,coord,token_ref.getText());
 		env.errorList.add(c_error);
 	}
+	
 	public void manageSyntaxError(Token tk) {
 		addError(ErrType.SYNTAX_ERROR,ErrCauses.SYNTAX_ERROR,ErrSolution.SYNTAX_ERROR,tk,tk);
 	}
@@ -319,19 +327,46 @@ public class ParserSemantic {
 	/*----------FINE STORIE----------*/
 	
 	/*----------GESTIONE GRAFO----------*/
+	private void CheckLeavesPath(Story leaf, Set<Story> listCycleVertex) {
+		if (!allCycleExit) return;
+		for (Story story_cycle : listCycleVertex) {
+			GraphPath<Story, DefaultEdge> path = env.algo.getPath(story_cycle, leaf);
+			if (!(env.connectivity_inspector.pathExists(story_cycle, leaf) && path!=null)) {
+				allCycleExit = false;
+				break;
+			}
+		}
+	}
+	
+	//TODO:controllare cpn Gian
 	public void checkGraph() {
 		env.cycle_detector = new CycleDetector<>(env.graph);
 		env.connectivity_inspector = new ConnectivityInspector<>(env.graph);
+		env.algo = new DijkstraShortestPath<>(env.graph);
 		
 		if (!env.cyclic && env.cycle_detector.detectCycles()) {
-			// WARNING: CICLICLO !!!
-			addWarning(WarnType.CYCLIC,WarnCauses.CYCLIC,WarnSolution.REDEF_PATH_STORIES);
+			//siamo in presenza di un ciclo
+			Set<Story> listCycleVertex = env.cycle_detector.findCycles();
+			env.graph.vertexSet().stream()
+					.filter(leaf -> env.graph.outgoingEdgesOf(leaf).size() == 0)
+					.forEach(leaf -> CheckLeavesPath(leaf, listCycleVertex));
+			
+			if (allCycleExit) {
+				//WARNING
+				addWarning(WarnType.CYCLIC,WarnCauses.CYCLIC,WarnSolution.REDEF_PATH_STORIES);
+			}else {
+				//ERROR
+				Token tk = new CommonToken(0);
+				tk.setText(env.cycle_detector.findCycles().toString());
+				addError(ErrType.CYCLIC, ErrCauses.CYCLIC, ErrSolution.REDEF_PATH_STORIES, tk, tk);
+			}
 		}
 		
 		if (!env.connectivity_inspector.isConnected()) {
 			// WARNING: NON CONNESSO !!!
 			addWarning(WarnType.UNATTAINABLE,WarnCauses.UNATTAINABLE,WarnSolution.REDEF_PATH_STORIES);
 		}
+		
 	}
 	/*----------FINE GESTIONE GRAFO----------*/
 	

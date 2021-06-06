@@ -10,7 +10,8 @@ public enum ErrSolution {
 	SYNTAX_ERROR("Correggere il documento rispettando le regole sintattiche"),
 	TOKEN_UNRECOGNIZED("Correggere il documento rispettando le regole lessicali"),
 	AUTO_RING("Cambia la storia {0} successiva in modo che sia diversa da quella corrente"),
-	SAME_LABEL("Cambia nome all'etichetta");
+	SAME_LABEL("Cambia nome all'etichetta"),
+	REDEF_PATH_STORIES("Ricontrollare il percorso delle storie ed eventualmente ridefinirlo");
 	
 	String text;
 	
