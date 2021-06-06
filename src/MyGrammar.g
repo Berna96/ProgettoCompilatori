@@ -123,13 +123,13 @@ end_story
 story	:
 	story_name=start_story
 	title_story = title?
-	text=TEXT
+	text_story=text
 	chosen_stories = choose?
 	end_story {sem.manageStoryBlock($story_name.this_story,
 			 	   $story_name.next_story,
 			 	   $story_name.hasBranches,
 			 	   $title_story.title_story,
-			 	   $text,
+			 	   $text_story.text_story,
 			 	   $chosen_stories.stories,
 			 	   $chosen_stories.answers);}
 	;
@@ -146,6 +146,12 @@ title	returns [Token title_story] //[String title_story]
 	:
 // eredita nome_storia, allora { $title = sem.setTitleStory($name_story, $title_story); }
 	LB TITLE title_st=STRING_VALUE RB {$title_story = $title_st;} //{$title_story = $title_st.getText();}
+	;
+
+text	returns [Token text_story] //[String title_story]
+	:
+// eredita nome_storia, allora { $title = sem.setTitleStory($name_story, $title_story); }
+	LB TEXT text_st=STRING_VALUE RB {$text_story = $text_st;} //{$title_story = $title_st.getText();}
 	;
 
 choose	returns [LinkedList<Token> stories, LinkedList<Token> answers] //[LinkedList<String> stories]
@@ -206,6 +212,8 @@ ENDSTORY : 'ENDSTORY'
 	;
 TITLE_S 	: 'title'
 	;
+TEXT	: 'TEXT'
+	;
 
 AUTHOR 
 	:	'author' ;
@@ -215,7 +223,7 @@ PUBLISHER
 YEAR 
 	:	'year' ;
 fragment STRING 
-	:	'"' ( ~'"' )* '"';
+	:	'"' ( ~'"' | '\\"' )* '"';
 IMAGE 	
 	:	'image'
 	;
@@ -265,13 +273,13 @@ COMMENT :	('//' ~ ('\n' | '\r')* '\r'? '\n' |
 		{ skip(); /*$channel=HIDDEN;*/ }
 	;
 
-
+/*
 TEXT 	:     //LETTER ( options {greedù3 = false;} : ~( LB | RB ))*
 		//~( DOLL | DIGIT) ~(LB | RB)*
 		DOLL ~DOLL* DOLL
 		//'\'' ~( '\'' )* '\''
 	;
-
+*/
 
 /*
 NOT_BRACKETS

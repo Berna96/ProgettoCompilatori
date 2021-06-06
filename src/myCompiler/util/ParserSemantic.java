@@ -142,7 +142,9 @@ public class ParserSemantic {
 	
 	private void manageTextStory(Story story, Token story_token, Token text) {
 		if (text != null) {
-			String text_story = text.getText().replace("$", "");
+			String text_story = text.getText().replace("\\\"", "\"");
+			text_story = text_story.substring(1, text_story.length() - 1);
+			//text_story = text_story.replace("\"", "");
 			if (text_story.isEmpty()) {
 				// WARNING COMPILAZIONE: TESTO VUOTO !!!
 				addWarning(WarnType.INCOMPLETE_STORY,WarnCauses.TEXT_EMPTY,WarnSolution.TEXT_EMPTY,text,story_token);
