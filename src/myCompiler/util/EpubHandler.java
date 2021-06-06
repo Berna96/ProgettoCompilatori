@@ -78,11 +78,12 @@ public class EpubHandler {
 			Files.createDirectories(filePath);
 			setHiddenAttrib(filePath);
 		}
-		
+		/*
 		String img = "";
 		if (meta.cover_path != null) {
 			img = "<img src=\"" + meta.cover_path.replace(TEMP_FOLDER, "") +"\" alt=\"cover image\" class=\"cover\">\r\n";
 		}
+		*/
 		String publisher = "";
 		if (meta.publisher!=null) {
 			publisher = "<h3 class=\"publisher\">" + meta.publisher + "</h3>\r\n";
@@ -92,8 +93,8 @@ public class EpubHandler {
 			year = "<h4 class=\"year\">" + meta.year.toString() + "</h4>";
 		}
 		//body in html
-		String body = img
-					+ "<h1 id=\"title\" class=\"title\">" + meta.title + "</h1>\r\n"
+		String body = //img
+					 "<h1 id=\"title\" class=\"title\">" + meta.title + "</h1>\r\n"
 					+ "<h2 class=\"author\">" + genStringFromAuthors(meta.authors) + "</h2>\r\n<br />\r\n"
 					+ publisher
 					+ year;

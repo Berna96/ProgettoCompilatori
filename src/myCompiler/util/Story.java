@@ -42,9 +42,7 @@ public class Story {
 		
 	@Override
 	public String toString() {
-		return "Story[name: " + name + "\n"
-				+ "title: " + title + "\n"
-				+ "text: " + text + "]";
+		return name;
 	}
 	
 }

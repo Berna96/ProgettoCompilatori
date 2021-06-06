@@ -3,7 +3,6 @@ package myCompiler.util;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Hashtable;
 //import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -26,12 +25,12 @@ import myCompiler.util.warning.*;
 //import myCompiler.MyGrammarParser.story_return;
 
 public class ParserSemantic {
-	private boolean allCycleExit;
+	//private boolean allCycleExit;
 	ParserEnvironment env;
 	public static int MAX_CHOOSES = 10;
 	public ParserSemantic (ParserEnvironment e) {
 		env = e;
-		allCycleExit = true;
+		//allCycleExit = true;
 	}
 	
 	/*----------METADATA----------*/
@@ -327,7 +326,7 @@ public class ParserSemantic {
 	/*----------FINE STORIE----------*/
 	
 	/*----------GESTIONE GRAFO----------*/
-	private void CheckLeavesPath(Story leaf, Set<Story> listCycleVertex) {
+	/*private void CheckLeavesPath(Story leaf, Set<Story> listCycleVertex) {
 		if (!allCycleExit) return;
 		for (Story story_cycle : listCycleVertex) {
 			GraphPath<Story, DefaultEdge> path = env.algo.getPath(story_cycle, leaf);
@@ -367,7 +366,56 @@ public class ParserSemantic {
 			addWarning(WarnType.UNATTAINABLE,WarnCauses.UNATTAINABLE,WarnSolution.REDEF_PATH_STORIES);
 		}
 		
+	}*/
+	
+	public void checkGraph() {
+		env.cycle_detector = new CycleDetector<>(env.graph);
+		env.connectivity_inspector = new ConnectivityInspector<>(env.graph);
+		env.algo = new DijkstraShortestPath<>(env.graph);
+		
+		ArrayList<Story> leavesList = new ArrayList<>();
+		env.graph.vertexSet().stream()
+			.filter(leaf -> env.graph.outgoingEdgesOf(leaf).size() == 0)
+			.forEach(leaf -> leavesList.add(leaf));
+		
+		Set<Story> listCycleVertex = env.cycle_detector.findCycles();
+		ArrayList<Story> listVertexChecked = new ArrayList<>();
+		
+		for (Story story_cycle : listCycleVertex) {
+			if (listVertexChecked.contains(story_cycle))
+				continue;
+			
+			Set<Story> cd = env.cycle_detector.findCyclesContainingVertex(story_cycle);
+			
+			for (Story leaf : leavesList) {
+				GraphPath<Story, DefaultEdge> path = env.algo.getPath(story_cycle, leaf);
+				
+				Token tk = new CommonToken(0);
+				tk.setText(cd.toString());
+				tk.setCharPositionInLine(env.tokenStoryTable.get(story_cycle).getCharPositionInLine());
+				tk.setLine(env.tokenStoryTable.get(story_cycle).getLine());
+				
+				//se trova una via d'uscita
+				if (env.connectivity_inspector.pathExists(story_cycle, leaf) && path!=null) {
+					// warning del ciclo con tutti i suoi nodi (possono raggiungere una foglia)
+					addWarning(WarnType.CYCLIC, WarnCauses.CYCLIC, WarnSolution.REDEF_PATH_STORIES, tk, tk);
+				} else {
+					// errore cicli con tutti i suoi nodi (non possono raggiungere una foglia)
+					addError(ErrType.CYCLIC, ErrCauses.CYCLIC, ErrSolution.REDEF_PATH_STORIES, tk, tk);
+				}
+			}
+			
+			for (Story story_t : cd)
+				listVertexChecked.add(story_t);
+		}
+		
+		if (!env.connectivity_inspector.isConnected()) {
+			// WARNING: NON CONNESSO !!!
+			addWarning(WarnType.UNATTAINABLE,WarnCauses.UNATTAINABLE,WarnSolution.REDEF_PATH_STORIES);
+		}
+		
 	}
+	
 	/*----------FINE GESTIONE GRAFO----------*/
 	
 	/*-----------GESTIONE FILES EPUB-----------*/

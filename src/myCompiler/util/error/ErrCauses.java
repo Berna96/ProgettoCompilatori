@@ -9,9 +9,9 @@ public enum ErrCauses {
 	UNDEF_STORY("Storia {0} non definita"),
 	SYNTAX_ERROR("{0} non rispetta la sintassi del linguaggio"),
 	TOKEN_UNRECOGNIZED("Token {0} non riconosciuto"),
-	AUTO_RING("la storia {0} viene ripetuta nella stessa storia"),
+	AUTO_RING("La storia {0} viene ripetuta nella stessa storia"),
 	SAME_LABEL("Hai ripetuto più volte la stessa etichetta {0}"),
-	CYCLIC ("Il percoso della scelte delle storie e' ciclico, questo permette di ritornare a una storia gia'  passata");
+	CYCLIC ("Le storie {0} creano un ciclo che permette di tornare a una storia passata");
 	
 	String text;
 	
