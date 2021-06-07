@@ -59,6 +59,13 @@ public class ParserUser {
 				LinkedList<CompilationMessage> errors_and_warnings = new LinkedList<>();
 				errors_and_warnings.addAll(parser.getWarnings());
 				errors_and_warnings.addAll(parser.getErrors());
+				
+				/*
+				for (int i=0; i < parser.getWarnings().size(); i++)
+					System.out.println(parser.getWarnings().get(i));
+				for (int i=0; i < parser.getErrors().size(); i++)
+					System.out.println(parser.getErrors().get(i));
+				*/
 				errors_and_warnings.sort(null);
 		    
 				if (parser.getErrors().isEmpty()) {

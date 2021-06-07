@@ -6,6 +6,7 @@ import java.util.Collections;
 //import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import org.antlr.runtime.CommonToken;
@@ -411,7 +412,15 @@ public class ParserSemantic {
 		
 		if (!env.connectivity_inspector.isConnected()) {
 			// WARNING: NON CONNESSO !!!
-			addWarning(WarnType.UNATTAINABLE,WarnCauses.UNATTAINABLE,WarnSolution.REDEF_PATH_STORIES);
+			List<Set<Story>> listSetStories = env.connectivity_inspector.connectedSets();
+			Story firstStory = env.librogame.storyTable.entrySet().iterator().next().getValue();
+			Set<Story> setStoriesConnected = env.connectivity_inspector.connectedSetOf(firstStory);
+			listSetStories.remove(setStoriesConnected);
+			
+			Story story_not_connected = listSetStories.get(0).iterator().next();
+			
+			Token tkn = env.tokenStoryTable.get(story_not_connected);
+			addWarning(WarnType.UNATTAINABLE,WarnCauses.UNATTAINABLE,WarnSolution.REDEF_PATH_STORIES,tkn,tkn);
 		}
 		
 	}
