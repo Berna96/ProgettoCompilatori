@@ -404,6 +404,7 @@ public class ParserSemantic {
 					// errore cicli con tutti i suoi nodi (non possono raggiungere una foglia)
 					addError(ErrType.CYCLIC, ErrCauses.CYCLIC, ErrSolution.REDEF_PATH_STORIES, tk, tk);
 				}
+				break;
 			}
 			
 			for (Story story_t : cd)
